@@ -24,7 +24,6 @@ const ProductPage = () => {
     const fetchProducts = async () => {
         try {
             console.log(category);
-
             const response = await client.getEntries({
                 content_type: "product",
                 order: "-sys.createdAt",
@@ -38,7 +37,11 @@ const ProductPage = () => {
                 };
             });
             console.log("Products :", fields);
-            setProducts(fields);
+            if (fields) {
+                if (fields.length > 0) {
+                    setProducts(fields);
+                }
+            }
         } catch (error) {
             console.log("Error fetching news data:", error);
         }
@@ -53,7 +56,9 @@ const ProductPage = () => {
     }, [location]);
 
     useEffect(() => {
-        fetchProducts();
+        if (category) {
+            fetchProducts();
+        }
     }, [category]);
 
     // useEffect(() => {

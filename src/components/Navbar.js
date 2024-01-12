@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AppBar, Toolbar, Button, Popover, List, ListItem, ListItemText } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
-// import { useHistory } from "react-router-dom";
+import CategoryDropdown from "./CategoryDropdown";
 
 const NavBar = () => {
     const navigate = useNavigate();
@@ -99,7 +98,7 @@ const NavBar = () => {
                         marginRight: "auto",
                     }}
                 >
-                    <Button color="inherit" onClick={(e) => handleClick(e, "products")}>
+                    {/* <Button color="inherit" onClick={(e) => handleClick(e, "products")}>
                         Products
                     </Button>
                     <Popover
@@ -131,7 +130,6 @@ const NavBar = () => {
                             ))}
                         </List>
                     </Popover>
-
                     <Button color="inherit" onClick={(e) => handleClick(e, "brands")}>
                         Brands
                     </Button>
@@ -157,7 +155,9 @@ const NavBar = () => {
                                 <ListItemText primary="Brand 2" />
                             </ListItem>
                         </List>
-                    </Popover>
+                    </Popover> */}
+                    <CategoryDropdown title="products" categories={categories} />
+                    <CategoryDropdown title="brands" categories={categories} />
                 </div>
                 <Button color="inherit" sx={{ width: "180px" }}>
                     Language Selector

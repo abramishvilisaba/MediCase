@@ -224,11 +224,6 @@ const Home = () => {
                     </ContentContainer>
                 </BackgroundContainer>
             </div>
-            <div style={{ display: "flex", flexDirection: "row", width: "100%" }}>
-                <CategoryDropdown title="Categories" />
-                <CategoryDropdown title="Categories" />
-            </div>
-
             <div style={{ height: "50vh", marginTop: "20px" }}>
                 {data.length > 0 ? (
                     <Container>
