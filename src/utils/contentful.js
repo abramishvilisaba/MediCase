@@ -28,11 +28,12 @@ export const fetchNewsData = async () => {
     }
 };
 
-export const fetchProducts = async () => {
+export const fetchProducts = async (category) => {
     try {
         const response = await client.getEntries({
             content_type: "product",
             order: "-sys.createdAt",
+            "fields.category": category,
         });
         const fields = response.items.map((item) => {
             const field = item.fields;
@@ -47,21 +48,38 @@ export const fetchProducts = async () => {
     }
 };
 
-export const fetchCategories = async () => {
+export const fetchCategories = async (brand) => {
     try {
         const response = await client.getEntries({
-            content_type: "category",
+            content_type: "categories",
             order: "-sys.createdAt",
+            "fields.brand": brand,
         });
-
         const fields = response.items.map((item) => {
             const field = item.fields;
-            return {
-                ...item.fields,
-                field,
-            };
+            return field.names;
+            // return {
+            //     ...item.fields,
+            //     field,
+            // };
         });
-        return fields;
+        return fields[0];
+    } catch (error) {
+        console.error("Error fetching news data:", error);
+    }
+};
+
+export const fetchBrands = async () => {
+    try {
+        const response = await client.getEntries({
+            content_type: "brands",
+            order: "-sys.createdAt",
+        });
+        const fields = response.items.map((item) => {
+            const field = item.fields;
+            return field.names;
+        });
+        return fields[0];
     } catch (error) {
         console.error("Error fetching news data:", error);
     }

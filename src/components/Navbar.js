@@ -4,54 +4,25 @@ import { useNavigate, useLocation, useParams } from "react-router-dom";
 import CategoryDropdown from "./CategoryDropdown";
 import LanguageSelector from "./LanguageSelector";
 import logoImage from "../images/logo.png";
-import { fetchCategories } from "../utils/contentful";
+import { fetchCategories, fetchBrands } from "../utils/contentful";
 
 const NavBar = () => {
     const navigate = useNavigate();
     const location = useLocation();
     let { language } = useParams();
-
-    const contentful = require("contentful");
-    const contentfulSpace = process.env.REACT_APP_CONTENTFUL_SPACE;
-    const contentfulAccessToken = process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN;
-
     const supportedLocales = ["en", "ka", "ru"];
-
-    const client = contentful.createClient({
-        space: contentfulSpace,
-        accessToken: contentfulAccessToken,
-    });
     const [categories, setCategories] = useState([]);
+    const [brands, setBrands] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             setCategories(await fetchCategories());
+            setBrands(await fetchBrands());
         };
         fetchData();
     }, []);
 
     const [scrolling, setScrolling] = useState(false);
-    const [productsAnchorEl, setProductsAnchorEl] = useState(null);
-    const [brandsAnchorEl, setBrandsAnchorEl] = useState(null);
-
-    // const handleClick = (event, type) => {
-    //     if (type === "products") {
-    //         setProductsAnchorEl(event.currentTarget);
-    //     } else if (type === "brands") {
-    //         setBrandsAnchorEl(event.currentTarget);
-    //     }
-    // };
-
-    // const handleClose = (type) => {
-    //     if (type === "products") {
-    //         setProductsAnchorEl(null);
-    //     } else if (type === "brands") {
-    //         setBrandsAnchorEl(null);
-    //     }
-    // };
-
-    // const isProductsOpen = Boolean(productsAnchorEl);
-    // const isBrandsOpen = Boolean(brandsAnchorEl);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -75,10 +46,16 @@ const NavBar = () => {
         <AppBar
             position="fixed"
             // style={{ backgroundColor: scrolling ? "#2A323D" : "rgba(78, 90, 108, 0.3)" }}
-            style={{ backgroundColor: scrolling ? "#4C5461" : "rgba(78, 90, 108, 0.3)" }}
+            style={{
+                backgroundColor: scrolling ? "#4C5461" : "rgba(78, 90, 108, 0.3)",
+                width: "100%",
+                padding: "0px",
+                height: "64px",
+            }}
         >
-            <Toolbar className="mx-8">
-                <div className="m-2 w-[180px]">
+            {/* <Toolbar className="w-full mx-2 sm:mx-8  p-0"> */}
+            <Toolbar className="w-full  p-0">
+                <div className="w-1/4 sm:pl-10 min-w-fit flex justify-start">
                     <img
                         src={logoImage}
                         alt="Logo"
@@ -86,11 +63,11 @@ const NavBar = () => {
                         onClick={() => navigate(`/${language}`)}
                     />
                 </div>
-                <div className="flex items-center space-x-4 ml-auto mr-auto ">
+                <div className="flex items-center justify-center gap-2 w-1/2 ">
                     <CategoryDropdown title="products" categories={categories} />
-                    <CategoryDropdown title="brands" categories={categories} />
+                    <CategoryDropdown title="brands" categories={brands} />
                 </div>
-                <div color="inherit" className="w-[180px] flex justify-center">
+                <div color="inherit" className="w-1/4 sm:pr-10 flex justify-end">
                     {/* Language Selector */}
                     <LanguageSelector
                         supportedLocales={supportedLocales}

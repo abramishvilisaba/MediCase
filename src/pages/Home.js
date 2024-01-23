@@ -14,15 +14,15 @@ import { fetchNewsData, fetchProducts, fetchCategories } from "../utils/contentf
 
 const Home = () => {
     const [data, setData] = useState([]);
-    const [categories, setCategories] = useState([]);
-    const [products, setProducts] = useState([]);
+    // const [categories, setCategories] = useState([]);
+    // const [products, setProducts] = useState([]);
     const location = useLocation();
     let { language } = useParams();
 
     useEffect(() => {
         const fetchData = async () => {
-            setCategories(await fetchCategories());
-            setProducts(await fetchProducts());
+            // setCategories(await fetchCategories());
+            // setProducts(await fetchProducts());
             setData(await fetchNewsData());
         };
 

@@ -6,6 +6,7 @@ import backgroundImage from "../images/cover2.jpg";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
+import { fetchProducts } from "../utils/contentful";
 
 const contentful = require("contentful");
 
@@ -13,39 +14,15 @@ const ProductPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { language, id, page } = useParams();
+    const currentPage = page ? parseInt(page, 10) : 1;
     const [category, setCategory] = useState("");
     const [products, setProducts] = useState([]);
 
-    const currentPage = page ? parseInt(page, 10) : 1;
-
-    const contentfulSpace = process.env.REACT_APP_CONTENTFUL_SPACE;
-    const contentfulAccessToken = process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN;
-    const client = contentful.createClient({
-        space: contentfulSpace,
-        accessToken: contentfulAccessToken,
-    });
-
-    const fetchProducts = async () => {
-        try {
-            if (category) {
-                const response = await client.getEntries({
-                    content_type: "product",
-                    order: "-sys.createdAt",
-                    "fields.category": category,
-                });
-                console.log(response);
-                const fields = response.items.map((item) => ({
-                    ...item.fields,
-                    field: item.fields,
-                }));
-                if (fields && fields.length > 0) {
-                    setProducts(fields);
-                }
-            }
-        } catch (error) {
-            console.error("Error fetching product data:", error);
-        }
-    };
+    // useEffect(() => {
+    //     if (category) {
+    //         fetchProducts();
+    //     }
+    // }, [category]);
 
     useEffect(() => {
         if (id) {
@@ -54,19 +31,28 @@ const ProductPage = () => {
     }, [location]);
 
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }, [location.pathname]);
-
-    useEffect(() => {
         if (category) {
-            fetchProducts();
+            const fetchData = async () => {
+                setProducts(await fetchProducts(category));
+            };
+            fetchData();
         }
     }, [category]);
+
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [location.pathname]);
 
     const itemsPerPage = 12;
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
+
+    let currentItems;
+    if (products.length > 0) {
+        currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
+    } else {
+        currentItems = [];
+    }
 
     const handlePageChange = (event, value) => {
         navigate(`/${language}/products/${category}/${value}`);

@@ -17,11 +17,11 @@ const CategoryDropdown = ({ title, categories }) => {
     let { language } = useParams();
 
     return (
-        <div style={{ display: "inline-block", marginRight: 5 }}>
+        <div style={{ display: "inline-block", marginRight: 5, width: "fit" }}>
             <Button
                 variant="text"
                 {...bindHover(popupState)}
-                style={{ width: "100%", padding: "5px 20px", color: "white", fontSize: "16px" }}
+                style={{ width: "fit", padding: "2px 5px", color: "white", fontSize: "16px" }}
             >
                 {title}
             </Button>
@@ -44,17 +44,18 @@ const CategoryDropdown = ({ title, categories }) => {
                         cursor: "pointer",
                     }}
                 >
-                    {categories.map((category) => (
-                        <ListItem
-                            key={category.id}
-                            onClick={() => {
-                                // handleClose();
-                                navigate(`/${language}/products/${category.name}`);
-                            }}
-                        >
-                            <ListItemText key={category.id} primary={category.name} />
-                        </ListItem>
-                    ))}
+                    {categories &&
+                        categories.map((category, id) => (
+                            <ListItem
+                                key={id}
+                                onClick={() => {
+                                    // handleClose();
+                                    navigate(`/${language}/products/${category}`);
+                                }}
+                            >
+                                <ListItemText key={id} primary={category} />
+                            </ListItem>
+                        ))}
                 </List>
             </HoverPopover>
         </div>
