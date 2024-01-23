@@ -4,6 +4,7 @@ import { useNavigate, useLocation, useParams } from "react-router-dom";
 import CategoryDropdown from "./CategoryDropdown";
 import LanguageSelector from "./LanguageSelector";
 import logoImage from "../images/logo.png";
+import { fetchCategories } from "../utils/contentful";
 
 const NavBar = () => {
     const navigate = useNavigate();
@@ -22,53 +23,35 @@ const NavBar = () => {
     });
     const [categories, setCategories] = useState([]);
 
-    const fetchCategories = async () => {
-        try {
-            const response = await client.getEntries({
-                content_type: "category",
-                order: "-sys.createdAt",
-            });
-
-            const fields = response.items.map((item) => {
-                const field = item.fields;
-                return {
-                    ...item.fields,
-                    field,
-                };
-            });
-            // console.log("Categories :", fields);
-            setCategories(fields);
-        } catch (error) {
-            console.error("Error fetching news data:", error);
-        }
-    };
-
     useEffect(() => {
-        fetchCategories();
+        const fetchData = async () => {
+            setCategories(await fetchCategories());
+        };
+        fetchData();
     }, []);
 
     const [scrolling, setScrolling] = useState(false);
     const [productsAnchorEl, setProductsAnchorEl] = useState(null);
     const [brandsAnchorEl, setBrandsAnchorEl] = useState(null);
 
-    const handleClick = (event, type) => {
-        if (type === "products") {
-            setProductsAnchorEl(event.currentTarget);
-        } else if (type === "brands") {
-            setBrandsAnchorEl(event.currentTarget);
-        }
-    };
+    // const handleClick = (event, type) => {
+    //     if (type === "products") {
+    //         setProductsAnchorEl(event.currentTarget);
+    //     } else if (type === "brands") {
+    //         setBrandsAnchorEl(event.currentTarget);
+    //     }
+    // };
 
-    const handleClose = (type) => {
-        if (type === "products") {
-            setProductsAnchorEl(null);
-        } else if (type === "brands") {
-            setBrandsAnchorEl(null);
-        }
-    };
+    // const handleClose = (type) => {
+    //     if (type === "products") {
+    //         setProductsAnchorEl(null);
+    //     } else if (type === "brands") {
+    //         setBrandsAnchorEl(null);
+    //     }
+    // };
 
-    const isProductsOpen = Boolean(productsAnchorEl);
-    const isBrandsOpen = Boolean(brandsAnchorEl);
+    // const isProductsOpen = Boolean(productsAnchorEl);
+    // const isBrandsOpen = Boolean(brandsAnchorEl);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -85,7 +68,7 @@ const NavBar = () => {
     const handleLanguageSelect = (selectedLanguage) => {
         const newPathname = location.pathname.replace(/^\/[^/]+/, `/${selectedLanguage}`);
         navigate(`${newPathname}${location.search}`);
-        handleClose();
+        // handleClose();
     };
 
     return (
@@ -103,17 +86,17 @@ const NavBar = () => {
                         onClick={() => navigate(`/${language}`)}
                     />
                 </div>
-                <div className="flex items-center space-x-4 ml-auto mr-auto">
+                <div className="flex items-center space-x-4 ml-auto mr-auto ">
                     <CategoryDropdown title="products" categories={categories} />
                     <CategoryDropdown title="brands" categories={categories} />
                 </div>
-                <Button color="inherit" sx={{ width: "180px" }}>
+                <div color="inherit" className="w-[180px] flex justify-center">
                     {/* Language Selector */}
                     <LanguageSelector
                         supportedLocales={supportedLocales}
                         changeLanguage={handleLanguageSelect}
                     />
-                </Button>
+                </div>
             </Toolbar>
         </AppBar>
     );

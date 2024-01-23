@@ -60,7 +60,7 @@ const LanguageSelector = ({ supportedLocales, changeLanguage }) => {
                         onChange={handleLanguageSelect}
                         style={{
                             color: "white",
-                            fontSize: "0.9rem",
+                            fontSize: "1rem",
                             border: "none",
                             outline: "none",
                             boxShadow: "none",

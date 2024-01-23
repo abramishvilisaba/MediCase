@@ -21,7 +21,7 @@ const CategoryDropdown = ({ title, categories }) => {
             <Button
                 variant="text"
                 {...bindHover(popupState)}
-                style={{ width: "100%", padding: "5px 20px", color: "white" }}
+                style={{ width: "100%", padding: "5px 20px", color: "white", fontSize: "16px" }}
             >
                 {title}
             </Button>
@@ -37,7 +37,13 @@ const CategoryDropdown = ({ title, categories }) => {
                 }}
                 style={{ width: "100%", marginTop: "0px" }}
             >
-                <List style={{ width: "100%", padding: "0px 5px", cursor: "pointer" }}>
+                <List
+                    style={{
+                        width: "100%",
+                        padding: "0px 5px",
+                        cursor: "pointer",
+                    }}
+                >
                     {categories.map((category) => (
                         <ListItem
                             key={category.id}

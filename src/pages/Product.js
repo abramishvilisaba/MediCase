@@ -12,7 +12,7 @@ const contentful = require("contentful");
 const ProductPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { id, page } = useParams();
+    const { language, id, page } = useParams();
     const [category, setCategory] = useState("");
     const [products, setProducts] = useState([]);
 
@@ -69,7 +69,7 @@ const ProductPage = () => {
     const currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
 
     const handlePageChange = (event, value) => {
-        navigate(`/products/${category}/${value}`);
+        navigate(`/${language}/products/${category}/${value}`);
         // window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
