@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import HoverPopover from "material-ui-popup-state/HoverPopover";
 import { Button, List, ListItem, ListItemText } from "@mui/material";
 import { usePopupState, bindHover, bindPopover } from "material-ui-popup-state/hooks";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 
 const CategoryDropdown = ({ title, categories }) => {
     const popupState = usePopupState({
@@ -12,13 +12,16 @@ const CategoryDropdown = ({ title, categories }) => {
     });
 
     const navigate = useNavigate();
+    const location = useLocation();
+
+    let { language } = useParams();
 
     return (
-        <div style={{ display: "inline-block", marginRight: 20 }}>
+        <div style={{ display: "inline-block", marginRight: 5 }}>
             <Button
-                variant="contained"
+                variant="text"
                 {...bindHover(popupState)}
-                style={{ width: "100%", padding: "5px 20px" }}
+                style={{ width: "100%", padding: "5px 20px", color: "white" }}
             >
                 {title}
             </Button>
@@ -40,10 +43,10 @@ const CategoryDropdown = ({ title, categories }) => {
                             key={category.id}
                             onClick={() => {
                                 // handleClose();
-                                navigate(`/products/${category.name}`);
+                                navigate(`/${language}/products/${category.name}`);
                             }}
                         >
-                            <ListItemText primary={category.name} />
+                            <ListItemText key={category.id} primary={category.name} />
                         </ListItem>
                     ))}
                 </List>
