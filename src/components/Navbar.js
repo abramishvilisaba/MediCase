@@ -59,7 +59,7 @@ const NavBar = () => {
                     <img
                         src={logoImage}
                         alt="Logo"
-                        className="w-[100px] h-fit mb-0 hover:cursor-pointer"
+                        className="h-[50px] mb-0 hover:cursor-pointer"
                         onClick={() => navigate(`/${language}`)}
                     />
                 </div>
