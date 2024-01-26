@@ -37,9 +37,9 @@ const Home = () => {
     return (
         <IntlProvider locale={language} messages={messages[language]}>
             <div className="flex flex-col box-border bg-[#E3E4E7] ">
-                <div className="flex flex-col h-screen">
+                <div className="flex flex-col h-fit">
                     <div
-                        className="bg-cover bg-center h-full relative"
+                        className="bg-cover bg-center min-h-[100dvh] h-full relative"
                         style={{ backgroundImage: `url(${backgroundImage})` }}
                     >
                         <Navbar />
@@ -60,7 +60,7 @@ const Home = () => {
                 </div>
                 <div className="h-[100vh] mt-20 ">
                     {data.length > 0 && (
-                        <div className="p-20 ">
+                        <div className="sm:p-4 lg:p-8 2xl:p-20 mx-0 2xl:mx-16 ">
                             <MySlider language={language} data={data} />
                         </div>
                     )}

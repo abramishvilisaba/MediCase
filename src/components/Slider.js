@@ -59,7 +59,7 @@ const sliderSettings = {
 
 const MySlider = ({ language, data }) => {
     return (
-        <div className="p-20">
+        <div className="p-0">
             <Slider {...sliderSettings}>
                 {data.map((item, index) => (
                     <div key={index}>
