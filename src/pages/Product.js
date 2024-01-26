@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useParams, Link, useNavigate } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import ProductCard from "../components/ProductCard";
 import backgroundImage from "../images/cover2.jpg";
@@ -8,36 +8,31 @@ import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
 import { fetchProducts } from "../utils/contentful";
 
-const contentful = require("contentful");
-
 const ProductPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { language, id, page } = useParams();
+    const { language, type, id, page } = useParams();
     const currentPage = page ? parseInt(page, 10) : 1;
     const [category, setCategory] = useState("");
     const [products, setProducts] = useState([]);
-
-    // useEffect(() => {
-    //     if (category) {
-    //         fetchProducts();
-    //     }
-    // }, [category]);
 
     useEffect(() => {
         if (id) {
             setCategory(id);
         }
-    }, [location]);
+    }, [location, id]);
 
     useEffect(() => {
         if (category) {
             const fetchData = async () => {
-                setProducts(await fetchProducts(category));
+                const productsData = await fetchProducts(type, category);
+                if (productsData !== null) {
+                    setProducts(productsData);
+                }
             };
             fetchData();
         }
-    }, [category]);
+    }, [type, category]);
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -48,14 +43,16 @@ const ProductPage = () => {
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
     let currentItems;
-    if (products.length > 0) {
-        currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
+    if (products) {
+        if (products.length > 0) {
+            currentItems = products.slice(indexOfFirstItem, indexOfLastItem);
+        }
     } else {
         currentItems = [];
     }
 
     const handlePageChange = (event, value) => {
-        navigate(`/${language}/products/${category}/${value}`);
+        navigate(`/${language}/${type}/${category}/${value}`);
         // window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
@@ -88,7 +85,9 @@ const ProductPage = () => {
                                 <Stack spacing={2} mt={4}>
                                     <Pagination
                                         shape="rounded"
-                                        count={Math.ceil(products.length / itemsPerPage)}
+                                        count={
+                                            products && Math.ceil(products.length / itemsPerPage)
+                                        }
                                         page={currentPage}
                                         onChange={handlePageChange}
                                         color="primary"

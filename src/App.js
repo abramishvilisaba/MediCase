@@ -5,37 +5,40 @@ import {
     useLocation,
     useParams,
     useNavigate,
-    BrowserRouter as Router,
-    Navigate,
+    // BrowserRouter as Router,
+    // Navigate,
 } from "react-router-dom";
-import messages from "./locales/messages";
+// import messages from "./locales/messages";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
+import Newspost from "./pages/Newspost";
 
 const supportedLocales = ["en", "ka", "ru"];
-const defaultLocale = "ka";
 
 const App = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const userLocale = navigator.language.split(/[-_]/)[0];
     const localeParam = useParams().language;
-    const defaultLocale = supportedLocales.includes(localeParam)
-        ? localeParam
-        : userLocale || defaultLocale;
+    // const defaultLocale = "ka";
+    const defaultLocale = supportedLocales.includes(localeParam) ? localeParam : userLocale || "ka";
 
     useEffect(() => {
         if (location.pathname === "/") {
             navigate(`/${defaultLocale}`);
         }
-    }, [location.pathname]);
+    }, [location.pathname, navigate, defaultLocale]);
 
     return (
         <Routes>
             <Route path="/:language?" element={<Home />} />
             <Route
-                path=":language/products/:id/:page?"
+                path=":language/:type/:id/:page?"
                 element={<Product locale={location.pathname} />}
+            />
+            <Route
+                path=":language/newspost/:itemId"
+                element={<Newspost locale={location.pathname} />}
             />
         </Routes>
     );

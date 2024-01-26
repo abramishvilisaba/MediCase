@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Button, Popover, List, ListItem, ListItemText } from "
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import CategoryDropdown from "./CategoryDropdown";
 import LanguageSelector from "./LanguageSelector";
-import logoImage from "../images/logo.png";
+import logoImage from "../images/logo.svg";
 import { fetchCategories, fetchBrands } from "../utils/contentful";
 
 const NavBar = () => {
@@ -64,8 +64,12 @@ const NavBar = () => {
                     />
                 </div>
                 <div className="flex items-center justify-center gap-2 w-1/2 ">
-                    <CategoryDropdown title="products" categories={categories} />
-                    <CategoryDropdown title="brands" categories={brands} />
+                    <CategoryDropdown
+                        title="products"
+                        categories={categories}
+                        language={language}
+                    />
+                    <CategoryDropdown title="brands" categories={brands} language={language} />
                 </div>
                 <div color="inherit" className="w-1/4 sm:pr-10 flex justify-end">
                     {/* Language Selector */}

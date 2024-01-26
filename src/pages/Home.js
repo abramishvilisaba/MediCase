@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-import Slider from "react-slick";
-import { Card, CardContent, Typography, Button } from "@mui/material";
-import { useLocation, useParams, useNavigate } from "react-router-dom";
+// import Slider from "react-slick";
+// import { Card, CardContent, Typography, Button } from "@mui/material";
+import { useLocation, useParams } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import colors from "../colors";
+// import colors from "../colors";
 import backgroundImage from "../images/cover.jpg";
 import Navbar from "../components/Navbar";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import messages from "../locales/messages";
 import MySlider from "../components/Slider";
-import { fetchNewsData, fetchProducts, fetchCategories } from "../utils/contentful";
+import { fetchNewsData } from "../utils/contentful";
+import AboutUs from "../components/AboutUs"; // Import the AboutUs component
 
 const Home = () => {
     const [data, setData] = useState([]);
@@ -55,11 +56,12 @@ const Home = () => {
                             </button>
                         </div>
                     </div>
+                    <AboutUs language={language} />
                 </div>
                 <div className="h-[100vh] mt-20 ">
                     {data.length > 0 && (
                         <div className="p-20 ">
-                            <MySlider data={data} />
+                            <MySlider language={language} data={data} />
                         </div>
                     )}
                 </div>
