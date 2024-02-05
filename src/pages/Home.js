@@ -60,7 +60,7 @@ const Home = () => {
                 </div>
                 <div className="h-[100vh] mt-20 ">
                     {data.length > 0 && (
-                        <div className="sm:p-4 lg:p-8 2xl:p-20 mx-0 2xl:mx-16 ">
+                        <div className="sm:p-4 lg:p-8 2xl:p-20 mx-8 2xl:mx-16 ">
                             <MySlider language={language} data={data} />
                         </div>
                     )}

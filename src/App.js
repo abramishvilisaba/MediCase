@@ -11,7 +11,9 @@ import {
 // import messages from "./locales/messages";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
+import ProductPage from "./pages/ProductPage";
 import Newspost from "./pages/Newspost";
+// import Navbar from "./components/Navbar";
 
 const supportedLocales = ["en", "ka", "ru"];
 
@@ -33,11 +35,15 @@ const App = () => {
         <Routes>
             <Route path="/:language?" element={<Home />} />
             <Route
-                path=":language/:type/:id/:page?"
+                path="/:language/product/:productId"
+                element={<ProductPage locale={location.pathname} />}
+            />
+            <Route
+                path="/:language/:type/:id/:page?"
                 element={<Product locale={location.pathname} />}
             />
             <Route
-                path=":language/newspost/:itemId"
+                path="/:language/newspost/:itemId"
                 element={<Newspost locale={location.pathname} />}
             />
         </Routes>

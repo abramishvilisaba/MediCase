@@ -77,7 +77,12 @@ const ProductPage = () => {
                         <div className="w-3/5 flex flex-col">
                             <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                                 {currentItems.map((product) => (
-                                    <ProductCard key={product.id} product={product} />
+                                    <ProductCard
+                                        key={product.id}
+                                        language={language}
+                                        product={product}
+                                        onClick={() => navigate("/")}
+                                    />
                                 ))}
                             </div>
 

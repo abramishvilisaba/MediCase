@@ -50,12 +50,6 @@ export const fetchNewsItemByTitle = async (title) => {
 
 export const fetchProducts = async (type, category) => {
     try {
-        // const response = await client.getEntries({
-        //     content_type: "product",
-        //     order: "-sys.createdAt",
-        //     "fields.category": category,
-        // });
-
         const queryOptions = {
             content_type: "products",
             limit: 1000,
@@ -83,22 +77,42 @@ export const fetchProducts = async (type, category) => {
     }
 };
 
+export const fetchProductById = async (productId) => {
+    try {
+        const response = await client.getEntries({
+            content_type: "products",
+            "fields.name": productId,
+            include: 1,
+        });
+
+        if (response && response.items && response.items.length > 0) {
+            const product = response.items[0];
+            return product.fields;
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.log("Error fetching product by ID:", error);
+        throw error;
+    }
+};
+
 export const fetchCategories = async (brand) => {
     try {
         const response = await client.getEntries({
             content_type: "categories",
             order: "-sys.createdAt",
-            "fields.brand": brand,
+            // "fields.brand": brand,
         });
         const fields = response.items.map((item) => {
             const field = item.fields;
-            return field.names;
+            return field;
             // return {
             //     ...item.fields,
             //     field,
             // };
         });
-        return fields[0];
+        return fields[0].locales;
     } catch (error) {
         console.error("Error fetching news data:", error);
     }
@@ -112,9 +126,10 @@ export const fetchBrands = async () => {
         });
         const fields = response.items.map((item) => {
             const field = item.fields;
-            return field.names;
+            return field;
         });
-        return fields[0];
+        console.log(fields);
+        return fields[0].locales;
     } catch (error) {
         console.error("Error fetching news data:", error);
     }

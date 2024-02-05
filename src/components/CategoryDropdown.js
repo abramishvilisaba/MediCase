@@ -12,7 +12,6 @@ const CategoryDropdown = ({ title, categories, language }) => {
     });
 
     const navigate = useNavigate();
-
     return (
         <div style={{ display: "inline-block", marginRight: 5, width: "fit" }}>
             <Button
@@ -26,39 +25,42 @@ const CategoryDropdown = ({ title, categories, language }) => {
             >
                 {title}
             </Button>
-            <HoverPopover
-                {...bindPopover(popupState)}
-                anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "center",
-                }}
-                transformOrigin={{
-                    vertical: "top",
-                    horizontal: "center",
-                }}
-                style={{ width: "100%", marginTop: "0px" }}
-            >
-                <List
-                    style={{
-                        width: "100%",
-                        padding: "0px 5px",
-                        cursor: "pointer",
+            {categories && (
+                <HoverPopover
+                    {...bindPopover(popupState)}
+                    anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "center",
                     }}
+                    transformOrigin={{
+                        vertical: "top",
+                        horizontal: "center",
+                    }}
+                    style={{ width: "100%", marginTop: "0px" }}
                 >
-                    {categories &&
-                        categories.map((category, id) => (
-                            <ListItem
-                                key={id}
-                                onClick={() => {
-                                    // handleClose();
-                                    navigate(`/${language}/${title}/${category}`);
-                                }}
-                            >
-                                <ListItemText key={id} primary={category} />
-                            </ListItem>
-                        ))}
-                </List>
-            </HoverPopover>
+                    <List
+                        style={{
+                            width: "100%",
+                            padding: "0px 5px",
+                            cursor: "pointer",
+                        }}
+                    >
+                        {categories &&
+                            // categories.names.map((category, id) => (
+                            Object.keys(categories).map((key, id) => (
+                                <ListItem
+                                    key={id}
+                                    onClick={() => {
+                                        // handleClose();
+                                        navigate(`/${language}/${title}/${key}`);
+                                    }}
+                                >
+                                    <ListItemText key={id} primary={categories[key][language]} />
+                                </ListItem>
+                            ))}
+                    </List>
+                </HoverPopover>
+            )}
         </div>
     );
 };

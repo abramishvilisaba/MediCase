@@ -13,7 +13,6 @@ const NavBar = () => {
     const supportedLocales = ["en", "ka", "ru"];
     const [categories, setCategories] = useState([]);
     const [brands, setBrands] = useState([]);
-
     useEffect(() => {
         const fetchData = async () => {
             setCategories(await fetchCategories());
@@ -38,6 +37,8 @@ const NavBar = () => {
 
     const handleLanguageSelect = (selectedLanguage) => {
         const newPathname = location.pathname.replace(/^\/[^/]+/, `/${selectedLanguage}`);
+        console.log(newPathname);
+
         navigate(`${newPathname}${location.search}`);
         // handleClose();
     };

@@ -6,8 +6,6 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-const MAX_VISIBLE_THUMBNAILS = 5; // Adjust the number of visible thumbnails as needed
-
 const Newspost = () => {
     const { itemId } = useParams();
     const [newsItem, setNewsItem] = useState(null);
@@ -35,7 +33,7 @@ const Newspost = () => {
 
             <div className="flex-grow flex justify-center items-center">
                 {newsItem ? (
-                    <div className="text-center max-w-2xl w-full p-4">
+                    <div className="text-center max-w-3xl w-full p-4">
                         <h2 className="text-3xl font-bold mb-4">{newsItem.newsTitle}</h2>
                         <div>
                             {newsItem.newsPhotos && newsItem.newsPhotos.length > 0 ? (
@@ -43,7 +41,7 @@ const Newspost = () => {
                                     selectedItem={selectedPhotoIndex}
                                     onChange={(index) => setSelectedPhotoIndex(index)}
                                     showArrows={true}
-                                    thumbWidth={100}
+                                    thumbWidth={150}
                                     swipeScrollTolerance={10}
                                     autoPlay={true}
                                     interval={3000}
@@ -53,7 +51,7 @@ const Newspost = () => {
                                         <div key={index}>
                                             <img
                                                 src={photo.fields.file.url}
-                                                alt={` ${index + 1}`}
+                                                alt={`img ${index + 1}`}
                                                 className="max-w-full h-auto"
                                             />
                                         </div>
