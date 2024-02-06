@@ -19,7 +19,6 @@ const CategoryDropdown = ({ title, categories, language }) => {
                 {...bindHover(popupState)}
                 style={{ width: "fit", padding: "2px 5px", color: "white", fontSize: "16px" }}
                 onClick={() => {
-                    // handleClose();
                     navigate(`/${language}/${title}/all`);
                 }}
             >
@@ -46,12 +45,10 @@ const CategoryDropdown = ({ title, categories, language }) => {
                         }}
                     >
                         {categories &&
-                            // categories.names.map((category, id) => (
                             Object.keys(categories).map((key, id) => (
                                 <ListItem
                                     key={id}
                                     onClick={() => {
-                                        // handleClose();
                                         navigate(`/${language}/${title}/${key}`);
                                     }}
                                 >

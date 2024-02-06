@@ -9,7 +9,6 @@ const AboutUs = ({ language }) => {
     };
     return (
         <div className="flex flex-col lg:flex-row items-center mx-5 lg:mx-40 xl:mx-64 p-5 lg:p-10 xl:p-20">
-            {/* Left section with the image */}
             <div className="flex-shrink-0 mb-5 lg:mb-0 lg:mr-10">
                 <img
                     src={aboutUsImage}
@@ -18,7 +17,6 @@ const AboutUs = ({ language }) => {
                 />
             </div>
 
-            {/* Right section with the content */}
             <div className="text-center lg:text-left">
                 <h2 className="text-2xl font-semibold mb-4">About Us</h2>
                 <p className="text-lg mb-4">

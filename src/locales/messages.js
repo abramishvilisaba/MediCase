@@ -6,6 +6,7 @@ const messages = {
         category: "Category: ",
         brand: "Manufacturer: ",
         similar: "Similar Products",
+        products: "Products",
     },
     ka: {
         welcome: "მოგესალმებით",
@@ -14,6 +15,7 @@ const messages = {
         category: "კატეგორია: ",
         brand: "მწარმოებელი: ",
         similar: "მსგავსი პროდუქცია",
+        products: "პროდუქცია",
     },
     ru: {
         welcome: "Добро пожаловать",
@@ -22,6 +24,7 @@ const messages = {
         category: "Категория: ",
         brand: "Производитель: ",
         similar: "Похожие товары",
+        products: "Продукты",
     },
 };
 

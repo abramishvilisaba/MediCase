@@ -51,7 +51,6 @@ const LanguageSelector = ({ supportedLocales, changeLanguage, language }) => {
                     outline: "white",
                     boxShadow: "none",
                 }}
-                // variant="outlined"
             >
                 {supportedLocales && (
                     <Select
@@ -59,7 +58,6 @@ const LanguageSelector = ({ supportedLocales, changeLanguage, language }) => {
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={selectedLanguage}
-                        // label="Language Selector"
                         open={open}
                         onClose={handleClose}
                         onOpen={handleOpen}

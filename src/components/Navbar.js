@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
-import { AppBar, Toolbar, Button, Popover, List, ListItem, ListItemText } from "@mui/material";
-import { useNavigate, useLocation, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { AppBar, Toolbar, Button } from "@mui/material";
+import { useNavigate, useLocation } from "react-router-dom";
 import CategoryDropdown from "./CategoryDropdown";
 import LanguageSelector from "./LanguageSelector";
 import logoImage from "../images/logo.svg";
-import { LanguageContext } from "../LanguageContext";
 import { fetchCategories, fetchBrands } from "../utils/contentful";
 
 const NavBar = () => {
@@ -25,7 +24,6 @@ const NavBar = () => {
     const supportedLocales = ["en", "ka", "ru"];
     const [categories, setCategories] = useState([]);
     const [brands, setBrands] = useState([]);
-    // const { language, changeLanguage } = useContext(LanguageContext);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -52,10 +50,8 @@ const NavBar = () => {
 
     const handleLanguageSelect = (selectedLanguage) => {
         const newPathname = location.pathname.replace(/^\/[^/]+/, `/${selectedLanguage}`);
-        // console.log(selectedLanguage);
-        // changeLanguage(selectedLanguage);
+
         navigate(`${newPathname}${location.search}`);
-        // handleClose();
     };
 
     return (
@@ -69,7 +65,6 @@ const NavBar = () => {
                 height: "64px",
             }}
         >
-            {/* <Toolbar className="w-full mx-2 sm:mx-8  p-0"> */}
             <Toolbar className="w-full  p-0">
                 <div className="w-1/4 sm:pl-10 min-w-fit flex justify-start">
                     <img

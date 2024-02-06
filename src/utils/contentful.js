@@ -92,7 +92,7 @@ export const fetchProductById = async (productId) => {
             return null;
         }
     } catch (error) {
-        console.log("Error fetching product by ID:", error);
+        console.error("Error fetching product by ID:", error);
         throw error;
     }
 };

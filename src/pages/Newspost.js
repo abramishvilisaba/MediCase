@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
 import { fetchNewsItemByTitle } from "../utils/contentful";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -19,7 +18,6 @@ const Newspost = () => {
                 setNewsItem(itemDetails);
             } catch (error) {
                 console.error("Error fetching news item details:", error);
-                // Handle the error (e.g., display an error message)
             }
         };
         fetchDetails();
@@ -27,8 +25,6 @@ const Newspost = () => {
 
     return (
         <div className="min-h-screen flex flex-col">
-            <div className="h-24">{/* <Navbar /> */}</div>
-
             <div className="flex-grow flex justify-center items-center">
                 {newsItem ? (
                     <div className="text-center max-w-3xl w-full p-4">
@@ -58,7 +54,6 @@ const Newspost = () => {
                             ) : null}
                         </div>
                         <p className="text-lg">{newsItem.newsText}</p>
-                        {/* Display other details as needed */}
                     </div>
                 ) : (
                     <div className="flex justify-center items-center flex-grow">

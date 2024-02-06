@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 // import Slider from "react-slick";
 // import { Card, CardContent, Typography, Button } from "@mui/material";
 import { useLocation, useParams } from "react-router-dom";
@@ -6,29 +6,20 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 // import colors from "../colors";
 import backgroundImage from "../images/cover.jpg";
-import Navbar from "../components/Navbar";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import messages from "../locales/messages";
 import MySlider from "../components/Slider";
 import { fetchNewsData } from "../utils/contentful";
 import AboutUs from "../components/AboutUs";
-// import { LanguageContext } from "../LanguageContext";
 
 const Home = () => {
-    // const { language, changeLanguage } = useContext(LanguageContext);
-
     const [data, setData] = useState([]);
-    // const [categories, setCategories] = useState([]);
-    // const [products, setProducts] = useState([]);
+
     const location = useLocation();
     let { language } = useParams();
 
-    console.log(language);
-
     useEffect(() => {
         const fetchData = async () => {
-            // setCategories(await fetchCategories());
-            // setProducts(await fetchProducts());
             setData(await fetchNewsData());
         };
 
@@ -47,7 +38,6 @@ const Home = () => {
                         className="bg-cover bg-center min-h-[100dvh] h-full relative"
                         style={{ backgroundImage: `url(${backgroundImage})` }}
                     >
-                        {/* <Navbar /> */}
                         <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50"></div>
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white  text-center">
                             <h1 className="text-4xl font-semibold mb-4">

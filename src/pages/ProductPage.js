@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useLocation } from "react-router-dom";
 import { fetchProductById, fetchProducts, fetchCategories } from "../utils/contentful";
-import Navbar from "../components/Navbar";
 import backgroundImage from "../images/cover2.jpg";
 import { default as MultiCarousel } from "react-multi-carousel";
 import ProductCard from "../components/ProductCard";
@@ -40,6 +39,7 @@ const ProductPage = () => {
 
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
+        setSelectedPhotoIndex(0);
     }, [location.pathname]);
 
     if (!product) {
@@ -53,7 +53,6 @@ const ProductPage = () => {
                     className="bg-cover bg-center w-full h-80 relative "
                     style={{ backgroundImage: `url(${backgroundImage})` }}
                 >
-                    {/* <Navbar /> */}
                     <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50"></div>
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
                         <h3 className="text-3xl font-bold mb-4">
@@ -62,7 +61,6 @@ const ProductPage = () => {
                     </div>
                 </div>
                 <div className="w-3/5 mx-auto mt-8 flex flex-col md:flex-row shadow-lg rounded-xl bg-zinc-50 ">
-                    {/* Photo on the left side */}
                     <div className="md:w-2/5  rounded-xl overflow-hidden ">
                         {product.images && product.images.length > 0 ? (
                             <Carousel
@@ -72,6 +70,7 @@ const ProductPage = () => {
                                 thumbWidth={`${100 / (product.images.length + 2)}%`}
                                 swipeScrollTolerance={10}
                                 dynamicHeight={false}
+                                showStatus={false}
                                 // autoPlay={true}
                                 // interval={3000}
                                 swipeable={true}
@@ -89,21 +88,14 @@ const ProductPage = () => {
                                             //     height: "100%",
                                             //     objectFit: "cover",
                                             // }}
-                                            className="w-full h-full object-cover aspect-square "
+                                            className="w-full h-full object-contain aspect-square "
                                         />
                                     </div>
                                 ))}
                             </Carousel>
                         ) : null}
                     </div>
-                    {/* <div className="md:w-2/5 bg-[#E3E4E7] rounded-l-xl overflow-hidden">
-                    <img
-                        src={product.image.fields.file.url}
-                        alt={product.name}
-                        className="w-full"
-                    />
-                </div> */}
-                    {/* Product details on the right side */}
+
                     <div className="md:w-3/5 p-6  rounded-r-xl">
                         <h2 className="text-3xl font-bold mt-2 mb-8">
                             {product["name" + language] || product.name}
@@ -122,13 +114,14 @@ const ProductPage = () => {
                                 </span>
                             </p>
                         </div>
-                        <p className="text-lg mb-4 text-gray-700">
+                        <p className="text-lg mb-4 text-gray-500">
                             {product["description" + language] || product.descriptionen}
                         </p>
-                        {/* Add more product details as needed */}
+                        <p className="text-lg mb-4 text-gray-500">
+                            {product["note" + language] || product.noteen}
+                        </p>
                     </div>
                 </div>
-                {/* Similar Products Carousel */}
                 <div className="w-3/5 h-fit  mx-auto mt-8 pb-40">
                     <h2 className="text-xl font-bold mb-4">
                         <FormattedMessage id="similar" />

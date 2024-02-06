@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useParams, useNavigate, Link } from "react-router-dom";
-// import Navbar from "../components/Navbar";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
 import backgroundImage from "../images/cover2.jpg";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
 import { fetchProducts } from "../utils/contentful";
+import { IntlProvider, FormattedMessage } from "react-intl";
+import messages from "../locales/messages";
 
 const ProductPage = () => {
     const location = useLocation();
@@ -53,60 +54,62 @@ const ProductPage = () => {
 
     const handlePageChange = (event, value) => {
         navigate(`/${language}/${type}/${category}/${value}`);
-        // window.scrollTo({ top: 0, behavior: "smooth" });
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     return (
-        <div className="min-h-screen bg-f2f2f2 p-0 flex flex-col items-center mb-20 box-border">
-            <div
-                className="bg-cover bg-center w-full h-96 relative"
-                style={{ backgroundImage: `url(${backgroundImage})` }}
-            >
-                {/* <Navbar /> */}
-                <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
-                    <h3 className="text-3xl font-bold mb-4">
-                        {category === "all" ? type : category}
-                    </h3>
+        <IntlProvider locale={language} messages={messages[language]}>
+            <div className="min-h-screen bg-f2f2f2 p-0 flex flex-col items-center mb-20 box-border">
+                <div
+                    className="bg-cover bg-center w-full h-96 relative"
+                    style={{ backgroundImage: `url(${backgroundImage})` }}
+                >
+                    <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50"></div>
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
+                        <h3 className="text-3xl font-bold mb-4">
+                            {category === "all" ? <FormattedMessage id="products" /> : category}
+                        </h3>
+                    </div>
                 </div>
-            </div>
-            {!currentItems ? (
-                <div className="mt-20">
-                    <CircularProgress />
-                </div>
-            ) : (
-                <div className="mt-20 mb-44 text-center w-full">
-                    <div className="flex flex-row w-full">
-                        <div className="w-1/5"></div>
-                        <div className="w-3/5 flex flex-col">
-                            <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                                {currentItems.map((product) => (
-                                    <ProductCard
-                                        key={product.id}
-                                        language={language}
-                                        product={product}
-                                    />
-                                ))}
-                            </div>
+                {!currentItems ? (
+                    <div className="mt-20">
+                        <CircularProgress />
+                    </div>
+                ) : (
+                    <div className="mt-20 mb-44 text-center w-full">
+                        <div className="flex flex-row w-full">
+                            <div className="w-1/5"></div>
+                            <div className="w-3/5 flex flex-col">
+                                <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                                    {currentItems.map((product) => (
+                                        <ProductCard
+                                            key={product.id}
+                                            language={language}
+                                            product={product}
+                                        />
+                                    ))}
+                                </div>
 
-                            <div className="mt-8">
-                                <Stack spacing={2} mt={4}>
-                                    <Pagination
-                                        shape="rounded"
-                                        count={
-                                            products && Math.ceil(products.length / itemsPerPage)
-                                        }
-                                        page={currentPage}
-                                        onChange={handlePageChange}
-                                        color="primary"
-                                    />
-                                </Stack>
+                                <div className="mt-8">
+                                    <Stack spacing={2} mt={4}>
+                                        <Pagination
+                                            shape="rounded"
+                                            count={
+                                                products &&
+                                                Math.ceil(products.length / itemsPerPage)
+                                            }
+                                            page={currentPage}
+                                            onChange={handlePageChange}
+                                            color="primary"
+                                        />
+                                    </Stack>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )}
+            </div>
+        </IntlProvider>
     );
 };
 
