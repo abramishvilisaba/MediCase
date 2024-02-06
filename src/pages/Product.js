@@ -67,7 +67,13 @@ const ProductPage = () => {
                     <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50"></div>
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
                         <h3 className="text-3xl font-bold mb-4">
-                            {category === "all" ? <FormattedMessage id="products" /> : category}
+                            {category ? (
+                                category === "all" ? (
+                                    <FormattedMessage id="products" />
+                                ) : (
+                                    <FormattedMessage id={category} />
+                                )
+                            ) : null}
                         </h3>
                     </div>
                 </div>

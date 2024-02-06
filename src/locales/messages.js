@@ -7,6 +7,12 @@ const messages = {
         brand: "Manufacturer: ",
         similar: "Similar Products",
         products: "Products",
+        brands: "Brands",
+        aboutUs: "About Us",
+        news: "News",
+        Botox: "Botox",
+        Fillers: "Fillers",
+        Injections: "Injections",
     },
     ka: {
         welcome: "მოგესალმებით",
@@ -16,6 +22,12 @@ const messages = {
         brand: "მწარმოებელი: ",
         similar: "მსგავსი პროდუქცია",
         products: "პროდუქცია",
+        brands: "ბრენდები",
+        aboutUs: "ჩვენს შესახებ",
+        news: "სიახლეები",
+        Botox: "ბოტოქსი",
+        Fillers: "ფილერები",
+        Injections: "ინექციები",
     },
     ru: {
         welcome: "Добро пожаловать",
@@ -25,6 +37,12 @@ const messages = {
         brand: "Производитель: ",
         similar: "Похожие товары",
         products: "Продукты",
+        brands: "Бренды",
+        aboutUs: "О нас",
+        news: "Новости",
+        Botox: "Ботокс",
+        Fillers: "Филлеры",
+        Injections: "Инъекции",
     },
 };
 
