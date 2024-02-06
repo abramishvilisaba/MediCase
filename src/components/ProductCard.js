@@ -1,37 +1,47 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import Card from "@mui/material/Card";
+// import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
-import CardContent from "@mui/material/CardContent";
+// import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
 const ProductCard = ({ language, product }) => {
     return (
-        <Card sx={{ maxWidth: 345 }}>
-            <Link
-                to={`/${language}/product/${product.name}`}
-                style={{ textDecoration: "none", color: "inherit" }}
-            >
+        <Link
+            to={`/${language}/product/${product.name}`}
+            // style={{ textDecoration: "none", color: "inherit" }}
+        >
+            <div className="rounded-xl">
                 <CardActionArea>
                     <CardMedia
                         component="img"
-                        image={product.image.fields.file.url}
+                        image={product.images[0].fields.file.url}
                         alt={product.name}
                         height="auto"
-                        className="h-60"
+                        className="w-full h-72 object-contain aspect-square"
+                        sx={{ objectFit: "contain" }}
                     />
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                            {product.name}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
+
+                    <div className="mt-4 px-4">
+                        <Typography
+                            className="h-6 text-left overflow-hidden"
+                            variant="body1"
+                            color="text.secondary"
+                        >
                             {product.category}
                         </Typography>
-                    </CardContent>
+                        <Typography
+                            className="h-[68px] mb-1 text-left overflow-hidden"
+                            variant="h6"
+                            component="div"
+                        >
+                            {product["name" + language] || product.name}
+                        </Typography>
+                    </div>
                 </CardActionArea>
-            </Link>
-        </Card>
+            </div>
+        </Link>
     );
 };
 

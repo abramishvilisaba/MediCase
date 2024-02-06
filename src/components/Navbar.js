@@ -1,23 +1,38 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { AppBar, Toolbar, Button, Popover, List, ListItem, ListItemText } from "@mui/material";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import CategoryDropdown from "./CategoryDropdown";
 import LanguageSelector from "./LanguageSelector";
 import logoImage from "../images/logo.svg";
+import { LanguageContext } from "../LanguageContext";
 import { fetchCategories, fetchBrands } from "../utils/contentful";
 
 const NavBar = () => {
     const navigate = useNavigate();
+
+    const [language, setLanguage] = useState("en");
     const location = useLocation();
-    let { language } = useParams();
+
+    useEffect(() => {
+        const pathname = location.pathname;
+        const parts = pathname.split("/");
+        if (parts.length > 1 && parts[1] !== "") {
+            setLanguage(parts[1]);
+        } else {
+            setLanguage("en");
+        }
+    }, [location]);
     const supportedLocales = ["en", "ka", "ru"];
     const [categories, setCategories] = useState([]);
     const [brands, setBrands] = useState([]);
+    // const { language, changeLanguage } = useContext(LanguageContext);
+
     useEffect(() => {
         const fetchData = async () => {
             setCategories(await fetchCategories());
             setBrands(await fetchBrands());
         };
+
         fetchData();
     }, []);
 
@@ -37,8 +52,8 @@ const NavBar = () => {
 
     const handleLanguageSelect = (selectedLanguage) => {
         const newPathname = location.pathname.replace(/^\/[^/]+/, `/${selectedLanguage}`);
-        console.log(newPathname);
-
+        // console.log(selectedLanguage);
+        // changeLanguage(selectedLanguage);
         navigate(`${newPathname}${location.search}`);
         // handleClose();
     };
@@ -65,18 +80,42 @@ const NavBar = () => {
                     />
                 </div>
                 <div className="flex items-center justify-center gap-2 w-1/2 ">
+                    <Button
+                        variant="text"
+                        style={{
+                            width: "fit",
+                            padding: "2px 5px",
+                            color: "white",
+                            fontSize: "16px",
+                        }}
+                    >
+                        About Us
+                    </Button>
+
                     <CategoryDropdown
                         title="products"
                         categories={categories}
                         language={language}
                     />
                     <CategoryDropdown title="brands" categories={brands} language={language} />
+                    <Button
+                        variant="text"
+                        style={{
+                            width: "fit",
+                            padding: "2px 5px",
+                            color: "white",
+                            fontSize: "16px",
+                        }}
+                    >
+                        News
+                    </Button>
                 </div>
                 <div color="inherit" className="w-1/4 sm:pr-10 flex justify-end">
                     {/* Language Selector */}
                     <LanguageSelector
                         supportedLocales={supportedLocales}
                         changeLanguage={handleLanguageSelect}
+                        language={language}
                     />
                 </div>
             </Toolbar>

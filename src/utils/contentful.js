@@ -97,7 +97,7 @@ export const fetchProductById = async (productId) => {
     }
 };
 
-export const fetchCategories = async (brand) => {
+export const fetchCategories = async () => {
     try {
         const response = await client.getEntries({
             content_type: "categories",
@@ -128,7 +128,6 @@ export const fetchBrands = async () => {
             const field = item.fields;
             return field;
         });
-        console.log(fields);
         return fields[0].locales;
     } catch (error) {
         console.error("Error fetching news data:", error);

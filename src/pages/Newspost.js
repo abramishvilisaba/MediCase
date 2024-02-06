@@ -27,9 +27,7 @@ const Newspost = () => {
 
     return (
         <div className="min-h-screen flex flex-col">
-            <div className="h-24">
-                <Navbar />
-            </div>
+            <div className="h-24">{/* <Navbar /> */}</div>
 
             <div className="flex-grow flex justify-center items-center">
                 {newsItem ? (

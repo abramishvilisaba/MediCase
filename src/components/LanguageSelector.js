@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MenuItem, Select, FormControl } from "@mui/material";
 
-const LanguageSelector = ({ supportedLocales, changeLanguage }) => {
+const LanguageSelector = ({ supportedLocales, changeLanguage, language }) => {
     const languageNames = {
         en: {
             name: "English",
@@ -35,6 +35,12 @@ const LanguageSelector = ({ supportedLocales, changeLanguage }) => {
         handleClose();
     };
 
+    useEffect(() => {
+        if (language) {
+            setSelectedLanguage(language);
+        }
+    }, [language]);
+
     return (
         <div className="w-fit">
             <FormControl
@@ -64,8 +70,9 @@ const LanguageSelector = ({ supportedLocales, changeLanguage }) => {
                             border: "none",
                             outline: "none",
                             boxShadow: "none",
-                            padding: "4px 10px",
+                            padding: "4px 8px",
                             underLine: "none",
+                            width: "116px",
                         }}
                     >
                         {supportedLocales.map((lang) => (

@@ -13,7 +13,7 @@ import Home from "./pages/Home";
 import Product from "./pages/Product";
 import ProductPage from "./pages/ProductPage";
 import Newspost from "./pages/Newspost";
-// import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar";
 
 const supportedLocales = ["en", "ka", "ru"];
 
@@ -32,21 +32,24 @@ const App = () => {
     }, [location.pathname, navigate, defaultLocale]);
 
     return (
-        <Routes>
-            <Route path="/:language?" element={<Home />} />
-            <Route
-                path="/:language/product/:productId"
-                element={<ProductPage locale={location.pathname} />}
-            />
-            <Route
-                path="/:language/:type/:id/:page?"
-                element={<Product locale={location.pathname} />}
-            />
-            <Route
-                path="/:language/newspost/:itemId"
-                element={<Newspost locale={location.pathname} />}
-            />
-        </Routes>
+        <>
+            <Navbar />
+            <Routes>
+                <Route path="/:language?" element={<Home />} />
+                <Route
+                    path="/:language/product/:productId"
+                    element={<ProductPage locale={location.pathname} />}
+                />
+                <Route
+                    path="/:language/:type/:id/:page?"
+                    element={<Product locale={location.pathname} />}
+                />
+                <Route
+                    path="/:language/newspost/:itemId"
+                    element={<Newspost locale={location.pathname} />}
+                />
+            </Routes>
+        </>
     );
 };
 
