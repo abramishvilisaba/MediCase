@@ -4,10 +4,10 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
-const ProductCard = ({ language, product }) => {
+const ProductCard = ({ language, type, id, product }) => {
     return (
         <Link
-            to={`/${language}/product/${product.name}`}
+            to={`/${language}/${id}/product/${product.name}`}
             // style={{ textDecoration: "none", color: "inherit" }}
         >
             <div className="rounded-xl">

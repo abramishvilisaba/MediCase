@@ -86,11 +86,13 @@ const ProductPage = () => {
                         <div className="flex flex-row w-full">
                             <div className="w-1/5"></div>
                             <div className="w-3/5 flex flex-col">
-                                <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                                <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                                     {currentItems.map((product) => (
                                         <ProductCard
                                             key={product.id}
                                             language={language}
+                                            type={type}
+                                            id={id}
                                             product={product}
                                         />
                                     ))}

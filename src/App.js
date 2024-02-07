@@ -37,7 +37,7 @@ const App = () => {
             <Routes>
                 <Route path="/:language?" element={<Home />} />
                 <Route
-                    path="/:language/product/:productId"
+                    path="/:language/:type/product/:productId"
                     element={<ProductPage locale={location.pathname} />}
                 />
                 <Route
