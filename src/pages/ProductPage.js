@@ -9,9 +9,10 @@ import { Carousel } from "react-responsive-carousel";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import messages from "../locales/messages";
 import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
+
 // import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 // import { BLOCKS, MARKS } from "@contentful/rich-text-types";
-import gfm from "remark-gfm";
 
 const ProductPage = () => {
     // const Bold = ({ children }) => <p className="font-bold">{children}</p>;
@@ -81,7 +82,7 @@ const ProductPage = () => {
     return (
         <IntlProvider locale={language} messages={messages[language]}>
             <div>
-                <div
+                {/* <div
                     className="bg-cover bg-center w-full h-80 relative "
                     style={{ backgroundImage: `url(${backgroundImage})` }}
                 >
@@ -103,9 +104,28 @@ const ProductPage = () => {
                             </div>
                         </div>
                     </div>
+                </div> */}
+                <div className=" w-full h-28 md:h-40 pt-20 ">
+                    <div className="w-full h-full ">
+                        <div className=" w-full flex flex-col h-full text-gray-500 ">
+                            <div className=" text-left text-lg  md:text-xl ml-6 md:ml-[68px]">
+                                <Link to={`/${language}`} className="font-medium hover:underline">
+                                    <span>Home</span>
+                                </Link>
+                                <span> &gt; </span>
+                                <Link
+                                    to={`/${language}/products/${type}`}
+                                    className="font-medium hover:underline"
+                                >
+                                    <span>{type}</span>
+                                </Link>
+                                <span> &gt; {product.name}</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="w-full  md:w-3/5 mx-auto mt-8 flex flex-col md:flex-row shadow-lg rounded-xl bg-zinc-50 ">
-                    <div className="md:w-2/5  rounded-xl overflow-hidden ">
+                <div className="w-4/5 md:w-4/5 h-[60vh] mx-auto mt-8  flex flex-col md:flex-row   ">
+                    <div className="md:w-1/2 lg:p-12  overflow-hidden bg-[#EEEEEE]">
                         {product.images && product.images.length > 0 ? (
                             <Carousel
                                 selectedItem={selectedPhotoIndex}
@@ -113,16 +133,18 @@ const ProductPage = () => {
                                 showArrows={true}
                                 thumbWidth={`${100 / (product.images.length + 2)}%`}
                                 swipeScrollTolerance={10}
-                                dynamicHeight={false}
+                                dynamicHeight={true}
                                 showStatus={false}
+                                showThumbs={false}
                                 // autoPlay={true}
                                 // interval={3000}
                                 swipeable={true}
+                                // width={"100%"}
                             >
                                 {product.images.map((photo, index) => (
                                     <div
                                         key={index}
-                                        className="w-full h-full object-cover px-[0px] py-[0px] md:px-[28px] md:py-[32px]  rounded-xl"
+                                        className="w-full h-[40vh]  px-[0px] py-[0px] lg:px-8 md:py-8  "
                                     >
                                         <img
                                             src={photo.fields.file.url}
@@ -132,7 +154,7 @@ const ProductPage = () => {
                                             //     height: "100%",
                                             //     objectFit: "cover",
                                             // }}
-                                            className="w-full h-full object-contain aspect-square "
+                                            className="w-full h-[40vh] object-contain aspect-square "
                                         />
                                     </div>
                                 ))}
@@ -140,32 +162,36 @@ const ProductPage = () => {
                         ) : null}
                     </div>
 
-                    <div className="md:w-3/5 p-6  rounded-r-xl">
-                        <h2 className="text-3xl font-bold mt-2 mb-8">
-                            {product["name" + language] || product.name}
-                        </h2>
-                        <div className="mb-6">
-                            <p className="text-lg text-gray-500 mb-2">
+                    <div className="md:w-1/2 md:px-8 mt-4 md:mt-0  flex flex-col justify-between">
+                        <div>
+                            <span className="text-2xl  font-medium ">{product.brand}</span>
+                            <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-12 md:mb-60">
+                                {product["name" + language] || product.name}
+                            </h2>
+                            {/* <div className="mb-6">
+                                <p className="text-lg text-gray-500 mb-2">
                                 <FormattedMessage id="category" />
                                 <span className="text-lg text-gray-700 font-medium ">
                                     {categories[product.category][language]}
                                 </span>
                             </p>
-                            <p className="text-lg text-gray-500 mb-2">
+                                <p className="text-lg text-gray-500 mb-2">
                                 <FormattedMessage id="brand" />
                                 <span className="text-lg text-gray-700 font-medium">
                                     {product.brand}
                                 </span>
                             </p>
+                            </div> */}
                         </div>
-
-                        <ReactMarkdown remarkPlugins={[gfm]} className={"markdown"}>
-                            {product["description" + language]}
-                        </ReactMarkdown>
+                        <div>
+                            <ReactMarkdown remarkPlugins={[gfm]} className={"markdown text-xl"}>
+                                {product["description" + language]}
+                            </ReactMarkdown>
+                        </div>
                         {/* {documentToReactComponents(product.description, options)} */}
                     </div>
                 </div>
-                {/* <div className="w-3/5 h-fit  mx-auto mt-8 pb-40">
+                <div className="w-4/5 h-fit  mx-auto mt-12 pb-40">
                     <h2 className="text-xl font-bold mb-4">
                         <FormattedMessage id="similar" />
                     </h2>
@@ -226,7 +252,7 @@ const ProductPage = () => {
                             </div>
                         ))}
                     </MultiCarousel>
-                </div> */}
+                </div>
             </div>
         </IntlProvider>
     );

@@ -18,6 +18,7 @@ import logoImage from "../images/logo.svg";
 import { fetchCategories, fetchBrands } from "../utils/contentful";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import messages from "../locales/messages";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const NavBar = () => {
     const navigate = useNavigate();
@@ -93,7 +94,7 @@ const NavBar = () => {
                                 <>
                                     <Button
                                         variant="text"
-                                        style={{ width: "fit", color: "white", fontSize: "18px" }}
+                                        style={{ width: "fit", color: "white", fontSize: "16px" }}
                                     >
                                         <FormattedMessage id="aboutUs" />
                                     </Button>
@@ -109,7 +110,7 @@ const NavBar = () => {
                                     />
                                     <Button
                                         variant="text"
-                                        style={{ width: "fit", color: "white", fontSize: "18px" }}
+                                        style={{ width: "fit", color: "white", fontSize: "16px" }}
                                     >
                                         <FormattedMessage id="news" />
                                     </Button>
@@ -140,7 +141,7 @@ const NavBar = () => {
                     </Toolbar>
                 </AppBar>
                 <Drawer anchor="right" open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-                    <Toolbar className="w-full h-full flex flex-col p-0 bg-[#4C5461]">
+                    <Toolbar className="w-[40vw] h-full py-8   flex flex-col  bg-[#4C5461]">
                         {/* <div className="w-full sm:pl-10 min-w-fit flex justify-start">
                             <img
                                 src={logoImage}
@@ -150,13 +151,31 @@ const NavBar = () => {
                             />
                         </div> */}
 
-                        <div className="flex flex-col items-center justify-center gap-3 w-1/2 ">
+                        <div className="w-full flex flex-col items-start justify-center gap-0  ">
                             <Button
                                 variant="text"
-                                style={{ width: "fit", fontSize: "18px", color: "white" }}
+                                style={{
+                                    width: "100%",
+                                    height: "fit",
+                                    fontSize: "16px",
+                                    color: "white",
+                                    padding: "2px 8px",
+                                }}
                             >
-                                <FormattedMessage id="aboutUs" />
+                                <div className="w-full flex flex-row justify-between">
+                                    <FormattedMessage id="aboutUs" />
+                                    {/* <IconButton
+                                        color="inherit"
+                                        aria-label="open drawer"
+                                        edge="start"
+                                        onClick={() => setIsDrawerOpen(true)}
+                                        sx={{ padding: 0 }}
+                                    >
+                                        <ExpandMoreIcon />
+                                    </IconButton> */}
+                                </div>
                             </Button>
+
                             <CategoryDropdown
                                 title="products"
                                 categories={categories}
@@ -169,7 +188,12 @@ const NavBar = () => {
                             />
                             <Button
                                 variant="text"
-                                style={{ width: "fit", fontSize: "18px", color: "white" }}
+                                style={{
+                                    width: "fit",
+                                    fontSize: "16px",
+                                    color: "white",
+                                    padding: "2px 8px",
+                                }}
                                 className="text-xs text-white"
                             >
                                 <FormattedMessage id="news" />

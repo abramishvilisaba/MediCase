@@ -20,7 +20,7 @@ const CategoryDropdown = ({ title, categories, language }) => {
     return (
         <IntlProvider locale={language} messages={messages[language]}>
             <div style={{ display: "inline-block", marginRight: 5, width: "fit" }}>
-                <div {...bindHover(popupState)} className="h-[66px] flex items-center">
+                <div {...bindHover(popupState)} className="h-fit flex items-center text-2xl">
                     <Button
                         variant="text"
                         style={{
@@ -28,7 +28,7 @@ const CategoryDropdown = ({ title, categories, language }) => {
                             height: "30px",
                             // padding: "8px 4px",
                             color: "white",
-                            fontSize: "18px",
+                            fontSize: "16px",
                         }}
                         onClick={() => {
                             popupState.close();
