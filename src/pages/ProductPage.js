@@ -50,7 +50,6 @@ const ProductPage = () => {
     const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
 
     useEffect(() => {
-        console.log(type);
         const fetchProductData = async () => {
             try {
                 setCategories(await fetchCategories());
