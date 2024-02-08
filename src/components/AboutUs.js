@@ -1,5 +1,5 @@
 import React from "react";
-import aboutUsImage from "../images/cover2.jpg";
+import aboutUsImage from "../media/cover2.jpg";
 import { useNavigate } from "react-router-dom";
 
 const AboutUs = ({ language }) => {

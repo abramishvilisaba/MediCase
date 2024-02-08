@@ -5,7 +5,8 @@ import { useLocation, useParams } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 // import colors from "../colors";
-import backgroundImage from "../images/cover.jpg";
+import backgroundImage from "../media/cover.jpg";
+
 import { IntlProvider, FormattedMessage } from "react-intl";
 import messages from "../locales/messages";
 import MySlider from "../components/Slider";

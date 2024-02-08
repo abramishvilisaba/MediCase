@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
-import backgroundImage from "../images/cover2.jpg";
+import backgroundImage from "../media/cover2.jpg";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";

@@ -14,7 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate, useLocation } from "react-router-dom";
 import CategoryDropdown from "./CategoryDropdown";
 import LanguageSelector from "./LanguageSelector";
-import logoImage from "../images/logo.svg";
+import logoImage from "../media/logo.svg";
 import { fetchCategories, fetchBrands } from "../utils/contentful";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import messages from "../locales/messages";

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useLocation } from "react-router-dom";
 import { fetchProductById, fetchProducts, fetchCategories } from "../utils/contentful";
-import backgroundImage from "../images/cover2.jpg";
+import backgroundImage from "../media/cover2.jpg";
 import { default as MultiCarousel } from "react-multi-carousel";
 import ProductCard from "../components/ProductCard";
 import "react-multi-carousel/lib/styles.css";
@@ -124,8 +124,8 @@ const ProductPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-4/5 md:w-4/5 h-[60vh] mx-auto mt-8  flex flex-col md:flex-row   ">
-                    <div className="md:w-1/2 lg:p-12  overflow-hidden bg-[#EEEEEE]">
+                <div className="w-4/5  md:w-4/5 h-fit mx-auto mt-8  flex flex-col md:flex-row   ">
+                    <div className="md:w-1/2 h-[40vh] md:h-[60vh] lg:p-12  overflow-hidden bg-[#EEEEEE]">
                         {product.images && product.images.length > 0 ? (
                             <Carousel
                                 selectedItem={selectedPhotoIndex}
@@ -162,10 +162,10 @@ const ProductPage = () => {
                         ) : null}
                     </div>
 
-                    <div className="md:w-1/2 md:px-8 mt-4 md:mt-0  flex flex-col justify-between">
+                    <div className=" h-fit min-h-[20vh] md:min-h-[60vh] md:w-1/2 md:px-8  mt-4 md:mt-0  flex flex-col md:justify-between">
                         <div>
                             <span className="text-2xl  font-medium ">{product.brand}</span>
-                            <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-12 md:mb-60">
+                            <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-4 ">
                                 {product["name" + language] || product.name}
                             </h2>
                             {/* <div className="mb-6">
@@ -183,7 +183,7 @@ const ProductPage = () => {
                             </p>
                             </div> */}
                         </div>
-                        <div>
+                        <div className="">
                             <ReactMarkdown remarkPlugins={[gfm]} className={"markdown text-xl"}>
                                 {product["description" + language]}
                             </ReactMarkdown>

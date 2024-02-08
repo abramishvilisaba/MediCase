@@ -84,7 +84,6 @@ export const fetchProductById = async (productId) => {
             "fields.name": productId,
             include: 1,
         });
-
         if (response && response.items && response.items.length > 0) {
             const product = response.items[0];
             return product.fields;
