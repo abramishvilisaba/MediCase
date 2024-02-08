@@ -11,7 +11,7 @@ import {
     useMediaQuery,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import CategoryDropdown from "./CategoryDropdown";
 import LanguageSelector from "./LanguageSelector";
 import logoImage from "../media/logo.svg";
@@ -81,12 +81,16 @@ const NavBar = () => {
                 >
                     <Toolbar className="w-full flex flex-row  justify-between p-0 gap-0">
                         <div className="w-fit md:w-1/4 sm:pl-10 min-w-fit flex ">
-                            <img
-                                src={logoImage}
-                                alt="Logo"
-                                className="h-[50px] mb-0 hover:cursor-pointer"
-                                onClick={() => navigate(`/${language}`)}
-                            />
+                            <Link to={`/${language}`}>
+                                <IconButton>
+                                    <img
+                                        src={logoImage}
+                                        alt="Logo"
+                                        className="h-[50px] mb-0 hover:cursor-pointer"
+                                        // onClick={() => navigate(`/${language}`)}
+                                    />
+                                </IconButton>
+                            </Link>
                         </div>
 
                         <div className="flex items-center justify-center gap-3 w-1/2">
