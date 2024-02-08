@@ -36,7 +36,7 @@ const Home = () => {
             <div className="flex flex-col box-border bg-[#E3E4E7] ">
                 <div className="flex flex-col h-fit">
                     <div
-                        className="bg-cover bg-center min-h-[100dvh] h-full relative"
+                        className="bg-cover bg-center min-h-[100vh] h-full relative"
                         style={{ backgroundImage: `url(${backgroundImage})` }}
                     >
                         <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50"></div>

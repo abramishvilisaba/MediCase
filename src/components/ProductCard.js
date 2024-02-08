@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import "./ProductCard.css";
@@ -35,8 +35,14 @@ const ProductCard = ({ language, type, id, product }) => {
                         >
                             {product.category}
                         </Typography> */}
-                        <div className="h-52 mb-4 overflow-hidden">
-                            <ReactMarkdown remarkPlugins={[gfm]} className={"markdown"}>
+                        <div
+                            className="h-[252px] xs:h-[232px] md:h-[232px] lg:h-[232px]  mb-4 overflow-hidden overflow-y-hidden"
+                            style={{ wordWrap: "break-word" }}
+                        >
+                            <ReactMarkdown
+                                remarkPlugins={[gfm]}
+                                className={"markdown leading-5 h-full"}
+                            >
                                 {product["description" + language]}
                             </ReactMarkdown>
                         </div>

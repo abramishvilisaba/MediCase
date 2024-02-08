@@ -4,6 +4,8 @@ import { fetchNewsItemByTitle } from "../utils/contentful";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
 
 const Newspost = () => {
     const { itemId } = useParams();
@@ -24,13 +26,15 @@ const Newspost = () => {
     }, [decodedTitle]);
 
     return (
-        <div className="min-h-screen flex flex-col">
-            <div className="flex-grow flex justify-center items-center">
+        <div className="min-h-screen w-full flex flex-col mt-[10vh] mb-[10vh]">
+            <div className="flex-grow flex  mx-auto justify-center items-center">
                 {newsItem ? (
-                    <div className="text-center max-w-3xl w-full p-4">
-                        <h2 className="text-3xl font-bold mb-4">{newsItem.newsTitle}</h2>
+                    <div className=" max-w-3xl w-full p-4">
+                        <h2 className="text-center text-3xl font-bold mb-4">
+                            {newsItem.newsTitle}
+                        </h2>
                         <div>
-                            {newsItem.newsPhotos && newsItem.newsPhotos.length > 0 ? (
+                            {newsItem.newsImages && newsItem.newsImages.length > 0 ? (
                                 <Carousel
                                     selectedItem={selectedPhotoIndex}
                                     onChange={(index) => setSelectedPhotoIndex(index)}
@@ -40,8 +44,9 @@ const Newspost = () => {
                                     autoPlay={true}
                                     interval={3000}
                                     swipeable={true}
+                                    showStatus={false}
                                 >
-                                    {newsItem.newsPhotos.map((photo, index) => (
+                                    {newsItem.newsImages.map((photo, index) => (
                                         <div key={index}>
                                             <img
                                                 src={photo.fields.file.url}
@@ -53,7 +58,9 @@ const Newspost = () => {
                                 </Carousel>
                             ) : null}
                         </div>
-                        <p className="text-lg">{newsItem.newsText}</p>
+                        <ReactMarkdown remarkPlugins={[gfm]} className={"markdown text-lg"}>
+                            {newsItem.newsText}
+                        </ReactMarkdown>
                     </div>
                 ) : (
                     <div className="flex justify-center items-center flex-grow">

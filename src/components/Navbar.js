@@ -75,12 +75,12 @@ const NavBar = () => {
                     style={{
                         backgroundColor: scrolling ? "#4C5461" : "rgba(78, 90, 108, 0.3)",
                         width: "100%",
-                        padding: "0px",
+                        padding: "0px 0px",
                         height: "64px",
                     }}
                 >
                     <Toolbar className="w-full flex flex-row  justify-between p-0 gap-0">
-                        <div className="w-fit md:w-1/4 sm:pl-10 min-w-fit flex ">
+                        <div className="w-fit md:w-1/4 md:pl-10 min-w-fit flex ">
                             <Link to={`/${language}`}>
                                 <IconButton>
                                     <img
@@ -93,7 +93,7 @@ const NavBar = () => {
                             </Link>
                         </div>
 
-                        <div className="flex items-center justify-center gap-3 w-1/2">
+                        <div className="flex items-center justify-center md:gap-3 w-1/2">
                             {!isMobile && (
                                 <>
                                     <Button
@@ -121,7 +121,7 @@ const NavBar = () => {
                                 </>
                             )}
                         </div>
-                        <div color="inherit" className="w-1/4 sm:pr-10 flex justify-end">
+                        <div color="inherit" className="w-1/4 md:pr-10 flex justify-end">
                             {!isMobile && (
                                 <LanguageSelector
                                     supportedLocales={["en", "ka", "ru"]}

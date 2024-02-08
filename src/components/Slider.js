@@ -64,10 +64,10 @@ const MySlider = ({ language, data }) => {
                 {data.map((item, index) => (
                     <div key={index}>
                         <Card className="h-[500px] p-4 mx-1 bg-secondary">
-                            {item.field.newsPhotos && item.field.newsPhotos.length > 0 && (
+                            {item.field.newsImages && item.field.newsImages.length > 0 && (
                                 <CardMedia
                                     component="img"
-                                    image={item.field.newsPhotos[0].fields.file.url}
+                                    image={item.field.newsImages[0].fields.file.url}
                                     style={{
                                         maxHeight: 250,
                                         width: "100%",

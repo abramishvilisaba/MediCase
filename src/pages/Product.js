@@ -85,11 +85,11 @@ const ProductPage = () => {
                     <div className="mt-20 mb-44 text-center w-full">
                         <div className="flex flex-row w-full">
                             {/* <div className="w-1/5"></div> */}
-                            <div className="w-4/5 flex flex-col mx-auto">
-                                <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                            <div className="w-11/12 xl:w-11/12 flex flex-col mx-auto">
+                                <div className="w-full grid  xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-8">
                                     {currentItems.map((product) => (
                                         <ProductCard
-                                            key={product.id}
+                                            key={product.name}
                                             language={language}
                                             type={type}
                                             id={id}
