@@ -32,7 +32,7 @@ const CategoryDropdown = ({ title, categories, language }) => {
                         }}
                         onClick={() => {
                             popupState.close();
-                            // navigate(`/${language}/${title}/all`);
+                            navigate(`/${language}/${title}/all`);
                         }}
                     >
                         <FormattedMessage id={title} />

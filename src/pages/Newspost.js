@@ -26,7 +26,7 @@ const Newspost = () => {
     }, [decodedTitle]);
 
     return (
-        <div className="min-h-screen w-full flex flex-col mt-[10vh] mb-[10vh]">
+        <div className="min-h-screen w-full flex flex-col mt-[10vh] mb-[10vh] font-roboto-slab ">
             <div className="flex-grow flex  mx-auto justify-center items-center">
                 {newsItem ? (
                     <div className=" max-w-3xl w-full p-4">

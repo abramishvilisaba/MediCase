@@ -1,6 +1,6 @@
 const messages = {
     en: {
-        welcome: "Welcome",
+        welcome: "Medi Case",
         explore: "Explore our services and discover amazing features.",
         getStarted: "Get Started",
         category: "Category: ",
@@ -15,7 +15,7 @@ const messages = {
         Injections: "Injections",
     },
     ka: {
-        welcome: "მოგესალმებით",
+        welcome: "Medi Case",
         explore: "გამოიყენეთ ჩვენი სერვისები და გამოიწერეთ სასაჩუქრე შედეგები.",
         getStarted: "დაიწყეთ",
         category: "კატეგორია: ",
@@ -30,7 +30,7 @@ const messages = {
         Injections: "ინექციები",
     },
     ru: {
-        welcome: "Добро пожаловать",
+        welcome: "Medi Case",
         explore: "Исследуйте наши услуги и открывайте удивительные возможности.",
         getStarted: "Начать",
         category: "Категория: ",

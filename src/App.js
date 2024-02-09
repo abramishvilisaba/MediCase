@@ -25,11 +25,17 @@ const App = () => {
     // const defaultLocale = "ka";
     const defaultLocale = supportedLocales.includes(localeParam) ? localeParam : userLocale || "ka";
 
+    // useEffect(() => {
+    //     if (location.pathname === "/") {
+    //         navigate(`/${defaultLocale}`);
+    //     }
+    // }, [location.pathname, navigate, defaultLocale]);
+
     useEffect(() => {
         if (location.pathname === "/") {
             navigate(`/${defaultLocale}`);
         }
-    }, [location.pathname, navigate, defaultLocale]);
+    }, []);
 
     return (
         <>

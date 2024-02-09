@@ -81,7 +81,7 @@ const ProductPage = () => {
 
     return (
         <IntlProvider locale={language} messages={messages[language]}>
-            <div>
+            <div className="font-roboto-slab">
                 {/* <div
                     className="bg-cover bg-center w-full h-80 relative "
                     style={{ backgroundImage: `url(${backgroundImage})` }}
@@ -105,7 +105,7 @@ const ProductPage = () => {
                         </div>
                     </div>
                 </div> */}
-                <div className=" w-full h-28 md:h-40 pt-20 ">
+                <div className=" w-full h-28 md:h-40 pt-20  ">
                     <div className="w-full h-full ">
                         <div className=" w-full flex flex-col h-full text-gray-500 ">
                             <div className=" text-left text-lg  md:text-xl ml-6 md:ml-[68px]">
@@ -164,8 +164,10 @@ const ProductPage = () => {
 
                     <div className=" h-fit min-h-[20vh] md:min-h-[60vh] md:w-1/2 md:px-8  mt-4 md:mt-0  flex flex-col md:justify-between">
                         <div>
-                            <span className="text-2xl  font-medium ">{product.brand}</span>
-                            <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-4 ">
+                            <span className="text-2xl  font-medium font-roboto-slab">
+                                {product.brand}
+                            </span>
+                            <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-4 font">
                                 {product["name" + language] || product.name}
                             </h2>
                             {/* <div className="mb-6">
@@ -184,7 +186,7 @@ const ProductPage = () => {
                             </div> */}
                         </div>
                         <div className="">
-                            <ReactMarkdown remarkPlugins={[gfm]} className={"markdown text-xl"}>
+                            <ReactMarkdown remarkPlugins={[gfm]} className={"markdown text-xl "}>
                                 {product["description" + language]}
                             </ReactMarkdown>
                         </div>
