@@ -80,7 +80,7 @@ const ProductPage = () => {
                     </div>
                 </div>
                 {!currentItems ? (
-                    <div className="mt-20">
+                    <div className="w-full  mt-[40vh] flex justify-center">
                         <CircularProgress />
                     </div>
                 ) : (

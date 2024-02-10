@@ -10,6 +10,7 @@ import { IntlProvider, FormattedMessage } from "react-intl";
 import messages from "../locales/messages";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
+import CircularProgress from "@mui/material/CircularProgress";
 
 // import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 // import { BLOCKS, MARKS } from "@contentful/rich-text-types";
@@ -76,7 +77,11 @@ const ProductPage = () => {
     }, [location.pathname]);
 
     if (!product) {
-        return <div>Loading...</div>;
+        return (
+            <div className="w-full  mt-[40vh] flex justify-center">
+                <CircularProgress />
+            </div>
+        );
     }
 
     return (
