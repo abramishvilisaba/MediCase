@@ -64,8 +64,11 @@ const NavBar = () => {
 
     const handleLanguageSelect = (selectedLanguage) => {
         const newPathname = location.pathname.replace(/^\/[^/]+/, `/${selectedLanguage}`);
+
         navigate(`${newPathname}${location.search}`);
     };
+
+    console.log(isMobile);
 
     return (
         <IntlProvider locale={language} messages={messages[language]}>
@@ -189,11 +192,16 @@ const NavBar = () => {
                                 title="products"
                                 categories={categories}
                                 language={language}
+                                isMobile={isMobile}
+                                closeDrawer={() => setIsDrawerOpen(false)}
+                                // onClick={() => setIsDrawerOpen(true)}
                             />
                             <CategoryDropdown
                                 title="brands"
                                 categories={brands}
                                 language={language}
+                                isMobile={isMobile}
+                                closeDrawer={() => setIsDrawerOpen(false)}
                             />
                             <Button
                                 variant="text"

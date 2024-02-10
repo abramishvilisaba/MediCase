@@ -10,7 +10,7 @@ import { usePopupState, bindHover, bindPopover, bindMenu } from "material-ui-pop
 import { useNavigate } from "react-router-dom";
 import { IntlProvider, FormattedMessage } from "react-intl";
 
-const CategoryDropdown = ({ title, categories, language }) => {
+const CategoryDropdown = ({ title, categories, language, isMobile, closeDrawer }) => {
     const popupState = usePopupState({
         variant: "popover",
         popupId: "categoryDropdownPopover",
@@ -32,7 +32,9 @@ const CategoryDropdown = ({ title, categories, language }) => {
                         }}
                         onClick={() => {
                             popupState.close();
-                            navigate(`/${language}/${title}/all`);
+                            if (!isMobile) {
+                                navigate(`/${language}/${title}/all`);
+                            }
                         }}
                     >
                         <FormattedMessage id={title} />
@@ -74,6 +76,7 @@ const CategoryDropdown = ({ title, categories, language }) => {
                                     <MenuItem
                                         onClick={() => {
                                             popupState.close();
+                                            closeDrawer();
                                             navigate(`/${language}/${title}/${key}`);
                                         }}
                                         key={id}
