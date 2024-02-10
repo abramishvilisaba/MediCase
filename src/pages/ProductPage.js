@@ -86,7 +86,7 @@ const ProductPage = () => {
 
     return (
         <IntlProvider locale={language} messages={messages[language]}>
-            <div className="font-roboto-slab mb-[60vh]">
+            <div className="font-roboto-slab bg-slate-100  pb-[40vh]">
                 {/* <div
                     className="bg-cover bg-center w-full h-80 relative "
                     style={{ backgroundImage: `url(${backgroundImage})` }}
@@ -110,17 +110,17 @@ const ProductPage = () => {
                         </div>
                     </div>
                 </div> */}
-                <div className=" w-full h-28 md:h-40 pt-20  ">
+                <div className=" w-full h-32 md:h-40 pt-[88px] md:pt-[102px] bg-[#626B7F] ">
                     <div className="w-full h-full ">
-                        <div className=" w-full flex flex-col h-full text-gray-500 ">
+                        <div className=" w-full flex flex-col h-full text-gray-200 ">
                             <div className=" text-left text-lg  md:text-xl ml-6 md:ml-[68px]">
-                                <Link to={`/${language}`} className="font-medium hover:underline">
+                                <Link to={`/${language}`} className="font-semibold hover:underline">
                                     <span>Home</span>
                                 </Link>
                                 <span> &gt; </span>
                                 <Link
                                     to={`/${language}/products/${type}`}
-                                    className="font-medium hover:underline"
+                                    className="font-semibold hover:underline"
                                 >
                                     <span>{type}</span>
                                 </Link>
@@ -129,7 +129,7 @@ const ProductPage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-4/5  md:w-4/5 h-fit mx-auto mt-8  flex flex-col md:flex-row   ">
+                <div className="w-4/5  md:w-4/5 h-fit mx-auto mt-8 md:mt-16  flex flex-col md:flex-row   ">
                     <div className="md:w-1/2 h-[40vh] md:h-[60vh] lg:p-12  overflow-hidden bg-[#EEEEEE]">
                         {product.images && product.images.length > 0 ? (
                             <Carousel
@@ -192,7 +192,7 @@ const ProductPage = () => {
                         </div>
                         <div className="">
                             <ReactMarkdown remarkPlugins={[gfm]} className={"markdown text-xl "}>
-                                {product["description" + language]}
+                                {product["description" + language] || product["descriptionen"]}
                             </ReactMarkdown>
                         </div>
                         {/* {documentToReactComponents(product.description, options)} */}

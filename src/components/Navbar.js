@@ -75,8 +75,8 @@ const NavBar = () => {
                     position="fixed"
                     style={{
                         // backgroundColor: scrolling ? "#4C5461" : "rgba(78, 90, 108, 0.3)",
-                        // backgroundColor: scrolling ? "#626B7F" : "rgba(78, 90, 108, 0.3)",
-                        backgroundColor: scrolling ? " #065E80" : "rgba(78, 90, 108, 0.3)",
+                        backgroundColor: scrolling ? "#626B7F" : "rgba(78, 90, 108, 0.3)",
+                        // backgroundColor: scrolling ? " #065E80" : "rgba(78, 90, 108, 0.3)",
 
                         width: "100%",
                         padding: "0px 0px",

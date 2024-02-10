@@ -13,16 +13,18 @@ const Footer = () => {
             const footerThreshold = documentHeight - windowHeight - 400;
             const maxFooterHeight = 1200;
 
-            if (footerThreshold > 0) {
-                const newFooterHeight = Math.min(
-                    Math.max(
-                        ((scrollPosition - footerThreshold) / (documentHeight - footerThreshold)) *
-                            maxFooterHeight,
-                        0
-                    ),
-                    maxFooterHeight
-                );
+            const newFooterHeight = Math.min(
+                Math.max(
+                    ((scrollPosition - footerThreshold) / (documentHeight - footerThreshold)) *
+                        maxFooterHeight,
+                    0
+                ),
+                maxFooterHeight
+            );
 
+            if (footerThreshold < 0) {
+                setFooterHeight(0);
+            } else if (footerThreshold > 0) {
                 setFooterHeight(newFooterHeight);
                 setShowContent(newFooterHeight > 150);
             }
@@ -34,7 +36,7 @@ const Footer = () => {
 
     return (
         <footer
-            className="fixed bottom-0 w-full max-sm:max-h-72 bg-[#065E80] flex flex-col justify-start items-center text-white font-roboto-slab"
+            className="fixed bottom-0 w-full max-sm:max-h-72 bg-[#626B7F] flex flex-col justify-start items-center text-white font-roboto-slab"
             style={{ height: `${footerHeight}px` }}
         >
             <div
