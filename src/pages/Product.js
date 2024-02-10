@@ -7,8 +7,8 @@ import CircularProgress from "@mui/material/CircularProgress";
 import { fetchProducts } from "../utils/contentful";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import messages from "../locales/messages";
-// import backgroundImage from "../media/cover2.jpg";
-import backgroundImage from "../media/cover8.jpg";
+// import backgroundImage from "../media/cover.jpg";
+import backgroundImage from "../media/cover.jpg";
 
 const ProductPage = () => {
     const location = useLocation();

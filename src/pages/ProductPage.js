@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useLocation } from "react-router-dom";
 import { fetchProductById, fetchProducts, fetchCategories } from "../utils/contentful";
-import backgroundImage from "../media/cover2.jpg";
+import backgroundImage from "../media/cover.jpg";
 import { default as MultiCarousel } from "react-multi-carousel";
 import ProductCard from "../components/ProductCard";
 import "react-multi-carousel/lib/styles.css";

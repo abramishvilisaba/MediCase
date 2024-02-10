@@ -11,7 +11,7 @@ import messages from "../locales/messages";
 import MySlider from "../components/Slider";
 import { fetchNewsData } from "../utils/contentful";
 import AboutUs from "../components/AboutUs";
-import backgroundImage from "../media/cover8.jpg";
+import backgroundImage from "../media/cover.jpg";
 
 const Home = () => {
     const [data, setData] = useState([]);
@@ -33,7 +33,7 @@ const Home = () => {
 
     return (
         <IntlProvider locale={language} messages={messages[language]}>
-            <div className="flex flex-col box-border bg-[#E3E4E7] font-roboto-slab pb-48">
+            <div className="flex flex-col box-border bg-[#E3E4E7] font-roboto-slab mb-[20vh]">
                 <div className="flex flex-col h-fit">
                     <div
                         className="bg-cover bg-center min-h-[100vh] h-full relative"
