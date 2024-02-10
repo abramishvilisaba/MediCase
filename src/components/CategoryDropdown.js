@@ -76,7 +76,10 @@ const CategoryDropdown = ({ title, categories, language, isMobile, closeDrawer }
                                     <MenuItem
                                         onClick={() => {
                                             popupState.close();
-                                            closeDrawer();
+                                            if (isMobile) {
+                                                closeDrawer();
+                                            }
+
                                             navigate(`/${language}/${title}/${key}`);
                                         }}
                                         key={id}

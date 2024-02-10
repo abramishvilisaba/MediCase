@@ -13,17 +13,22 @@ const Footer = () => {
             const footerThreshold = documentHeight - windowHeight - 400;
             const maxFooterHeight = 1400;
 
-            const newFooterHeight = Math.min(
-                Math.max(
-                    ((scrollPosition - footerThreshold) / (documentHeight - footerThreshold)) *
-                        maxFooterHeight,
-                    0
-                ),
-                maxFooterHeight
-            );
+            if (footerThreshold > 0) {
+                const newFooterHeight = Math.min(
+                    Math.max(
+                        ((scrollPosition - footerThreshold) / (documentHeight - footerThreshold)) *
+                            maxFooterHeight,
+                        0
+                    ),
+                    maxFooterHeight
+                );
 
-            setFooterHeight(newFooterHeight);
-            setShowContent(newFooterHeight > 150);
+                console.log("newFooterHeight", newFooterHeight);
+                console.log("footerThreshold", footerThreshold);
+
+                setFooterHeight(newFooterHeight);
+                setShowContent(newFooterHeight > 150);
+            }
         };
 
         window.addEventListener("scroll", handleScroll);

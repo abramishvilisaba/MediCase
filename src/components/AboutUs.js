@@ -30,7 +30,7 @@ const AboutUs = ({ language }) => {
 
                 <button
                     onClick={handleViewProducts}
-                    className="bg-[#3DA8D6] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-[#3A587E] hover:bg-[#577FB2] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 >
                     View Products
                 </button>

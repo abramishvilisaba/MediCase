@@ -88,7 +88,7 @@ const NavBar = () => {
                     <Toolbar className="w-full h-full flex flex-row  justify-between p-0 gap-0 ">
                         <div className="w-fit md:w-1/4 md:pl-10 min-w-fit flex ">
                             <Link to={`/${language}`}>
-                                <IconButton>
+                                <IconButton sx={{ borderRadius: "20%" }}>
                                     <img
                                         src={logoImage}
                                         alt="Logo"
