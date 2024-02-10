@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
-import backgroundImage from "../media/cover2.jpg";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
 import { fetchProducts } from "../utils/contentful";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import messages from "../locales/messages";
+// import backgroundImage from "../media/cover2.jpg";
+import backgroundImage from "../media/cover8.jpg";
 
 const ProductPage = () => {
     const location = useLocation();
@@ -64,9 +65,10 @@ const ProductPage = () => {
                     className="bg-cover bg-center w-full h-96 relative"
                     style={{ backgroundImage: `url(${backgroundImage})` }}
                 >
+                    {/* <div className="bg-cover bg-center w-full bg-[#869cd4] h-60 relative"> */}
                     <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50"></div>
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
-                        <h3 className="text-3xl font-bold mb-4">
+                        <h3 className="text-4xl font-bold mt-12 mb-4">
                             {category ? (
                                 category === "all" ? (
                                     <FormattedMessage id="products" />

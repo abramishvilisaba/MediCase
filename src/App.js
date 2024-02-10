@@ -14,6 +14,7 @@ import Product from "./pages/Product";
 import ProductPage from "./pages/ProductPage";
 import Newspost from "./pages/Newspost";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const supportedLocales = ["en", "ka", "ru"];
 
@@ -35,6 +36,7 @@ const App = () => {
         if (location.pathname === "/") {
             navigate(`/${defaultLocale}`);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -55,6 +57,7 @@ const App = () => {
                     element={<Newspost locale={location.pathname} />}
                 />
             </Routes>
+            <Footer />
         </>
     );
 };

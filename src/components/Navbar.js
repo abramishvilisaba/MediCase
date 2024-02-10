@@ -78,10 +78,12 @@ const NavBar = () => {
 
                         width: "100%",
                         padding: "0px 0px",
-                        height: "64px",
+                        // height: "64px",
+                        transition: "height 0.5s ease-in-out",
                     }}
+                    className={`transition-all ${scrolling ? "h-[60px]" : "h-[76px]"}`}
                 >
-                    <Toolbar className="w-full flex flex-row  justify-between p-0 gap-0">
+                    <Toolbar className="w-full h-full flex flex-row  justify-between p-0 gap-0">
                         <div className="w-fit md:w-1/4 md:pl-10 min-w-fit flex ">
                             <Link to={`/${language}`}>
                                 <IconButton>

@@ -1,0 +1,16 @@
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff; /* Adjust as needed */
+    height: 100px; /* Adjust height as needed */
+    transition: transform 0.5s ease; /* Add transition effect */
+    transform: translateY(100%); /* Initially hide footer below the viewport */
+}
+
+.footer.reveal {
+    transform: translateY(0); /* Show footer by translating it up */
+}
+
+/* Add other styles for your AppBar and content */

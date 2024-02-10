@@ -11,7 +11,7 @@ import messages from "../locales/messages";
 import MySlider from "../components/Slider";
 import { fetchNewsData } from "../utils/contentful";
 import AboutUs from "../components/AboutUs";
-import backgroundImage from "../media/cover.jpg";
+import backgroundImage from "../media/cover8.jpg";
 
 const Home = () => {
     const [data, setData] = useState([]);
@@ -33,25 +33,14 @@ const Home = () => {
 
     return (
         <IntlProvider locale={language} messages={messages[language]}>
-            <div className="flex flex-col box-border bg-[#E3E4E7] font-roboto-slab">
+            <div className="flex flex-col box-border bg-[#E3E4E7] font-roboto-slab ">
                 <div className="flex flex-col h-fit">
                     <div
                         className="bg-cover bg-center min-h-[100vh] h-full relative"
                         style={{ backgroundImage: `url(${backgroundImage})` }}
                     >
                         <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50"></div>
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white  text-center">
-                            {/* <Helmet>
-                                <title>Medicase</title>
-                                <meta
-                                    name="description"
-                                    content="Welcome to Medicase.ge! We offer a wide range of medical products and solutions to meet your needs. Explore our selection of products and services."
-                                />
-                                <meta
-                                    name="google-site-verification"
-                                    content="jy3Fe0U4ktvk1bNy8XjiXj77vkkumQTypNFElJ5JXvc"
-                                />
-                            </Helmet> */}
+                        <div className="absolute mt-48 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white  text-center">
                             <Helmet>
                                 {/* General */}
                                 <meta charSet="utf-8" />
@@ -96,8 +85,10 @@ const Home = () => {
                                 />
                             </Helmet>
                             <div className="flex flex-col items-center">
-                                <h1 className="text-5xl w-32  font-semibold mb-4 ">
-                                    <FormattedMessage id="welcome" />
+                                <h1 className="text-8xl w-fit  font-semibold text-[rgb(255,255,255,0.5)] mb-4 ">
+                                    {/* <h1 className="text-9xl w-fit  font-semibold text-[rgb(241,224,206,0.5)] mb-4 "> */}
+                                    {/* <FormattedMessage id="welcome" /> */}
+                                    MEDI CASE
                                 </h1>
                                 <h2 className="text-xl mb-8">
                                     <FormattedMessage id="explore" />
