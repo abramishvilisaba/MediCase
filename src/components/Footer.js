@@ -23,7 +23,7 @@ const Footer = () => {
             );
 
             setFooterHeight(newFooterHeight);
-            setShowContent(newFooterHeight > 150); // Adjust the threshold as needed
+            setShowContent(newFooterHeight > 150);
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -32,7 +32,7 @@ const Footer = () => {
 
     return (
         <footer
-            className="fixed bottom-0 w-full bg-[#626B7F] flex flex-col justify-start items-center text-white font-roboto-slab"
+            className="fixed bottom-0 w-full max-sm:max-h-72 bg-[#626B7F] flex flex-col justify-start items-center text-white font-roboto-slab"
             style={{ height: `${footerHeight}px` }}
         >
             <div

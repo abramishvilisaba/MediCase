@@ -40,7 +40,7 @@ const Home = () => {
                         style={{ backgroundImage: `url(${backgroundImage})` }}
                     >
                         <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50"></div>
-                        <div className="absolute mt-48 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white  text-center">
+                        <div className="absolute w-2/3 mt-64 md:mt-56 lg:mt-48 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white  text-center">
                             <Helmet>
                                 {/* General */}
                                 <meta charSet="utf-8" />
@@ -85,7 +85,7 @@ const Home = () => {
                                 />
                             </Helmet>
                             <div className="flex flex-col items-center">
-                                <h1 className="text-8xl w-fit  font-semibold text-[rgb(255,255,255,0.5)] mb-4 ">
+                                <h1 className="text-8xl w-fit  font-semibold text-[rgb(255,255,255,0.5)]  mb-4 ">
                                     {/* <h1 className="text-9xl w-fit  font-semibold text-[rgb(241,224,206,0.5)] mb-4 "> */}
                                     {/* <FormattedMessage id="welcome" /> */}
                                     MEDI CASE

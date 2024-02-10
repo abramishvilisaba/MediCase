@@ -68,8 +68,6 @@ const NavBar = () => {
         navigate(`${newPathname}${location.search}`);
     };
 
-    console.log(isMobile);
-
     return (
         <IntlProvider locale={language} messages={messages[language]}>
             <div position="fixed">
