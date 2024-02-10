@@ -81,7 +81,7 @@ const ProductPage = () => {
 
     return (
         <IntlProvider locale={language} messages={messages[language]}>
-            <div className="font-roboto-slab">
+            <div className="font-roboto-slab mb-[60vh]">
                 {/* <div
                     className="bg-cover bg-center w-full h-80 relative "
                     style={{ backgroundImage: `url(${backgroundImage})` }}

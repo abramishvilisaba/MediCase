@@ -73,8 +73,9 @@ const NavBar = () => {
                 <AppBar
                     position="fixed"
                     style={{
-                        backgroundColor: scrolling ? "#4C5461" : "rgba(78, 90, 108, 0.3)",
-                        // backgroundColor: scrolling ? "#4B4F61" : "rgba(78, 90, 108, 0.3)",
+                        // backgroundColor: scrolling ? "#4C5461" : "rgba(78, 90, 108, 0.3)",
+                        backgroundColor: scrolling ? "#626B7F" : "rgba(78, 90, 108, 0.3)",
+                        // backgroundColor: scrolling ? " white" : "rgba(78, 90, 108, 0.3)",
 
                         width: "100%",
                         padding: "0px 0px",
@@ -83,7 +84,7 @@ const NavBar = () => {
                     }}
                     className={`transition-all ${scrolling ? "h-[60px]" : "h-[76px]"}`}
                 >
-                    <Toolbar className="w-full h-full flex flex-row  justify-between p-0 gap-0">
+                    <Toolbar className="w-full h-full flex flex-row  justify-between p-0 gap-0 ">
                         <div className="w-fit md:w-1/4 md:pl-10 min-w-fit flex ">
                             <Link to={`/${language}`}>
                                 <IconButton>
