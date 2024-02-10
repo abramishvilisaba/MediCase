@@ -11,7 +11,7 @@ const Footer = () => {
             const windowHeight = window.innerHeight;
             const documentHeight = document.documentElement.scrollHeight;
             const footerThreshold = documentHeight - windowHeight - 400;
-            const maxFooterHeight = 1400;
+            const maxFooterHeight = 1200;
 
             if (footerThreshold > 0) {
                 const newFooterHeight = Math.min(
@@ -22,9 +22,6 @@ const Footer = () => {
                     ),
                     maxFooterHeight
                 );
-
-                console.log("newFooterHeight", newFooterHeight);
-                console.log("footerThreshold", footerThreshold);
 
                 setFooterHeight(newFooterHeight);
                 setShowContent(newFooterHeight > 150);
@@ -37,7 +34,7 @@ const Footer = () => {
 
     return (
         <footer
-            className="fixed bottom-0 w-full max-sm:max-h-72 bg-[#626B7F] flex flex-col justify-start items-center text-white font-roboto-slab"
+            className="fixed bottom-0 w-full max-sm:max-h-72 bg-[#065E80] flex flex-col justify-start items-center text-white font-roboto-slab"
             style={{ height: `${footerHeight}px` }}
         >
             <div
@@ -60,7 +57,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="mb-6 mt-2   border-2 rounded-3xl">
-                <img src={logoImage} alt="Logo" className="h-12 m-2 " />
+                <img src={logoImage} alt="Logo" className="h-12 my-1 mx-2 " />
             </div>
         </footer>
     );
