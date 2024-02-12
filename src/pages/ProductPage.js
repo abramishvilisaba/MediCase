@@ -11,39 +11,9 @@ import messages from "../locales/messages";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import CircularProgress from "@mui/material/CircularProgress";
-
-// import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-// import { BLOCKS, MARKS } from "@contentful/rich-text-types";
+import { Helmet } from "react-helmet";
 
 const ProductPage = () => {
-    // const Bold = ({ children }) => <p className="font-bold">{children}</p>;
-    // const Text = ({ children }) => <p className="text-center">{children}</p>;
-    // const options = {
-    //     renderMark: {
-    //         [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
-    //         [MARKS.ITALIC]: (text) => <em>{text}</em>,
-    //     },
-    //     renderNode: {
-    //         [BLOCKS.PARAGRAPH]: (node, children) => (
-    //             <p className="text-left text-base ">{children}</p>
-    //         ),
-    //         [BLOCKS.HEADING_1]: (node, children) => (
-    //             <h1 className="text-4xl font-bold">{children}</h1>
-    //         ),
-    //         [BLOCKS.HEADING_2]: (node, children) => (
-    //             <h2 className="text-3xl font-bold">{children}</h2>
-    //         ),
-    //         [BLOCKS.HEADING_3]: (node, children) => (
-    //             <h3 className="text-2xl font-bold">{children}</h3>
-    //         ),
-    //         [BLOCKS.HEADING_4]: (node, children) => (
-    //             <h4 className="text-xl font-bold">{children}</h4>
-    //         ),
-    //     },
-    //     preserveWhitespace: true,
-    //     renderText: (text) => text.replace("!", "?"),
-    // };
-
     const location = useLocation();
     const { language, id, type, productId } = useParams();
     const [product, setProduct] = useState(null);
@@ -87,30 +57,56 @@ const ProductPage = () => {
     return (
         <IntlProvider locale={language} messages={messages[language]}>
             <div className="font-roboto-slab bg-slate-100  pb-[40vh]">
+                <title> {product.name}</title>
+
+                <Helmet>
+                    {/* General */}
+                    <meta charSet="utf-8" />
+                    <title>{product.name}</title>
+                    <meta
+                        name="description"
+                        content="Medicase.ge! We offer a wide range of beauty products from industry-leading brands to meet your skincare and beauty needs. Explore our selection of top-quality skincare and beauty treatments at Medicase.ge."
+                    />
+                    <meta
+                        name="google-site-verification"
+                        content="jy3Fe0U4ktvk1bNy8XjiXj77vkkumQTypNFElJ5JXvc"
+                    />
+                    <meta
+                        name="keywords"
+                        content={`medical,beauty, products, solutions,${product.name}`}
+                    />
+                    {/* <meta name="author" content="Your Name" /> */}
+
+                    {/* Open Graph */}
+                    <meta property="og:title" content={product.name} />
+                    <meta
+                        property="og:description"
+                        content="Welcome to Medicase.ge! We offer a wide range of beauty products from industry-leading brands to meet your skincare and beauty needs. Explore our selection of top-quality skincare and beauty treatments at Medicase.ge."
+                    />
+                    <meta
+                        property="og:image"
+                        content="https://images.ctfassets.net/0fishfo4jgud/748nnaX9TfnB07ifVX3klu/eae72889e680cbce8780c1909ed385c9/logo.png"
+                    />
+                    <meta property="og:url" content="https://medicase.ge/" />
+                    <meta property="og:type" content="website" />
+
+                    {/* Twitter Card */}
+                    <meta name="twitter:card" content="summary_large_image" />
+                    <meta name="twitter:title" content="Medicase" />
+                    <meta
+                        name="twitter:description"
+                        content="Welcome to Medicase.ge! We offer a wide range of beauty products from industry-leading brands to meet your skincare and beauty needs. Explore our selection of top-quality skincare and beauty treatments at Medicase.ge."
+                    />
+                    <meta
+                        name="twitter:image"
+                        content="https://images.ctfassets.net/0fishfo4jgud/748nnaX9TfnB07ifVX3klu/eae72889e680cbce8780c1909ed385c9/logo.png"
+                    />
+                    <meta name="robots" content="INDEX,FOLLOW" />
+                </Helmet>
+
                 {/* <div
-                    className="bg-cover bg-center w-full h-80 relative "
-                    style={{ backgroundImage: `url(${backgroundImage})` }}
-                >
-                    <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50">
-                        <div className=" w-full flex flex-col h-full text-white ">
-                            <div className="h-4/5 flex items-end">
-                                <h3 className="w-full text-xl md:text-3xl font-bold text-center pb-10">
-                                    {product["name" + language] || product.name}
-                                </h3>
-                            </div>
-                            <div className="w-full text-left text-lg  md:text-2xl ml-6 md:ml-12">
-                                <Link
-                                    to={`/${language}/products/${type}`}
-                                    className="font-medium hover:underline"
-                                >
-                                    <span>{type}</span>
-                                </Link>
-                                <span> &gt; {product.name}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-                <div className=" w-full h-32 md:h-40 pt-[88px] md:pt-[102px] bg-[#626B7F] ">
+                {/* <div className=" w-full h-32 md:h-40 pt-[88px] md:pt-[102px] bg-[#425274] "> */}
+                <div className=" w-full h-32 md:h-40 pt-[88px] md:pt-[102px] bg-[#4d5b7c] ">
                     <div className="w-full h-full ">
                         <div className=" w-full flex flex-col h-full text-gray-200 ">
                             <div className=" text-left text-lg  md:text-xl ml-6 md:ml-[68px]">
@@ -173,29 +169,14 @@ const ProductPage = () => {
                                 {product.brand}
                             </span>
                             <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-4 font">
-                                {product["name" + language] || product.name}
+                                {product.name}
                             </h2>
-                            {/* <div className="mb-6">
-                                <p className="text-lg text-gray-500 mb-2">
-                                <FormattedMessage id="category" />
-                                <span className="text-lg text-gray-700 font-medium ">
-                                    {categories[product.category][language]}
-                                </span>
-                            </p>
-                                <p className="text-lg text-gray-500 mb-2">
-                                <FormattedMessage id="brand" />
-                                <span className="text-lg text-gray-700 font-medium">
-                                    {product.brand}
-                                </span>
-                            </p>
-                            </div> */}
                         </div>
                         <div className="">
                             <ReactMarkdown remarkPlugins={[gfm]} className={"markdown text-xl "}>
                                 {product["description" + language] || product["descriptionen"]}
                             </ReactMarkdown>
                         </div>
-                        {/* {documentToReactComponents(product.description, options)} */}
                     </div>
                 </div>
                 <div className="w-4/5 h-fit  mx-auto mt-12 pb-40">

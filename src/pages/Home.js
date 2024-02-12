@@ -14,14 +14,16 @@ import AboutUs from "../components/AboutUs";
 import backgroundImage from "../media/cover.jpg";
 
 const Home = () => {
-    const [data, setData] = useState([]);
+    const [newsData, setNewsData] = useState([]);
 
     const location = useLocation();
     let { language } = useParams();
 
+    const locales = ["en", "ka", "ru"];
+
     useEffect(() => {
         const fetchData = async () => {
-            setData(await fetchNewsData());
+            setNewsData(await fetchNewsData());
         };
 
         fetchData();
@@ -84,6 +86,15 @@ const Home = () => {
                                     name="twitter:image"
                                     content="https://images.ctfassets.net/0fishfo4jgud/748nnaX9TfnB07ifVX3klu/eae72889e680cbce8780c1909ed385c9/logo.png"
                                 />
+
+                                {locales.map((locale) => {
+                                    <link
+                                        rel="alternate"
+                                        href={`http://medicase.ge/${locale}`}
+                                        hrefLang={locale}
+                                        key={locale}
+                                    />;
+                                })}
                             </Helmet>
                             <div className="flex flex-col items-center">
                                 <h1 className="text-8xl w-fit  font-semibold text-[rgb(255,255,255,0.5)]  mb-4 ">
@@ -103,9 +114,9 @@ const Home = () => {
                     <AboutUs language={language} />
                 </div>
                 <div className="h-[100vh] mt-20 ">
-                    {data.length > 0 && (
+                    {newsData.length > 0 && (
                         <div className="sm:p-4 lg:p-8 2xl:p-20 mx-8 2xl:mx-16 ">
-                            <MySlider language={language} data={data} />
+                            <MySlider language={language} newsData={newsData} />
                         </div>
                     )}
                 </div>

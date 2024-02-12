@@ -10,7 +10,7 @@ import { usePopupState, bindHover, bindPopover, bindMenu } from "material-ui-pop
 import { useNavigate } from "react-router-dom";
 import { IntlProvider, FormattedMessage } from "react-intl";
 
-const CategoryDropdown = ({ title, categories, language, isMobile, closeDrawer }) => {
+const CategoryDropdown = ({ title, categories, language, isMobile, closeDrawer, scrolling }) => {
     const popupState = usePopupState({
         variant: "popover",
         popupId: "categoryDropdownPopover",
@@ -20,13 +20,18 @@ const CategoryDropdown = ({ title, categories, language, isMobile, closeDrawer }
     return (
         <IntlProvider locale={language} messages={messages[language]}>
             <div style={{ display: "inline-block", marginRight: 5, width: "fit" }}>
-                <div {...bindHover(popupState)} className="h-fit flex items-center  text-2xl">
+                <div
+                    {...bindHover(popupState)}
+                    className="h-fit flex items-center  text-2xl py-[14px]"
+                >
                     <Button
                         variant="text"
                         style={{
                             width: "fit",
                             height: "30px",
-                            // padding: "8px 4px",
+                            // padding: "40px 4px",
+                            padding: scrolling ? "14px 4px" : "26px 4px",
+
                             color: "white",
                             fontSize: "16px",
                         }}

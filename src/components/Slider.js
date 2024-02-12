@@ -57,11 +57,11 @@ const sliderSettings = {
     ],
 };
 
-const MySlider = ({ language, data }) => {
+const MySlider = ({ language, newsData }) => {
     return (
         <div className="p-0">
             <Slider {...sliderSettings}>
-                {data.map((item, index) => (
+                {newsData.map((item, index) => (
                     <div key={index}>
                         <Card className="h-[500px] p-4 mx-1 bg-secondary">
                             {item.field.newsImages && item.field.newsImages.length > 0 && (
@@ -92,7 +92,7 @@ const MySlider = ({ language, data }) => {
                                 <Link to={`/${language}/newspost/${item.newsTitle}`}>
                                     <Button size="small" color="primary">
                                         See More
-                                    </Button>{" "}
+                                    </Button>
                                 </Link>
                             </CardContent>
                         </Card>

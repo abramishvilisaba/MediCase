@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import {
+    Router,
     Routes,
     Route,
     useLocation,
@@ -13,6 +14,8 @@ import Home from "./pages/Home";
 import Product from "./pages/Product";
 import ProductPage from "./pages/ProductPage";
 import Newspost from "./pages/Newspost";
+import AboutUs from "./pages/AboutUs";
+import NewsPage from "./pages/NewsPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -41,21 +44,33 @@ const App = () => {
 
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
+
             <Routes>
-                <Route path="/:language?" element={<Home />} />
-                <Route
-                    path="/:language/:type/product/:productId"
-                    element={<ProductPage locale={location.pathname} />}
-                />
-                <Route
-                    path="/:language/:type/:id/:page?"
-                    element={<Product locale={location.pathname} />}
-                />
-                <Route
-                    path="/:language/newspost/:itemId"
-                    element={<Newspost locale={location.pathname} />}
-                />
+                <Route path="/" element={<Navbar />}>
+                    <Route path=":language/" element={<Home />} />
+                    <Route
+                        path=":language/:type/product/:productId"
+                        element={<ProductPage locale={location.pathname} />}
+                    />
+                    <Route
+                        path=":language/:type/:id/:page?"
+                        element={<Product locale={location.pathname} />}
+                    />
+                    <Route
+                        path=":language/aboutUs"
+                        element={<AboutUs locale={location.pathname} />}
+                    />
+
+                    <Route
+                        path=":language/news"
+                        element={<NewsPage locale={location.pathname} />}
+                    />
+                    <Route
+                        path=":language/newspost/:itemId"
+                        element={<Newspost locale={location.pathname} />}
+                    />
+                </Route>
             </Routes>
             <Footer />
         </>

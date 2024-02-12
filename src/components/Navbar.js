@@ -11,7 +11,7 @@ import {
     useMediaQuery,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation, Link, Outlet } from "react-router-dom";
 import CategoryDropdown from "./CategoryDropdown";
 import LanguageSelector from "./LanguageSelector";
 import logoImage from "../media/logo.svg";
@@ -68,91 +68,117 @@ const NavBar = () => {
         navigate(`${newPathname}${location.search}`);
     };
 
+    // return (
+    //     <div>
+    //         <p>This is the home page.</p>
+    //     </div>
+    // );
+
     return (
-        <IntlProvider locale={language} messages={messages[language]}>
-            <div position="fixed">
-                <AppBar
-                    position="fixed"
-                    style={{
-                        // backgroundColor: scrolling ? "#4C5461" : "rgba(78, 90, 108, 0.3)",
-                        backgroundColor: scrolling ? "#626B7F" : "rgba(78, 90, 108, 0.3)",
-                        // backgroundColor: scrolling ? " #065E80" : "rgba(78, 90, 108, 0.3)",
+        <div className="h-full">
+            <IntlProvider locale={language} messages={messages[language]}>
+                <div position="fixed ">
+                    <AppBar
+                        position="fixed"
+                        style={{
+                            // backgroundColor: scrolling ? "#4C5461" : "rgba(78, 90, 108, 0.3)",
+                            backgroundColor: scrolling ? "#626B7F" : "rgba(78, 90, 108, 0.3)",
+                            // backgroundColor: scrolling ? " #065E80" : "rgba(78, 90, 108, 0.3)",
 
-                        width: "100%",
-                        padding: "0px 0px",
-                        // height: "64px",
-                        transition: "height 0.5s ease-in-out",
-                    }}
-                    className={`transition-all ${scrolling ? "h-[60px]" : "h-[76px]"}`}
-                >
-                    <Toolbar className="w-full h-full flex flex-row  justify-between p-0 gap-0 ">
-                        <div className="w-fit md:w-1/4 md:pl-10 min-w-fit flex ">
-                            <Link to={`/${language}`}>
-                                <IconButton sx={{ borderRadius: "20%" }}>
-                                    <img
-                                        src={logoImage}
-                                        alt="Logo"
-                                        className="h-[50px] mb-0 hover:cursor-pointer"
-                                        // onClick={() => navigate(`/${language}`)}
-                                    />
-                                </IconButton>
-                            </Link>
-                        </div>
-
-                        <div className="flex items-center justify-center md:gap-3 w-1/2">
-                            {!isMobile && (
-                                <>
-                                    <Button
-                                        variant="text"
-                                        style={{ width: "fit", color: "white", fontSize: "16px" }}
-                                    >
-                                        <FormattedMessage id="aboutUs" />
-                                    </Button>
-                                    <CategoryDropdown
-                                        title="products"
-                                        categories={categories}
-                                        language={language}
-                                    />
-                                    <CategoryDropdown
-                                        title="brands"
-                                        categories={brands}
-                                        language={language}
-                                    />
-                                    <Button
-                                        variant="text"
-                                        style={{ width: "fit", color: "white", fontSize: "16px" }}
-                                    >
-                                        <FormattedMessage id="news" />
-                                    </Button>
-                                </>
-                            )}
-                        </div>
-                        <div color="inherit" className="w-1/4 md:pr-10 flex justify-end">
-                            {!isMobile && (
-                                <LanguageSelector
-                                    supportedLocales={["en", "ka", "ru"]}
-                                    changeLanguage={handleLanguageSelect}
-                                    language={language}
-                                />
-                            )}
-                        </div>
-                        {isMobile && (
-                            <div className="w-fit md:w-1/4 sm:pl-10 min-w-fit  flex  ">
-                                <IconButton
-                                    color="inherit"
-                                    aria-label="open drawer"
-                                    edge="start"
-                                    onClick={() => setIsDrawerOpen(true)}
-                                >
-                                    <MenuIcon />
-                                </IconButton>
+                            width: "100%",
+                            padding: "0px 0px",
+                            // height: "64px",
+                            transition: "height 0.5s ease-in-out",
+                        }}
+                        className={`transition-all ${scrolling ? "h-[60px]" : "h-[76px]"}`}
+                    >
+                        <Toolbar className="w-full h-full flex flex-row  justify-between p-0 gap-0 ">
+                            <div className="w-fit md:w-1/4 md:pl-10 min-w-fit flex ">
+                                <Link to={`/${language}`}>
+                                    <IconButton sx={{ borderRadius: "20%" }}>
+                                        <img
+                                            src={logoImage}
+                                            alt="Logo"
+                                            className="h-[50px] mb-0 hover:cursor-pointer"
+                                            // onClick={() => navigate(`/${language}`)}
+                                        />
+                                    </IconButton>
+                                </Link>
                             </div>
-                        )}
-                    </Toolbar>
-                </AppBar>
-                <Drawer anchor="right" open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
-                    <Toolbar className="w-[40vw] h-full py-8   flex flex-col  bg-[#4C5461]">
-                        {/* <div className="w-full sm:pl-10 min-w-fit flex justify-start">
+
+                            <div className="flex items-center justify-center md:gap-3 w-1/2">
+                                {!isMobile && (
+                                    <>
+                                        <Link to={`${language}/aboutUs`}>
+                                            <Button
+                                                variant="text"
+                                                style={{
+                                                    width: "fit",
+                                                    color: "white",
+                                                    fontSize: "16px",
+                                                }}
+                                            >
+                                                <FormattedMessage id="aboutUs" />
+                                            </Button>
+                                        </Link>
+
+                                        <CategoryDropdown
+                                            title="products"
+                                            categories={categories}
+                                            language={language}
+                                            scrolling={scrolling}
+                                        />
+                                        <CategoryDropdown
+                                            title="brands"
+                                            categories={brands}
+                                            language={language}
+                                            scrolling={scrolling}
+                                        />
+                                        <Link to={`${language}/news`}>
+                                            <Button
+                                                variant="text"
+                                                style={{
+                                                    width: "fit",
+                                                    color: "white",
+                                                    fontSize: "16px",
+                                                }}
+                                            >
+                                                <FormattedMessage id="news" />
+                                            </Button>
+                                        </Link>
+                                    </>
+                                )}
+                            </div>
+                            <div color="inherit" className="w-1/4 md:pr-10 flex justify-end">
+                                {!isMobile && (
+                                    <LanguageSelector
+                                        supportedLocales={["en", "ka", "ru"]}
+                                        changeLanguage={handleLanguageSelect}
+                                        language={language}
+                                    />
+                                )}
+                            </div>
+                            {isMobile && (
+                                <div className="w-fit md:w-1/4 sm:pl-10 min-w-fit  flex  ">
+                                    <IconButton
+                                        color="inherit"
+                                        aria-label="open drawer"
+                                        edge="start"
+                                        onClick={() => setIsDrawerOpen(true)}
+                                    >
+                                        <MenuIcon />
+                                    </IconButton>
+                                </div>
+                            )}
+                        </Toolbar>
+                    </AppBar>
+                    <Drawer
+                        anchor="right"
+                        open={isDrawerOpen}
+                        onClose={() => setIsDrawerOpen(false)}
+                    >
+                        <Toolbar className="w-[40vw] h-full py-8   flex flex-col  bg-[#4C5461]">
+                            {/* <div className="w-full sm:pl-10 min-w-fit flex justify-start">
                             <img
                                 src={logoImage}
                                 alt="Logo"
@@ -161,60 +187,58 @@ const NavBar = () => {
                             />
                         </div> */}
 
-                        <div className="w-full flex flex-col items-start justify-center gap-0  ">
-                            <Button
-                                variant="text"
-                                style={{
-                                    width: "100%",
-                                    height: "fit",
-                                    fontSize: "16px",
-                                    color: "white",
-                                    padding: "2px 8px",
-                                }}
-                            >
-                                <div className="w-full flex flex-row justify-between">
-                                    <FormattedMessage id="aboutUs" />
-                                    {/* <IconButton
-                                        color="inherit"
-                                        aria-label="open drawer"
-                                        edge="start"
-                                        onClick={() => setIsDrawerOpen(true)}
-                                        sx={{ padding: 0 }}
-                                    >
-                                        <ExpandMoreIcon />
-                                    </IconButton> */}
-                                </div>
-                            </Button>
+                            <div className="w-full flex flex-col items-start justify-center gap-0  ">
+                                <Button
+                                    variant="text"
+                                    style={{
+                                        width: "100%",
+                                        height: "fit",
+                                        fontSize: "16px",
+                                        color: "white",
+                                        padding: "2px 8px",
+                                    }}
+                                >
+                                    <div className="w-full flex flex-row justify-between">
+                                        <Link to={`${language}/aboutUs`}>
+                                            <FormattedMessage id="aboutUs" />
+                                        </Link>
+                                    </div>
+                                </Button>
 
-                            <CategoryDropdown
-                                title="products"
-                                categories={categories}
-                                language={language}
-                                isMobile={isMobile}
-                                closeDrawer={() => setIsDrawerOpen(false)}
-                                // onClick={() => setIsDrawerOpen(true)}
-                            />
-                            <CategoryDropdown
-                                title="brands"
-                                categories={brands}
-                                language={language}
-                                isMobile={isMobile}
-                                closeDrawer={() => setIsDrawerOpen(false)}
-                            />
-                            <Button
-                                variant="text"
-                                style={{
-                                    width: "fit",
-                                    fontSize: "16px",
-                                    color: "white",
-                                    padding: "2px 8px",
-                                }}
-                                className="text-xs text-white"
-                            >
-                                <FormattedMessage id="news" />
-                            </Button>
-                        </div>
-                        {/* <div color="inherit" className="w-1/4 sm:pr-10 flex justify-end">
+                                <CategoryDropdown
+                                    title="products"
+                                    categories={categories}
+                                    language={language}
+                                    isMobile={isMobile}
+                                    closeDrawer={() => setIsDrawerOpen(false)}
+                                    scrolling={scrolling}
+
+                                    // onClick={() => setIsDrawerOpen(true)}
+                                />
+                                <CategoryDropdown
+                                    title="brands"
+                                    categories={brands}
+                                    language={language}
+                                    isMobile={isMobile}
+                                    closeDrawer={() => setIsDrawerOpen(false)}
+                                    scrolling={scrolling}
+                                />
+                                <Link to={`${language}/news`}>
+                                    <Button
+                                        variant="text"
+                                        style={{
+                                            width: "fit",
+                                            fontSize: "16px",
+                                            color: "white",
+                                            padding: "2px 8px",
+                                        }}
+                                        className="text-xs text-white"
+                                    >
+                                        <FormattedMessage id="news" />
+                                    </Button>
+                                </Link>
+                            </div>
+                            {/* <div color="inherit" className="w-1/4 sm:pr-10 flex justify-end">
                             {
                                 <LanguageSelector
                                     supportedLocales={["en", "ka", "ru"]}
@@ -223,10 +247,12 @@ const NavBar = () => {
                                 />
                             }
                         </div> */}
-                    </Toolbar>
-                </Drawer>
-            </div>
-        </IntlProvider>
+                        </Toolbar>
+                    </Drawer>
+                </div>
+            </IntlProvider>
+            <Outlet />
+        </div>
     );
 };
 
