@@ -36,7 +36,7 @@ const Footer = () => {
 
     return (
         <footer
-            className="fixed bottom-0 w-full max-sm:max-h-72 bg-[#626B7F] flex flex-col justify-start items-center text-white font-roboto-slab"
+            className="fixed bottom-0 w-full max-h-96 max-sm:max-h-72 bg-[#626B7F] flex flex-col justify-start items-center text-white font-roboto-slab"
             style={{ height: `${footerHeight}px` }}
         >
             <div

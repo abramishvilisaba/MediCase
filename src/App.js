@@ -45,7 +45,6 @@ const App = () => {
     return (
         <>
             {/* <Navbar /> */}
-
             <Routes>
                 <Route path="/" element={<Navbar />}>
                     <Route path=":language/" element={<Home />} />
@@ -72,7 +71,9 @@ const App = () => {
                     />
                 </Route>
             </Routes>
-            <Footer />
+            <div className="mt-[350px] sm:mt-[350px]">
+                <Footer />
+            </div>
         </>
     );
 };

@@ -21,7 +21,7 @@ const NewsPage = () => {
     return (
         <div className="h-fit min-h-[100vh]">
             {/* Nav */}
-            <div className=" w-full h-32 md:h-40 pt-[88px] md:pt-[102px] bg-[#4d5b7c] ">
+            <div className=" w-full h-32 md:h-40 pt-[88px] md:pt-[102px] bg-[#4d5b7c] pb-[30vh] tall:pb-0 lg:pb-[30vh]">
                 <div className="w-full h-full ">
                     <div className=" w-full flex flex-col h-full text-gray-200 ">
                         <div className=" text-left text-lg  md:text-xl ml-6 md:ml-[68px]">
@@ -37,7 +37,7 @@ const NewsPage = () => {
             </div>
             {/* Nav */}
             {/* content */}
-            <div className="h-fit w-11/12 md:w-5/6 xl:w-2/3 mx-auto mt-20 pb-[60vh] ">
+            <div className="h-fit w-11/12 md:w-5/6 xl:w-2/3 mx-auto mt-20 pb-[20vh] ">
                 {newsData.length > 0 && (
                     <div className="flex flex-row  flex-wrap ">
                         {newsData.map((item, index) => (

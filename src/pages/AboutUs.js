@@ -9,7 +9,8 @@ const AboutUs = () => {
         navigate(`/${language}/products/all`);
     };
     return (
-        <div className="flex flex-col items-center mx-auto w-full h-fit min-h-[200vh]  sm:min-h-[220vh] md:min-h-[220vh] lg:min-h-[160vh] ">
+        // <div className="flex flex-col items-center mx-auto pb-[30vh] tall:pb-0 lg:pb-[30vh] w-full h-fit min-h-[200vh]  sm:min-h-[220vh] md:min-h-[220vh] lg:min-h-[100vh] ">
+        <div className="flex flex-col items-center mx-auto pb-[30vh] tall:pb-[30vh] lg:pb-[30vh] w-full h-fit min-h-[100vh]  ">
             {/* Nav */}
             <div className=" w-full h-32 md:h-40 pt-[88px] md:pt-[102px] bg-[#4d5b7c] ">
                 <div className="w-full h-full ">

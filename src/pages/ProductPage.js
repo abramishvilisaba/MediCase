@@ -56,7 +56,7 @@ const ProductPage = () => {
 
     return (
         <IntlProvider locale={language} messages={messages[language]}>
-            <div className="font-roboto-slab bg-slate-100  pb-[40vh]">
+            <div className="font-roboto-slab bg-slate-100 min-h-full  pb-[30vh] tall:pb-0 lg:pb-[30vh]">
                 <title> {product.name}</title>
 
                 <Helmet>

@@ -35,8 +35,8 @@ const Home = () => {
 
     return (
         <IntlProvider locale={language} messages={messages[language]}>
-            {/* <div className="flex flex-col box-border bg-[#E3E4E7] font-roboto-slab mb-[50vh]  lg:mb-[30vh]"> */}
-            <div className="flex flex-col box-border bg-[#E3E4E7]  font-roboto-slab pb-[30vh]  lg:pb-[30vh]">
+            <div className="flex flex-col box-border bg-[#E3E4E7]  font-roboto-slab pb-[30vh] tall:pb-0 lg:pb-[30vh]">
+                {/* <div className="flex flex-col box-border bg-[#E3E4E7]  font-roboto-slab "> */}
                 <div className="flex flex-col h-fit">
                     <div
                         className="bg-cover bg-center min-h-[100vh] h-full relative"

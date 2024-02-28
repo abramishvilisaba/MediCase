@@ -9,6 +9,10 @@ module.exports = {
                 "open-sans": ["Open Sans", "sans-serif"],
                 "roboto-slab": ["Roboto Slab", "serif"],
             },
+            screens: {
+                tall: { raw: "(min-height: 800px)" },
+                // => @media (min-height: 800px) { ... }
+            },
         },
     },
     plugins: [],
