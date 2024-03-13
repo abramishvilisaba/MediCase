@@ -77,6 +77,33 @@ export const fetchProducts = async (type, category) => {
     }
 };
 
+export const searchProducts = async (query) => {
+    try {
+        const queryOptions = {
+            content_type: "products",
+            limit: 1000,
+            order: "-sys.createdAt",
+            "fields.name[match]": query,
+        };
+
+        const response = await client.getEntries(queryOptions);
+        if (response && response.items && response.items.length > 0) {
+            const fields = response.items.map((item) => {
+                const field = item.fields;
+                return {
+                    ...item.fields,
+                    field,
+                };
+            });
+            return fields;
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.error("Error fetching products data:", error);
+    }
+};
+
 export const fetchProductById = async (productId) => {
     try {
         const response = await client.getEntries({

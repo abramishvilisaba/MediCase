@@ -36,12 +36,12 @@ const ProductCard = ({ language, type, id, product }) => {
                             {product.category}
                         </Typography> */}
                         <div
-                            className="h-[252px] xs:h-[232px] md:h-[232px] lg:h-[232px]  mb-4 overflow-hidden overflow-y-hidden"
-                            style={{ wordWrap: "break-word" }}
+                            className="h-[252px] xs:h-[232px] md:h-[232px] lg:h-[242px]  mb-4 overflow-hidden overflow-y-hidden flex"
+                            // style={{ wordWrap: "break-word" }}
                         >
                             <ReactMarkdown
                                 remarkPlugins={[gfm]}
-                                className={"markdown leading-5 h-full"}
+                                className={"markdown leading-5 overflow-hidden border-2"}
                             >
                                 {product["description" + language] || product["descriptionen"]}
                             </ReactMarkdown>
