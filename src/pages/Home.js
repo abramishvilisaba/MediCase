@@ -25,7 +25,6 @@ const Home = () => {
         const fetchData = async () => {
             setNewsData(await fetchNewsData());
         };
-
         fetchData();
     }, []);
 
