@@ -68,7 +68,7 @@ const SearchComponent = ({ language, expandSearch, setExpandSearch, isMobile = f
             onBlur={handleBlur} // onBlur event handler
             onKeyDown={handleSearchEnter}
             style={{
-                width: expandSearch ? (isMobile ? "140px" : "300px") : "50px",
+                width: expandSearch ? (isMobile ? "140px" : "220px") : "50px",
                 transition: "width 0.3s ease",
             }}
         />

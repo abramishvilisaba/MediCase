@@ -76,13 +76,15 @@ const MobileCategoryDropdown = ({
                         </Button>
                     </AccordionSummary>
 
-                    <AccordionDetails style={{ backgroundColor: "#4C5461" }}>
+                    <AccordionDetails
+                        style={{ backgroundColor: "#4C5461", padding: "0px", width: "fit" }}
+                    >
                         <div style={{ width: "100%" }}>
                             {Object.keys(categories).map((key, id) => (
                                 <MenuItem key={id} onClick={() => handleCategoryClick(key)}>
                                     <Typography
                                         className="text-2xl w-full"
-                                        style={{ color: "white" }}
+                                        style={{ color: "white", whiteSpace: "normal" }}
                                     >
                                         {categories[key][language]}
                                     </Typography>

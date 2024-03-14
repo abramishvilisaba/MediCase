@@ -17,6 +17,16 @@ const MobileNavBar = ({ isDrawerOpen, setIsDrawerOpen, scrolling }) => {
     const [brands, setBrands] = useState([]);
 
     useEffect(() => {
+        const pathname = location.pathname;
+        const parts = pathname.split("/");
+        if (parts.length > 1 && parts[1] !== "") {
+            setLanguage(parts[1]);
+        } else {
+            setLanguage("en");
+        }
+    }, [location]);
+
+    useEffect(() => {
         const fetchData = async () => {
             setCategories(await fetchCategories());
             setBrands(await fetchBrands());
@@ -36,9 +46,17 @@ const MobileNavBar = ({ isDrawerOpen, setIsDrawerOpen, scrolling }) => {
                 {/* <Toolbar className="w-[40vw] h-fit py-8 flex flex-col  bg-[#4C5461]"> */}
                 <Toolbar
                     className="w-[50vw] min-h-[100vh] h-fit py-8 flex flex-col  bg-[#4C5461]"
-                    sx={{ minHeight: "fit-content", height: "fit-content" }}
+                    sx={{ minHeight: "fit-content", height: "fit-content", padding: "5px 18px" }}
                 >
                     <div className="w-full min-h-[100vh] h-fit flex flex-col items-start justify-start gap-0">
+                        <div className="mb-4">
+                            <LanguageSelector
+                                supportedLocales={["en", "ka", "ru"]}
+                                changeLanguage={handleLanguageSelect}
+                                language={language}
+                                isMobile={true}
+                            />
+                        </div>
                         <Button
                             variant="text"
                             style={{
@@ -96,11 +114,6 @@ const MobileNavBar = ({ isDrawerOpen, setIsDrawerOpen, scrolling }) => {
                                 </Link>
                             </div>
                         </Button>
-                        <LanguageSelector
-                            supportedLocales={["en", "ka", "ru"]}
-                            changeLanguage={handleLanguageSelect}
-                            language={language}
-                        />
                     </div>
                 </Toolbar>
             </Drawer>

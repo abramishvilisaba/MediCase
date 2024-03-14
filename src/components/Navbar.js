@@ -117,7 +117,7 @@ const NavBar = () => {
                                     </IconButton>
                                 </Link>
                             </div> */}
-                            <div className="w-fit md:w-1/4 md:pl-10 min-w-fit flex ">
+                            <div className="w-fit md:w-1/3 lg:pl-10 min-w-fit flex ">
                                 <IconButton sx={{ borderRadius: "20%" }} onClick={navigateToHome}>
                                     <img
                                         src={logoImage}
@@ -128,7 +128,7 @@ const NavBar = () => {
                             </div>
 
                             {/* Main Navigation Links */}
-                            <div className="flex items-center justify-center md:gap-3 w-1/2">
+                            <div className="flex items-center justify-center md:gap-3 w-1/3">
                                 {!isMobile && (
                                     <>
                                         {/* Navigation Links */}
@@ -173,26 +173,35 @@ const NavBar = () => {
                                     </>
                                 )}
                             </div>
-
-                            {/* Language Selector */}
-                            <div color="inherit" className="w-1/4 md:pr-10 flex justify-end">
+                            <div className="flex flex-row w-1/3 justify-end lg:pr-10">
+                                {/* Language Selector */}
+                                <div color="inherit" className="w-1/4 md:pr-4 flex justify-end">
+                                    {!isMobile && !expandSearch && (
+                                        <LanguageSelector
+                                            supportedLocales={["en", "ka", "ru"]}
+                                            changeLanguage={handleLanguageSelect}
+                                            language={language}
+                                        />
+                                    )}
+                                    {/* {isMobile && !expandSearch && (
+                                        <LanguageSelector
+                                            supportedLocales={["en", "ka", "ru"]}
+                                            changeLanguage={handleLanguageSelect}
+                                            language={language}
+                                            isMobile={isMobile}
+                                        />
+                                    )} */}
+                                </div>
                                 {!isMobile && (
-                                    <LanguageSelector
-                                        supportedLocales={["en", "ka", "ru"]}
-                                        changeLanguage={handleLanguageSelect}
-                                        language={language}
-                                    />
+                                    <div>
+                                        <SearchComponent
+                                            language={language}
+                                            expandSearch={expandSearch}
+                                            setExpandSearch={setExpandSearch}
+                                        />
+                                    </div>
                                 )}
                             </div>
-                            {!isMobile && (
-                                <div style={{ flexGrow: 1 }}>
-                                    <SearchComponent
-                                        language={language}
-                                        expandSearch={expandSearch}
-                                        setExpandSearch={setExpandSearch}
-                                    />
-                                </div>
-                            )}
                             {/* Mobile Navigation Menu */}
                             {isMobile && (
                                 <div className="flex flex-row gap-6">

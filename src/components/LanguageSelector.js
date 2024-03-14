@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { MenuItem, Select, FormControl } from "@mui/material";
+import { MenuItem, Select, FormControl, Box, Button, ButtonGroup } from "@mui/material";
 
-const LanguageSelector = ({ supportedLocales, changeLanguage, language }) => {
+const LanguageSelector = ({ supportedLocales, changeLanguage, language, isMobile = false }) => {
     const languageNames = {
         en: {
             name: "English",
@@ -16,23 +16,26 @@ const LanguageSelector = ({ supportedLocales, changeLanguage, language }) => {
             native: "Русский",
         },
     };
+    const languageNamesShort = {
+        en: {
+            name: "En",
+            native: "En",
+        },
+        ka: {
+            name: "Geo",
+            native: "ქარ",
+        },
+        ru: {
+            name: "Ru",
+            native: "Ру",
+        },
+    };
 
-    const [open, setOpen] = React.useState(false);
     const [selectedLanguage, setSelectedLanguage] = React.useState(supportedLocales[0]);
 
-    const handleOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    const handleLanguageSelect = (event) => {
-        const selectedLanguage = event.target.value;
-        setSelectedLanguage(selectedLanguage);
-        changeLanguage(selectedLanguage);
-        handleClose();
+    const handleLanguageSelect = (lang) => {
+        setSelectedLanguage(lang);
+        changeLanguage(lang);
     };
 
     useEffect(() => {
@@ -43,25 +46,22 @@ const LanguageSelector = ({ supportedLocales, changeLanguage, language }) => {
 
     return (
         <div className="w-fit">
-            <FormControl
-                style={{
-                    color: "white",
-                    border: "2px solid white",
-                    borderRadius: "4px",
-                    outline: "white",
-                    boxShadow: "none",
-                }}
-            >
-                {supportedLocales && (
+            {!isMobile ? (
+                <FormControl
+                    style={{
+                        color: "white",
+                        border: "2px solid white",
+                        borderRadius: "4px",
+                        outline: "white",
+                        boxShadow: "none",
+                    }}
+                >
                     <Select
                         variant="standard"
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={selectedLanguage}
-                        open={open}
-                        onClose={handleClose}
-                        onOpen={handleOpen}
-                        onChange={handleLanguageSelect}
+                        onChange={(event) => handleLanguageSelect(event.target.value)}
                         style={{
                             color: "white",
                             fontSize: "1rem",
@@ -75,12 +75,40 @@ const LanguageSelector = ({ supportedLocales, changeLanguage, language }) => {
                     >
                         {supportedLocales.map((lang) => (
                             <MenuItem key={lang} value={lang} style={{ color: "black" }}>
-                                {languageNames[lang].native}
+                                {languageNamesShort[lang].native}
                             </MenuItem>
                         ))}
                     </Select>
-                )}
-            </FormControl>
+                </FormControl>
+            ) : (
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        "& > *": {
+                            m: 1,
+                        },
+                    }}
+                >
+                    {supportedLocales.map((lang) => (
+                        <ButtonGroup variant="text" aria-label="Basic button group">
+                            <Button
+                                key={lang}
+                                onClick={() => handleLanguageSelect(lang)}
+                                style={{
+                                    color: selectedLanguage === lang ? "white" : "gray",
+                                    fontSize: "16px",
+                                    // backgroundColor:
+                                    //     selectedLanguage === lang ? "blue" : "transparent",
+                                }}
+                            >
+                                {languageNamesShort[lang].native}
+                            </Button>
+                        </ButtonGroup>
+                    ))}
+                </Box>
+            )}
         </div>
     );
 };
