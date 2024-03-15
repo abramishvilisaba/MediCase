@@ -31,7 +31,6 @@ const CategoryDropdown = ({ title, categories, language, isMobile, closeDrawer, 
                             height: "30px",
                             // padding: "40px 4px",
                             padding: scrolling ? "14px 4px" : "26px 4px",
-
                             color: "white",
                             fontSize: "16px",
                         }}
