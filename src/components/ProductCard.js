@@ -25,7 +25,9 @@ const ProductCard = ({ language, type, id, product }) => {
                     />
 
                     <div className="mt-4 px-4">
-                        <p className="h-[32px] text-lg font-medium text-center overflow-hidden">
+                        {/* <p className="h-[32px] text-lg font-medium text-center overflow-hidden"> */}
+                        <p className="h-[32px] text-2xl font-semibold text-center overflow-hidden">
+
                             {product["name" + language] || product.name}
                         </p>
                         {/* <Typography
@@ -36,15 +38,19 @@ const ProductCard = ({ language, type, id, product }) => {
                             {product.category}
                         </Typography> */}
                         <div
-                            className="h-[252px] xs:h-[232px] md:h-[232px] lg:h-[232px]  mb-4 overflow-hidden overflow-y-hidden"
+                            // className="h-[252px] xs:h-[232px] md:h-[232px] lg:h-[232px]  mb-4 overflow-hidden overflow-y-hidden"
+                            className="h-[80px] mb-4  overflow-hidden overflow-y-hidden flex flex-col justify-center items-center content-center"
+
                             style={{ wordWrap: "break-word" }}
                         >
-                            <ReactMarkdown
+                            {/* <ReactMarkdown
                                 remarkPlugins={[gfm]}
                                 className={"markdown leading-5 h-full"}
                             >
                                 {product["description" + language] || product["descriptionen"]}
-                            </ReactMarkdown>
+
+                            </ReactMarkdown> */}
+                            <p className="text-xl h-16 mt-4   ">{product["card_text"]}</p>
                         </div>
                     </div>
                 </CardActionArea>
