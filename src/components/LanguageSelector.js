@@ -92,13 +92,18 @@ const LanguageSelector = ({ supportedLocales, changeLanguage, language, isMobile
                     }}
                 >
                     {supportedLocales.map((lang) => (
-                        <ButtonGroup variant="text" aria-label="Basic button group">
+                        <ButtonGroup
+                            variant="text"
+                            aria-label="Basic button group"
+                            style={{ margin: "8px 4px" }}
+                        >
                             <Button
                                 key={lang}
                                 onClick={() => handleLanguageSelect(lang)}
                                 style={{
                                     color: selectedLanguage === lang ? "white" : "gray",
                                     fontSize: "16px",
+
                                     // backgroundColor:
                                     //     selectedLanguage === lang ? "blue" : "transparent",
                                 }}
