@@ -75,7 +75,7 @@ const LanguageSelector = ({ supportedLocales, changeLanguage, language, isMobile
                     >
                         {supportedLocales.map((lang) => (
                             <MenuItem key={lang} value={lang} style={{ color: "black" }}>
-                                {languageNamesShort[lang].native}
+                                {languageNames[lang].native}
                             </MenuItem>
                         ))}
                     </Select>

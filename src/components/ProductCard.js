@@ -41,7 +41,9 @@ const ProductCard = ({ language, type, id, product }) => {
                         >
                             <ReactMarkdown
                                 remarkPlugins={[gfm]}
-                                className={"markdown leading-5 overflow-hidden border-2"}
+                                className={
+                                    "markdown leading-5 overflow-hidden text-ellipsis border-2 "
+                                }
                             >
                                 {product["description" + language] || product["descriptionen"]}
                             </ReactMarkdown>
