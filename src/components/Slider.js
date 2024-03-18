@@ -82,7 +82,7 @@ const MySlider = ({ language, newsData }) => {
                                 />
                             )}
                             <div className="h-[150px]  px-4 pt-4 pb-2  overflow-hidden flex flex-col justify-between ">
-                                <h3 className="text-center font-FiraGO text-2xl font-medium">
+                                <h3 className="text-center  text-2xl font-medium">
                                     {item.field.newsTitle}
                                 </h3>
                                 {/* <Typography

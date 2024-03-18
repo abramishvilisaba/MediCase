@@ -43,7 +43,7 @@ const Home = () => {
         <IntlProvider locale={language} messages={messages[language]}>
             <div
                 id="top-element"
-                className="flex flex-col box-border   font-roboto-slab pb-[30vh] tall:pb-0 lg:pb-[30vh]"
+                className="flex flex-col box-border  pb-[30vh] tall:pb-0 lg:pb-[30vh]"
             >
                 <Helmet>
                     {/* General */}
@@ -95,7 +95,7 @@ const Home = () => {
                     })}
                 </Helmet>
                 <div className="h-fit flex flex-col    ">
-                    <div className=" md:min-h-[80vh] bg-bgMain w-full flex flex-col md:flex-row pt-32  bg-bgMain">
+                    <div className=" md:min-h-[80vh] bg-bgMain w-full flex flex-col md:flex-row pt-32  ">
                         <div className="md:w-1/2 md:min-h-[70vh] flex flex-col items-center justify-center">
                             <h1 className="text-8xl w-fit text-center  font-semibold text-mainText  mb-4 ">
                                 MEDI CASE

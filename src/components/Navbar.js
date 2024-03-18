@@ -28,7 +28,7 @@ import SearchComponent from "./SearchComponent";
 const NavBar = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const isMobile = useMediaQuery("(max-width:600px)");
+    const isMobile = useMediaQuery("(max-width:700px)");
 
     const [language, setLanguage] = useState("en");
     const [categories, setCategories] = useState([]);
@@ -96,7 +96,7 @@ const NavBar = () => {
                 <div position="fixed ">
                     <AppBar
                         position="fixed"
-                        style={{
+                        sx={{
                             // backgroundColor: scrolling ? "#626B7F" : "rgba(78, 90, 108, 0.3)",
                             backgroundColor: "#99ACD1",
                             width: "100%",
@@ -105,7 +105,7 @@ const NavBar = () => {
                         }}
                         className={`transition-all ${scrolling ? "h-[60px]" : "h-[76px]"}`}
                     >
-                        <Toolbar className="w-full h-full flex flex-row  justify-between p-0 gap-0 ">
+                        <div className="w-full h-full flex flex-row items-center justify-between p-0 gap-0 ">
                             {/* Logo */}
                             {/* <div className="w-fit md:w-1/4 md:pl-10 min-w-fit flex ">
                                 <Link to={`/${language}`}>
@@ -129,7 +129,7 @@ const NavBar = () => {
                             </div>
 
                             {/* Main Navigation Links */}
-                            <div className="flex items-center justify-center md:gap-3 w-1/3">
+                            <div className="flex items-center justify-center gap-0 lg:gap-3 w-1/3">
                                 {!isMobile && (
                                     <>
                                         {/* Navigation Links */}
@@ -137,9 +137,9 @@ const NavBar = () => {
                                             <Button
                                                 variant="text"
                                                 style={{
-                                                    width: "fit",
+                                                    width: "max-content",
                                                     color: "white",
-                                                    fontSize: "16px",
+                                                    fontSize: "18px",
                                                 }}
                                             >
                                                 <FormattedMessage id="aboutUs" />
@@ -165,7 +165,7 @@ const NavBar = () => {
                                                 style={{
                                                     width: "fit",
                                                     color: "white",
-                                                    fontSize: "16px",
+                                                    fontSize: "18px",
                                                 }}
                                             >
                                                 <FormattedMessage id="news" />
@@ -228,7 +228,7 @@ const NavBar = () => {
                                     </div>
                                 </div>
                             )}
-                        </Toolbar>
+                        </div>
                     </AppBar>
                 </div>
             </IntlProvider>

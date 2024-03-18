@@ -36,12 +36,12 @@ const Footer = () => {
 
     return (
         <footer
-            // className="fixed bottom-0 w-full max-h-96 max-sm:max-h-72 bg-[#626B7F] flex flex-col justify-start items-center text-white font-roboto-slab"
-            className="fixed bottom-0 w-full max-h-96 max-sm:max-h-72 bg-nav flex flex-col justify-start items-center text-white font-roboto-slab"
+            // className="fixed bottom-0 w-full max-h-96 max-sm:max-h-72 bg-[#626B7F] flex flex-col justify-start items-center text-white "
+            className="fixed bottom-0 w-full max-h-96 max-sm:max-h-72 bg-nav flex flex-col justify-start items-center text-white "
             style={{ height: `${footerHeight}px` }}
         >
             <div
-                className={`h-3/4 min-h-[0px]  flex flex-row items-start overflow-hidden text-md font-normal `}
+                className={`h-3/4 min-h-[0px]  flex flex-row items-start overflow-hidden text-md  `}
             >
                 <div
                     className={`pt-8 w-28 flex flex-col ${showContent ? "opacity-100" : "hidden"}`}

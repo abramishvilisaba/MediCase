@@ -31,7 +31,7 @@ const Newspost = () => {
     }, [location.pathname]);
 
     return (
-        <div className="min-h-screen w-full bg-slate-100 flex flex-col pb-[60vh] pt-16 font-roboto-slab ">
+        <div className="min-h-screen w-full bg-slate-100 flex flex-col pb-[60vh] pt-16  ">
             {newsItem ? (
                 <div>
                     <div className="flex-grow flex mt-8 mx-auto justify-center items-center   ">

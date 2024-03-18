@@ -21,7 +21,7 @@ const NewsCard = ({ language, item }) => {
                 />
             )}
             <div className="h-[160px] px-4 pt-4 pb-2 overflow-hidden flex flex-col justify-between">
-                <h3 className="text-center  text-2xl font-medium h-80 overflow-hidden">
+                <h3 className="text-center text-zinc-700   text-2xl font-semibold h-80 overflow-hidden">
                     {item.newsTitle}
                 </h3>
                 <Link to={`/${language}/newspost/${item.newsTitle}`}>
