@@ -60,12 +60,11 @@ const ProductPage = () => {
 
     return (
         <IntlProvider locale={language} messages={messages[language]}>
-            <div className="min-h-screen bg-f2f2f2 p-0 flex flex-col items-center  pb-[30vh] tall:pb-0 lg:pb-[30vh] box-border font-roboto-slab">
-                <div
+            <div className="min-h-screen bg-bgLight  p-0 flex flex-col items-center pt-32 pb-[30vh] tall:pb-0 lg:pb-[30vh] box-border">
+                {/* <div
                     className="bg-cover bg-center w-full h-96 relative"
                     style={{ backgroundImage: `url(${backgroundImage})` }}
                 >
-                    {/* <div className="bg-cover bg-center w-full bg-[#869cd4] h-60 relative"> */}
                     <div className="absolute top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50"></div>
                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center">
                         <h3 className="text-4xl font-bold mt-12 mb-4">
@@ -78,7 +77,20 @@ const ProductPage = () => {
                             ) : null}
                         </h3>
                     </div>
+                </div> */}
+
+                <div className=" text-black text-center">
+                    <h3 className="text-5xl font-bold mt-12 mb-4">
+                        {category ? (
+                            category === "all" ? (
+                                <FormattedMessage id="products" />
+                            ) : (
+                                <FormattedMessage id={category} />
+                            )
+                        ) : null}
+                    </h3>
                 </div>
+
                 {!currentItems ? (
                     <div className="w-full  mt-[40vh] flex justify-center">
                         <CircularProgress />

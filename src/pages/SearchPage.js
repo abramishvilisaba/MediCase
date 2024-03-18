@@ -14,6 +14,10 @@ const SearchPage = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [location.pathname]);
+
+    useEffect(() => {
         const fetchSearchResults = async () => {
             try {
                 const results = await searchProducts(searchQuery);
@@ -29,13 +33,12 @@ const SearchPage = () => {
     }, [searchQuery]);
 
     return (
-        <div className="min-h-screen bg-f2f2f2 p-0 flex flex-col items-center justify-start">
+        <div className="min-h-[120vh] bg-f2f2f2 p-0 flex flex-col items-center justify-start">
             {loading ? (
                 <CircularProgress />
             ) : (
                 <>
-                    <div className=" w-full h-32 md:h-[80px] pt-[88px] md:pt-[102px] bg-[#4d5b7c] pb-[30vh] tall:pb-0 lg:pb-[30vh]"></div>
-                    <div className="mt-28 mb-4 text-center w-full">
+                    <div className="mt-28 pt-16 mb-4 text-center w-full">
                         <h2 className="text-3xl font-semibold">
                             Search Results for: "{searchQuery}"
                         </h2>

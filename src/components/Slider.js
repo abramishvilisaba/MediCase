@@ -32,7 +32,7 @@ import { Link } from "react-router-dom";
 const sliderSettings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     // nextArrow: <NextArrow />,
     // prevArrow: <PrevArrow />,
@@ -63,38 +63,41 @@ const MySlider = ({ language, newsData }) => {
             <Slider {...sliderSettings}>
                 {newsData.map((item, index) => (
                     <div key={index}>
-                        <Card className="h-[500px] p-4 mx-1 bg-secondary">
+                        <Card
+                            className="h-fit p-0 mx-2  "
+                            // sx={{ backgroundColor: "rgb(248 250 252)" }}
+                            sx={{ backgroundColor: " rgb(238 238 238 )" }}
+                        >
                             {item.field.newsImages && item.field.newsImages.length > 0 && (
                                 <CardMedia
                                     component="img"
                                     image={item.field.newsImages[0].fields.file.url}
                                     style={{
-                                        maxHeight: 250,
+                                        height: "250px",
                                         width: "100%",
                                         objectFit: "cover",
-                                        display: "block",
                                         margin: "auto",
                                     }}
                                     alt="News Photo"
                                 />
                             )}
-                            <CardContent className="max-h-[300px] overflow-hidden">
-                                <Typography gutterBottom variant="h5" component="div">
+                            <div className="h-[150px]  px-4 pt-4 pb-2  overflow-hidden flex flex-col justify-between ">
+                                <h3 className="text-center font-FiraGO text-2xl font-medium">
                                     {item.field.newsTitle}
-                                </Typography>
-                                <Typography
+                                </h3>
+                                {/* <Typography
                                     variant="body2"
                                     color="text.secondary"
                                     className="h-36 overflow-hidden"
                                 >
                                     {item.field.newsText}
-                                </Typography>
+                                </Typography> */}
                                 <Link to={`/${language}/newspost/${item.newsTitle}`}>
-                                    <Button size="small" color="primary">
+                                    <Button size="large" color="primary">
                                         See More
                                     </Button>
                                 </Link>
-                            </CardContent>
+                            </div>
                         </Card>
                     </div>
                 ))}

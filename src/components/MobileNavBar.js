@@ -45,11 +45,11 @@ const MobileNavBar = ({ isDrawerOpen, setIsDrawerOpen, scrolling }) => {
             <Drawer anchor="right" open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
                 {/* <Toolbar className="w-[40vw] h-fit py-8 flex flex-col  bg-[#4C5461]"> */}
                 <Toolbar
-                    className="w-[50vw] min-h-[100vh] h-fit py-8 flex flex-col  bg-[#4C5461]"
-                    sx={{ minHeight: "fit-content", height: "fit-content", padding: "5px 18px" }}
+                    className="w-[50vw] h-fit  flex flex-col  bg-nav"
+                    sx={{ minHeight: "fit-content", height: "fit-content", padding: "0px 18px" }}
                 >
                     <div className="w-full min-h-[100vh] h-fit flex flex-col items-start justify-start gap-0">
-                        <div className="mb-4">
+                        <div className="my-4">
                             <LanguageSelector
                                 supportedLocales={["en", "ka", "ru"]}
                                 changeLanguage={handleLanguageSelect}

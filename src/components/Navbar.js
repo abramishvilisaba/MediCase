@@ -35,7 +35,7 @@ const NavBar = () => {
     const [brands, setBrands] = useState([]);
     const [scrolling, setScrolling] = useState(false);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-    const [searchQuery, setSearchQuery] = useState("");
+    // const [searchQuery, setSearchQuery] = useState("");
     const [expandSearch, setExpandSearch] = useState(false);
 
     useEffect(() => {
@@ -97,7 +97,8 @@ const NavBar = () => {
                     <AppBar
                         position="fixed"
                         style={{
-                            backgroundColor: scrolling ? "#626B7F" : "rgba(78, 90, 108, 0.3)",
+                            // backgroundColor: scrolling ? "#626B7F" : "rgba(78, 90, 108, 0.3)",
+                            backgroundColor: "#99ACD1",
                             width: "100%",
                             padding: "0px 0px",
                             transition: "height 0.5s ease-in-out",

@@ -46,6 +46,13 @@ const ProductPage = () => {
         setSelectedPhotoIndex(0);
     }, [location.pathname]);
 
+    function UnderscoresToSlash(name) {
+        if (typeof name !== "string" || name === undefined) {
+            return "";
+        }
+        return name.replace(/__/g, "/");
+    }
+
     if (!product) {
         return (
             <div className="w-full  mt-[40vh] flex justify-center">
@@ -56,13 +63,13 @@ const ProductPage = () => {
 
     return (
         <IntlProvider locale={language} messages={messages[language]}>
-            <div className="font-roboto-slab bg-slate-100 min-h-full  pb-[30vh] tall:pb-0 lg:pb-[30vh]">
-                <title> {product.name}</title>
+            <div className=" bg-bgLight min-h-full  pb-[30vh] tall:pb-0 lg:pb-[30vh]">
+                <title> {UnderscoresToSlash(product.name)}</title>
 
                 <Helmet>
                     {/* General */}
                     <meta charSet="utf-8" />
-                    <title>{product.name}</title>
+                    <title>{UnderscoresToSlash(product.name)}</title>
                     <meta
                         name="description"
                         content="Medicase.ge! We offer a wide range of beauty products from industry-leading brands to meet your skincare and beauty needs. Explore our selection of top-quality skincare and beauty treatments at Medicase.ge."
@@ -73,12 +80,14 @@ const ProductPage = () => {
                     />
                     <meta
                         name="keywords"
-                        content={`medical,beauty, products, solutions,${product.name}`}
+                        content={`medical,beauty, products, solutions,${UnderscoresToSlash(
+                            product.name
+                        )}`}
                     />
                     {/* <meta name="author" content="Your Name" /> */}
 
                     {/* Open Graph */}
-                    <meta property="og:title" content={product.name} />
+                    <meta property="og:title" content={UnderscoresToSlash(product.name)} />
                     <meta
                         property="og:description"
                         content="Welcome to Medicase.ge! We offer a wide range of beauty products from industry-leading brands to meet your skincare and beauty needs. Explore our selection of top-quality skincare and beauty treatments at Medicase.ge."
@@ -104,28 +113,7 @@ const ProductPage = () => {
                     <meta name="robots" content="INDEX,FOLLOW" />
                 </Helmet>
 
-                {/* <div
-                {/* <div className=" w-full h-32 md:h-40 pt-[88px] md:pt-[102px] bg-[#425274] "> */}
-                <div className=" w-full h-32 md:h-40 pt-[88px] md:pt-[102px] bg-[#4d5b7c] ">
-                    <div className="w-full h-full ">
-                        <div className=" w-full flex flex-col h-full text-gray-200 ">
-                            <div className=" text-left text-lg  md:text-xl ml-6 md:ml-[68px]">
-                                <Link to={`/${language}`} className="font-semibold hover:underline">
-                                    <span>Home</span>
-                                </Link>
-                                <span> &gt; </span>
-                                <Link
-                                    to={`/${language}/products/${type}`}
-                                    className="font-semibold hover:underline"
-                                >
-                                    <span>{type}</span>
-                                </Link>
-                                <span> &gt; {product.name}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="w-4/5  md:w-4/5 h-fit mx-auto mt-8 md:mt-16  flex flex-col md:flex-row   ">
+                <div className="w-4/5  md:w-4/5 h-fit mx-auto pt-24 mt-8 md:mt-16  flex flex-col md:flex-row   ">
                     <div className="md:w-1/2 h-[40vh] md:h-[60vh] lg:p-12  overflow-hidden bg-[#EEEEEE]">
                         {product.images && product.images.length > 0 ? (
                             <Carousel
@@ -165,18 +153,16 @@ const ProductPage = () => {
 
                     <div className=" h-fit min-h-[20vh] md:min-h-[60vh] md:w-1/2 md:px-8  mt-4 md:mt-0  flex flex-col md:justify-between">
                         <div>
-                            <span className="text-2xl  font-medium font-roboto-slab">
+                            <span className="text-2xl text-secondaryText  font-semibold ">
                                 {product.brand}
                             </span>
-                            <h2 className="text-3xl md:text-5xl font-bold mt-4 mb-4 font">
-                                {product.name}
+                            <h2 className="text-2xl md:text-3xl font-bold mt-2 font">
+                                {UnderscoresToSlash(product.name)}
                             </h2>
                         </div>
-                        <div className="">
-                            <ReactMarkdown remarkPlugins={[gfm]} className={"markdown text-xl "}>
-                                {product["description" + language] || product["descriptionen"]}
-                            </ReactMarkdown>
-                        </div>
+                        <ReactMarkdown remarkPlugins={[gfm]} className={"markdown text-xl "}>
+                            {product["description" + language] || product["descriptionen"]}
+                        </ReactMarkdown>
                     </div>
                 </div>
                 <div className="w-4/5 h-fit  mx-auto mt-12 pb-40">

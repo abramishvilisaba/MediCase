@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import { fetchNewsItemByTitle } from "../utils/contentful";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Carousel } from "react-responsive-carousel";
@@ -12,6 +12,7 @@ const Newspost = () => {
     const [newsItem, setNewsItem] = useState(null);
     const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
     const decodedTitle = decodeURIComponent(itemId);
+    const location = useLocation();
 
     useEffect(() => {
         const fetchDetails = async () => {
@@ -25,28 +26,17 @@ const Newspost = () => {
         fetchDetails();
     }, [decodedTitle]);
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [location.pathname]);
+
     return (
-        <div className="min-h-screen w-full bg-slate-100 flex flex-col pb-[60vh]  font-roboto-slab ">
+        <div className="min-h-screen w-full bg-slate-100 flex flex-col pb-[60vh] pt-16 font-roboto-slab ">
             {newsItem ? (
                 <div>
-                    <div className=" w-full h-32 md:h-40 pt-[88px] md:pt-[102px] bg-[#626B7F] ">
-                        <div className="w-full h-full ">
-                            <div className=" w-full flex flex-col h-full text-gray-200 ">
-                                <div className=" text-left text-lg  md:text-xl ml-6 md:ml-[68px]">
-                                    <Link
-                                        to={`/${language}`}
-                                        className="font-semibold hover:underline"
-                                    >
-                                        <span>Home</span>
-                                    </Link>
-                                    <span> &gt; {newsItem.newsTitle}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div className="flex-grow flex mt-8 mx-auto justify-center items-center   ">
                         <div className=" max-w-3xl w-full p-4">
-                            <h2 className="text-center text-3xl font-bold mb-4">
+                            <h2 className="text-center text-3xl font-bold my-8">
                                 {newsItem.newsTitle}
                             </h2>
                             <div>
@@ -61,6 +51,7 @@ const Newspost = () => {
                                         interval={3000}
                                         swipeable={true}
                                         showStatus={false}
+                                        showThumbs={newsItem.newsImages.length > 1 ? true : false}
                                     >
                                         {newsItem.newsImages.map((photo, index) => (
                                             <div key={index}>
@@ -74,7 +65,10 @@ const Newspost = () => {
                                     </Carousel>
                                 ) : null}
                             </div>
-                            <ReactMarkdown remarkPlugins={[gfm]} className={"markdown text-lg"}>
+                            <ReactMarkdown
+                                remarkPlugins={[gfm]}
+                                className={"markdown text-lg shadow-2xl rounded-xl p-2 mt-2"}
+                            >
                                 {newsItem.newsText}
                             </ReactMarkdown>
                         </div>

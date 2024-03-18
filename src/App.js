@@ -45,7 +45,14 @@ const App = () => {
     }, []);
 
     return (
-        <>
+        <div
+            // style={{
+            //     fontFamily: location.pathname.substring(1, 3) === "ka" ? "FiraGO" : "Montserrat",
+            // }}
+            style={{
+                fontFamily: "Montserrat",
+            }}
+        >
             {/* <Navbar /> */}
             <Routes>
                 <Route path="/" element={<Navbar />}>
@@ -80,7 +87,7 @@ const App = () => {
             <div className="mt-[350px] sm:mt-[350px]">
                 <Footer />
             </div>
-        </>
+        </div>
     );
 };
 

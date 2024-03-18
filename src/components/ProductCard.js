@@ -7,7 +7,13 @@ import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import "./ProductCard.css";
 
-const ProductCard = ({ language, type, id, product }) => {
+const ProductCard = ({ language, type, id = "product", product }) => {
+    function UnderscoresToSlash(name) {
+        if (typeof name !== "string" || name === undefined) {
+            return "";
+        }
+        return name.replace(/__/g, "/");
+    }
     return (
         <Link
             to={`/${language}/${id}/product/${product.name}`}
@@ -27,8 +33,8 @@ const ProductCard = ({ language, type, id, product }) => {
                     <div className="mt-4 px-4">
                         {/* <p className="h-[32px] text-lg font-medium text-center overflow-hidden"> */}
                         <p className="h-[32px] text-2xl font-semibold text-center overflow-hidden">
-
-                            {product["name" + language] || product.name}
+                            {UnderscoresToSlash(product["name" + language]) ||
+                                UnderscoresToSlash(product.name)}
                         </p>
                         {/* <Typography
                             className="h-6 text-center overflow-hidden"
@@ -40,7 +46,6 @@ const ProductCard = ({ language, type, id, product }) => {
                         <div
                             // className="h-[252px] xs:h-[232px] md:h-[232px] lg:h-[232px]  mb-4 overflow-hidden overflow-y-hidden"
                             className="h-[80px] mb-4  overflow-hidden overflow-y-hidden flex flex-col justify-center items-center content-center"
-
                             style={{ wordWrap: "break-word" }}
                         >
                             {/* <ReactMarkdown
@@ -52,7 +57,7 @@ const ProductCard = ({ language, type, id, product }) => {
                                 {product["description" + language] || product["descriptionen"]}
 
                             </ReactMarkdown> */}
-                            <p className="text-xl h-16 mt-4   ">{product["card_text"]}</p>
+                            <p className="text-xl h-16 mt-4">{product["card_text"]}</p>
                         </div>
                     </div>
                 </CardActionArea>

@@ -44,7 +44,7 @@ const MobileCategoryDropdown = ({
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                         style={{
-                            backgroundColor: "#4C5461",
+                            backgroundColor: "#99ACD1",
                             color: "white",
                             padding: "0px",
                             boxShadow: "none",
@@ -77,7 +77,7 @@ const MobileCategoryDropdown = ({
                     </AccordionSummary>
 
                     <AccordionDetails
-                        style={{ backgroundColor: "#4C5461", padding: "0px", width: "fit" }}
+                        style={{ backgroundColor: "#99ACD1", padding: "0px", width: "fit" }}
                     >
                         <div style={{ width: "100%" }}>
                             {Object.keys(categories).map((key, id) => (
