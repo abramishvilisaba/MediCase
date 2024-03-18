@@ -80,7 +80,12 @@ const NavBar = () => {
     };
 
     return (
-        <div className="h-full">
+        <div
+            className="h-full"
+            style={{
+                fontFamily: "Montserrat",
+            }}
+        >
             {/* MobileNavBar component */}
             {isMobile && (
                 <MobileNavBar

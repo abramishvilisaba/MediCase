@@ -96,17 +96,42 @@ const Home = () => {
                 </Helmet>
                 <div className="h-fit flex flex-col    ">
                     <div className=" md:min-h-[80vh] bg-bgMain w-full flex flex-col md:flex-row pt-32  ">
-                        <div className="md:w-1/2 md:min-h-[70vh] flex flex-col items-center justify-center">
-                            <h1 className="text-8xl w-fit text-center  font-semibold text-mainText  mb-4 ">
+                        {/*  */}
+                        <div className="md:w-1/2 md:min-h-[70vh] flex flex-col items-center justify-center mb-8">
+                            <h1 className="text-6xl sm:text-7xl md:text-7xl xl:text-8xl w-fit text-center font-semibold text-mainText mb-4">
                                 MEDI CASE
                             </h1>
-                            <h2 className="text-xl mb-8 text-mainText text-center">
-                                <FormattedMessage id="explore" />
-                            </h2>
+                            <div className="">
+                                <div className="flex flex-row mb-2">
+                                    <h2 className="text-2xl xs:text-3xl sm:text-3xl md:text-3xl xl:text-[40px]  w-fit text-mainText text-left">
+                                        Explore our
+                                    </h2>
+                                    <h2 className="text-2xl xs:text-3xl sm:text-3xl md:text-3xl  xl:text-[40px]  w-fit text-mainText font-semibold text-left font-montserrat">
+                                        &nbsp;services
+                                    </h2>
+                                    <h2 className="text-2xl xs:text-3xl sm:text-3xl md:text-3xl  xl:text-[40px]  w-fit text-mainText  text-left font-montserrat">
+                                        &nbsp;and
+                                    </h2>
+                                </div>
+                                <div className="flex flex-row">
+                                    <h2 className="text-2xl xs:text-3xl sm:text-3xl md:text-3xl  xl:text-[40px]  w-fit text-mainText text-left">
+                                        Discover
+                                    </h2>
+                                    <h2 className="text-2xl xs:text-3xl sm:text-3xl md:text-3xl  xl:text-[40px]  w-fit text-mainText  text-left font-montserrat">
+                                        &nbsp;amazing
+                                    </h2>
+                                    <h2 className="text-2xl xs:text-3xl sm:text-3xl md:text-3xl  xl:text-[40px]  w-fit text-mainText font-semibold text-left font-montserrat">
+                                        &nbsp;features
+                                    </h2>
+                                </div>
+                            </div>
                         </div>
+
+                        {/*  */}
+
                         <div className="h-full my-auto md:w-1/2">
                             <img
-                                className="w-1/2 md:4/5 lg:w-3/4 xl:w-3/5 mx-auto h-fit aspect-[140/169]"
+                                className="w-1/2 sm:w-2/3 md:4/5 lg:w-3/4 xl:w-3/5 mx-auto h-fit aspect-[140/169]"
                                 src={backgroundImage}
                                 alt="cover"
                             />
@@ -142,7 +167,7 @@ const Home = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="bg-bgMain pb-52">
+                <div className="bg-bgMain pb-16 ">
                     {newsData.length > 0 && (
                         <div className="w-4/5 xl:w-4/5 h-fit mx-auto   ">
                             <h2 className="text-3xl text-mainText font-bold my-12 text-center">
