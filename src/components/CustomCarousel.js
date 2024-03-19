@@ -1,6 +1,7 @@
 import React from "react";
 import MultiCarousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import "./CustomCarousel.css";
 
 const CustomCarousel = ({ children, maxItems = 4 }) => {
     return (
@@ -10,7 +11,6 @@ const CustomCarousel = ({ children, maxItems = 4 }) => {
             autoPlay
             autoPlaySpeed={3000}
             centerMode={false}
-            className=""
             containerClass="container"
             dotListClass=""
             draggable

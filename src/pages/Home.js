@@ -46,7 +46,7 @@ const Home = () => {
         <IntlProvider locale={language} messages={messages[language]}>
             <div
                 id="top-element"
-                className="flex flex-col box-border  pb-[30vh] tall:pb-0 lg:pb-[30vh]"
+                className="flex flex-col box-border  pb-[20vh] tall:pb-0 lg:pb-[30vh]"
             >
                 <Helmet>
                     {/* General */}
@@ -98,7 +98,7 @@ const Home = () => {
                     })}
                 </Helmet>
                 <div className="h-fit flex flex-col    ">
-                    <div className=" md:min-h-[80vh] bg-bgMain w-full flex flex-col md:flex-row pt-32  ">
+                    <div className=" md:min-h-[80vh] bg-bgMain w-full flex flex-col md:flex-row pb-8 pt-32  ">
                         {/*  */}
                         <div className="md:w-1/2 md:min-h-[70vh] flex flex-col items-center justify-center mb-8">
                             <h1 className="text-6xl sm:text-7xl md:text-7xl xl:text-8xl w-fit text-center font-semibold text-mainText mb-4">
@@ -144,8 +144,8 @@ const Home = () => {
                         <AboutUs language={language} />
                     </div> */}
                 </div>
-                <div className="bg-bgLight  pb-24">
-                    <div className="bg-bgLight pt-6 pb-2 ">
+                <div className="bg-bgLight flex flex-col justify-start pb-8 md:pb-16 lg:pb-24">
+                    <div className="bg-bgLight pb-2 ">
                         {brands.brandImages && (
                             <div className="w-4/5 xl:w-4/5 h-fit mx-auto   ">
                                 <h2 className="text-3xl text-mainText font-bold my-8 text-center">
