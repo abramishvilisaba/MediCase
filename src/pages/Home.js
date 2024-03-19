@@ -46,7 +46,7 @@ const Home = () => {
         <IntlProvider locale={language} messages={messages[language]}>
             <div
                 id="top-element"
-                className="flex flex-col box-border  pb-[20vh] tall:pb-0 lg:pb-[30vh]"
+                className="flex flex-col box-border bg-bgLight pb-[10vh]  lg:pb-[10vh]"
             >
                 <Helmet>
                     {/* General */}
@@ -144,7 +144,7 @@ const Home = () => {
                         <AboutUs language={language} />
                     </div> */}
                 </div>
-                <div className="bg-bgLight flex flex-col justify-start pb-8 md:pb-16 lg:pb-24">
+                <div className="bg-bgLight flex flex-col justify-start ">
                     <div className="bg-bgLight pb-2 ">
                         {brands.brandImages && (
                             <div className="w-4/5 xl:w-4/5 h-fit mx-auto   ">
