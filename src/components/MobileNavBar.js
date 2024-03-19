@@ -29,7 +29,8 @@ const MobileNavBar = ({ isDrawerOpen, setIsDrawerOpen, scrolling }) => {
     useEffect(() => {
         const fetchData = async () => {
             setCategories(await fetchCategories());
-            setBrands(await fetchBrands());
+            const brands = await fetchBrands();
+            setBrands(brands.locales);
         };
 
         fetchData();

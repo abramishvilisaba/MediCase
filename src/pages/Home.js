@@ -9,23 +9,25 @@ import { Helmet } from "react-helmet";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import messages from "../locales/messages";
 import MySlider from "../components/Slider";
-import { fetchNewsData, fetchProducts } from "../utils/contentful";
+import { fetchNewsData, fetchProducts, fetchBrands } from "../utils/contentful";
 import AboutUs from "../components/AboutUs";
 import backgroundImage from "../media/cover.png";
 import { default as MultiCarousel } from "react-multi-carousel";
 import ProductCard from "../components/ProductCard";
+import BrandCard from "../components/BrandCard";
 import NewsCard from "../components/NewsCard";
 import CustomCarousel from "../components/CustomCarousel";
 
 const Home = () => {
     const [newsData, setNewsData] = useState([]);
     const [products, setProducts] = useState([]);
+    const [brands, setBrands] = useState([]);
 
     const location = useLocation();
 
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }, [location.pathname]);
+    // useEffect(() => {
+    //     window.scrollTo({ top: 0, behavior: "smooth" });
+    // }, [location.pathname]);
 
     let { language } = useParams();
 
@@ -35,6 +37,7 @@ const Home = () => {
         const fetchData = async () => {
             setNewsData(await fetchNewsData());
             setProducts(await fetchProducts());
+            setBrands(await fetchBrands());
         };
         fetchData();
     }, []);
@@ -141,44 +144,50 @@ const Home = () => {
                         <AboutUs language={language} />
                     </div> */}
                 </div>
-                <div className="bg-bgLight">
-                    <div className="w-4/5 xl:w-4/5 h-fit mx-auto  ">
-                        <h2 className="text-3xl text-mainText font-bold my-12 text-center">
-                            Products
-                        </h2>
-                        <CustomCarousel>
-                            {products.map((product) => (
-                                <div className="py-1 px-2">
-                                    <ProductCard
-                                        key={product.id}
-                                        product={product}
-                                        language={language}
-                                        style={{ paddingLeft: "10px", paddingRight: "10px" }}
-                                    />
-                                </div>
-                            ))}
-                        </CustomCarousel>
+                <div className="bg-bgLight  pb-24">
+                    <div className="bg-bgLight pt-6 pb-2 ">
+                        {brands.brandImages && (
+                            <div className="w-4/5 xl:w-4/5 h-fit mx-auto   ">
+                                <h2 className="text-3xl text-mainText font-bold my-8 text-center">
+                                    Brands
+                                </h2>
+                                <CustomCarousel maxItems={5}>
+                                    {brands.brandImages.map((image) => (
+                                        <div className="py-1 px-2">
+                                            <BrandCard
+                                                // key={news.field.newsText}
+                                                // item={news.field}
+                                                language={language}
+                                                brand={image.fields}
+                                                style={{
+                                                    paddingLeft: "10px",
+                                                    paddingRight: "10px",
+                                                }}
+                                            />
+                                        </div>
+                                    ))}
+                                </CustomCarousel>
+                            </div>
+                        )}
+                        <div className="w-4/5 mx-auto flex justify-end my-4   ">
+                            <Link to={`/${language}/news`}>
+                                <Button size="large" color="primary">
+                                    Show All
+                                </Button>
+                            </Link>
+                        </div>
                     </div>
-                    <div className="w-4/5 mx-auto flex justify-end my-4   ">
-                        <Link to={`/${language}/products/all`}>
-                            <Button size="large" color="primary">
-                                Show All
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
-                <div className="bg-bgMain pb-16 ">
-                    {newsData.length > 0 && (
-                        <div className="w-4/5 xl:w-4/5 h-fit mx-auto   ">
-                            <h2 className="text-3xl text-mainText font-bold my-12 text-center">
-                                News
+                    <div className="bg-bgMain pt-6 pb-2">
+                        <div className="w-4/5 xl:w-4/5 h-fit mx-auto  ">
+                            <h2 className="text-3xl text-mainText font-bold my-8 text-center">
+                                Products
                             </h2>
                             <CustomCarousel>
-                                {newsData.map((news) => (
+                                {products.map((product) => (
                                     <div className="py-1 px-2">
-                                        <NewsCard
-                                            key={news.field.newsText}
-                                            item={news.field}
+                                        <ProductCard
+                                            key={product.id}
+                                            product={product}
                                             language={language}
                                             style={{ paddingLeft: "10px", paddingRight: "10px" }}
                                         />
@@ -186,13 +195,44 @@ const Home = () => {
                                 ))}
                             </CustomCarousel>
                         </div>
-                    )}
-                    <div className="w-4/5 mx-auto flex justify-end my-4   ">
-                        <Link to={`/${language}/news`}>
-                            <Button size="large" color="primary">
-                                Show All
-                            </Button>
-                        </Link>
+                        <div className="w-4/5 mx-auto flex justify-end my-4   ">
+                            <Link to={`/${language}/products/all`}>
+                                <Button size="large" color="primary">
+                                    Show All
+                                </Button>
+                            </Link>
+                        </div>
+                    </div>
+                    <div className="bg-bgLight  pt-6 pb-2">
+                        {newsData.length > 0 && (
+                            <div className="w-4/5 xl:w-4/5 h-fit mx-auto   ">
+                                <h2 className="text-3xl text-mainText font-bold my-8 text-center">
+                                    News
+                                </h2>
+                                <CustomCarousel>
+                                    {newsData.map((news) => (
+                                        <div className="py-1 px-[1px]">
+                                            <NewsCard
+                                                key={news.field.newsText}
+                                                item={news.field}
+                                                language={language}
+                                                style={{
+                                                    paddingLeft: "10px",
+                                                    paddingRight: "10px",
+                                                }}
+                                            />
+                                        </div>
+                                    ))}
+                                </CustomCarousel>
+                            </div>
+                        )}
+                        <div className="w-4/5 mx-auto flex justify-end my-4   ">
+                            <Link to={`/${language}/news`}>
+                                <Button size="large" color="primary">
+                                    Show All
+                                </Button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>

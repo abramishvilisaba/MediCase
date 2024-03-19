@@ -15,6 +15,7 @@ import { Helmet } from "react-helmet";
 
 const ProductPage = () => {
     const location = useLocation();
+
     const { language, id, type, productId } = useParams();
     const [product, setProduct] = useState(null);
     const [categories, setCategories] = useState();

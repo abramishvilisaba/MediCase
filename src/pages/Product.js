@@ -13,6 +13,7 @@ import backgroundImage from "../media/cover.jpg";
 const ProductPage = () => {
     const location = useLocation();
     const navigate = useNavigate();
+
     const { language, type, id, page } = useParams();
     const currentPage = page ? parseInt(page, 10) : 1;
     const [category, setCategory] = useState("");

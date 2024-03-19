@@ -38,6 +38,8 @@ const NavBar = () => {
     // const [searchQuery, setSearchQuery] = useState("");
     const [expandSearch, setExpandSearch] = useState(false);
 
+    console.log(brands.locales);
+
     useEffect(() => {
         const pathname = location.pathname;
         const parts = pathname.split("/");
@@ -51,7 +53,8 @@ const NavBar = () => {
     useEffect(() => {
         const fetchData = async () => {
             setCategories(await fetchCategories());
-            setBrands(await fetchBrands());
+            const brands = await fetchBrands();
+            setBrands(brands.locales);
         };
 
         fetchData();

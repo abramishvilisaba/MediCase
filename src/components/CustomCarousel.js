@@ -2,7 +2,7 @@ import React from "react";
 import MultiCarousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const CustomCarousel = ({ children }) => {
+const CustomCarousel = ({ children, maxItems = 4 }) => {
     return (
         <MultiCarousel
             additionalTransfrom={0}
@@ -27,7 +27,7 @@ const CustomCarousel = ({ children }) => {
                         max: 3000,
                         min: 1400,
                     },
-                    items: 4,
+                    items: maxItems,
                 },
                 laptop: {
                     breakpoint: {

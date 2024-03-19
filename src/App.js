@@ -22,6 +22,7 @@ import Newspost from "./pages/Newspost";
 import AboutUs from "./pages/AboutUs";
 import NewsPage from "./pages/NewsPage";
 import SearchPage from "./pages/SearchPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const supportedLocales = ["en", "ka", "ru"];
 
@@ -91,6 +92,7 @@ const App = () => {
                             path=":language/search/:q?"
                             element={<SearchPage locale={location.pathname} />}
                         />
+                        <Route path="*" element={<NotFoundPage />} />
                     </Route>
                 </Routes>
                 <div className="mt-[350px] sm:mt-[350px]">

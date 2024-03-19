@@ -154,7 +154,7 @@ export const fetchBrands = async () => {
             const field = item.fields;
             return field;
         });
-        return fields[0].locales;
+        return fields[0];
     } catch (error) {
         console.error("Error fetching news data:", error);
     }
