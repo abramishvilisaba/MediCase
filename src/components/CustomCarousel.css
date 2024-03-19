@@ -3,5 +3,14 @@
 }
 
 .react-multiple-carousel__arrow--left {
-    left: calc(1% - 1px);
+    left: calc(1% + 1px);
+}
+@media (max-width: 600px) {
+    .react-multiple-carousel__arrow--right {
+        right: calc(2% + 2px);
+    }
+
+    .react-multiple-carousel__arrow--left {
+        left: calc(2% + 2px);
+    }
 }

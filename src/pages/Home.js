@@ -25,9 +25,9 @@ const Home = () => {
 
     const location = useLocation();
 
-    // useEffect(() => {
-    //     window.scrollTo({ top: 0, behavior: "smooth" });
-    // }, [location.pathname]);
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [location.pathname]);
 
     let { language } = useParams();
 
@@ -46,7 +46,7 @@ const Home = () => {
         <IntlProvider locale={language} messages={messages[language]}>
             <div
                 id="top-element"
-                className="flex flex-col box-border bg-bgLight pb-[10vh]  lg:pb-[10vh]"
+                className="flex flex-col box-border bg-bgLight pb-[12vh]  lg:pb-[10vh]"
             >
                 <Helmet>
                     {/* General */}
@@ -145,7 +145,7 @@ const Home = () => {
                     </div> */}
                 </div>
                 <div className="bg-bgLight flex flex-col justify-start ">
-                    <div className="bg-bgLight pb-2 ">
+                    <div className="bg-bgLight pt-6 pb-2 ">
                         {brands.brandImages && (
                             <div className="w-4/5 xl:w-4/5 h-fit mx-auto   ">
                                 <h2 className="text-3xl text-mainText font-bold my-8 text-center">
@@ -170,11 +170,11 @@ const Home = () => {
                             </div>
                         )}
                         <div className="w-4/5 mx-auto flex justify-end my-4   ">
-                            <Link to={`/${language}/news`}>
+                            {/* <Link to={`/${language}/brands/all`}>
                                 <Button size="large" color="primary">
                                     Show All
                                 </Button>
-                            </Link>
+                            </Link> */}
                         </div>
                     </div>
                     <div className="bg-bgMain pt-6 pb-2">
