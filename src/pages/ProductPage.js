@@ -12,6 +12,7 @@ import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Helmet } from "react-helmet";
+import Footer from "../components/Footer";
 
 const ProductPage = () => {
     const location = useLocation();
@@ -42,9 +43,16 @@ const ProductPage = () => {
         fetchProductData();
     }, [productId]);
 
+    // useEffect(() => {
+    //     window.scrollTo({ top: 0, behavior: "smooth" });
+    //     setSelectedPhotoIndex(0);
+    // }, [location.pathname]);
+
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        setSelectedPhotoIndex(0);
+        setTimeout(() => {
+            setSelectedPhotoIndex(0);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 0);
     }, [location.pathname]);
 
     function UnderscoresToSlash(name) {
@@ -227,6 +235,9 @@ const ProductPage = () => {
                             </div>
                         ))}
                     </MultiCarousel>
+                </div>
+                <div className="mt-[300px] sm:mt-[300px] bg-bgLight">
+                    <Footer />
                 </div>
             </div>
         </IntlProvider>

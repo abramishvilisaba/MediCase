@@ -28,7 +28,7 @@ import SearchComponent from "./SearchComponent";
 const NavBar = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const isMobile = useMediaQuery("(max-width:700px)");
+    const isMobile = useMediaQuery("(max-width:768px)");
 
     const [language, setLanguage] = useState("en");
     const [categories, setCategories] = useState([]);
@@ -37,8 +37,6 @@ const NavBar = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     // const [searchQuery, setSearchQuery] = useState("");
     const [expandSearch, setExpandSearch] = useState(false);
-
-    console.log(brands.locales);
 
     useEffect(() => {
         const pathname = location.pathname;
@@ -177,6 +175,18 @@ const NavBar = () => {
                                                 }}
                                             >
                                                 <FormattedMessage id="news" />
+                                            </Button>
+                                        </Link>
+                                        <Link to={`${language}/contactus`}>
+                                            <Button
+                                                variant="text"
+                                                style={{
+                                                    width: "max-content",
+                                                    color: "white",
+                                                    fontSize: "18px",
+                                                }}
+                                            >
+                                                <FormattedMessage id="contactUs" />
                                             </Button>
                                         </Link>
                                     </>

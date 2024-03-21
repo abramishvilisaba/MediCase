@@ -1,15 +1,5 @@
-import React, { useEffect } from "react";
-import {
-    Router,
-    Routes,
-    Route,
-    useLocation,
-    useParams,
-    useNavigate,
-    // BrowserRouter as Router,
-    // Navigate,
-} from "react-router-dom";
-// import messages from "./locales/messages";
+import React, { useEffect, useState } from "react";
+import { Routes, Route, useLocation, useParams, useNavigate } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import Navbar from "./components/Navbar";
@@ -23,6 +13,7 @@ import AboutUs from "./pages/AboutUs";
 import NewsPage from "./pages/NewsPage";
 import SearchPage from "./pages/SearchPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import ContactUs from "./pages/ContactUs";
 
 const supportedLocales = ["en", "ka", "ru"];
 
@@ -37,14 +28,7 @@ const App = () => {
     const navigate = useNavigate();
     const userLocale = navigator.language.split(/[-_]/)[0];
     const localeParam = useParams().language;
-    // const defaultLocale = "ka";
     const defaultLocale = supportedLocales.includes(localeParam) ? localeParam : userLocale || "ka";
-
-    // useEffect(() => {
-    //     if (location.pathname === "/") {
-    //         navigate(`/${defaultLocale}`);
-    //     }
-    // }, [location.pathname, navigate, defaultLocale]);
 
     useEffect(() => {
         if (location.pathname === "/") {
@@ -53,51 +37,39 @@ const App = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return (
-        <div
-            // style={{
-            //     fontFamily: location.pathname.substring(1, 3) === "ka" ? "FiraGO" : "Montserrat",
-            // }}
-            style={{
-                fontFamily: "Montserrat",
-            }}
-        >
-            <ThemeProvider theme={theme}>
-                {/* <Navbar /> */}
-                <Routes>
-                    <Route path="/" element={<Navbar />}>
-                        <Route path=":language/" element={<Home />} />
-                        <Route
-                            path=":language/:type/product/:productId"
-                            element={<ProductPage locale={location.pathname} />}
-                        />
-                        <Route
-                            path=":language/:type/:id/:page?"
-                            element={<Product locale={location.pathname} />}
-                        />
-                        <Route
-                            path=":language/aboutUs"
-                            element={<AboutUs locale={location.pathname} />}
-                        />
+    if (
+        location.pathname.length > 1 &&
+        !supportedLocales.includes(location.pathname.substring(1, 3))
+    ) {
+        return <NotFoundPage />;
+    }
 
-                        <Route
-                            path=":language/news"
-                            element={<NewsPage locale={location.pathname} />}
-                        />
-                        <Route
-                            path=":language/newspost/:itemId"
-                            element={<Newspost locale={location.pathname} />}
-                        />
-                        <Route
-                            path=":language/search/:q?"
-                            element={<SearchPage locale={location.pathname} />}
-                        />
-                        <Route path="*" element={<NotFoundPage />} />
-                    </Route>
+    return (
+        <div>
+            <ThemeProvider theme={theme}>
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path=":language" element={<Home />} />
+                    <Route
+                        path=":language/:type/product/:productId"
+                        element={<ProductPage locale={location.pathname} />}
+                    />
+                    <Route
+                        path=":language/:type/:id/:page?"
+                        element={<Product locale={location.pathname} />}
+                    />
+                    <Route path=":language/aboutUs" element={<AboutUs />} />
+                    <Route path=":language/news" element={<NewsPage />} />
+                    <Route path=":language/newspost/:itemId" element={<Newspost />} />
+                    <Route path=":language/search/:q?" element={<SearchPage />} />
+                    <Route path=":language/contactus" element={<ContactUs />} />
+
+                    <Route path="*" element={<NotFoundPage />} />
                 </Routes>
-                <div className="mt-[350px] sm:mt-[350px]">
+                {/* <div className="mt-[350px] sm:mt-[350px] bg-bgLight">
                     <Footer />
-                </div>
+                </div> */}
             </ThemeProvider>
         </div>
     );

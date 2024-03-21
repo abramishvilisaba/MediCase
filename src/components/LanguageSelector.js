@@ -1,5 +1,13 @@
 import React, { useEffect } from "react";
-import { MenuItem, Select, FormControl, Box, Button, ButtonGroup } from "@mui/material";
+import {
+    MenuItem,
+    Select,
+    FormControl,
+    Box,
+    Button,
+    ButtonGroup,
+    useMediaQuery,
+} from "@mui/material";
 
 const LanguageSelector = ({ supportedLocales, changeLanguage, language, isMobile = false }) => {
     const languageNames = {
@@ -32,6 +40,8 @@ const LanguageSelector = ({ supportedLocales, changeLanguage, language, isMobile
     };
 
     const [selectedLanguage, setSelectedLanguage] = React.useState(supportedLocales[0]);
+
+    const switchToShort = useMediaQuery("(max-width:900px)");
 
     const handleLanguageSelect = (lang) => {
         setSelectedLanguage(lang);
@@ -68,14 +78,16 @@ const LanguageSelector = ({ supportedLocales, changeLanguage, language, isMobile
                             border: "none",
                             outline: "none",
                             boxShadow: "none",
-                            padding: "4px 8px",
+                            padding: switchToShort ? "4px 4px" : "4px 8px",
                             underLine: "none",
-                            width: "116px",
+                            width: switchToShort ? "55px" : "116px",
                         }}
                     >
                         {supportedLocales.map((lang) => (
                             <MenuItem key={lang} value={lang} style={{ color: "black" }}>
-                                {languageNames[lang].native}
+                                {switchToShort
+                                    ? languageNamesShort[lang].native
+                                    : languageNames[lang].native}
                             </MenuItem>
                         ))}
                     </Select>

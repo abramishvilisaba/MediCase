@@ -3,6 +3,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import ProductCard from "../components/ProductCard";
 import { searchProducts } from "../utils/contentful";
 import { useLocation, useParams } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const SearchPage = () => {
     const location = useLocation();
@@ -14,7 +15,9 @@ const SearchPage = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "instant" });
+        }, 0);
     }, [location.pathname]);
 
     useEffect(() => {
@@ -37,7 +40,7 @@ const SearchPage = () => {
             {loading ? (
                 <CircularProgress />
             ) : (
-                <>
+                <div className="w-full flex flex-col">
                     <div className="mt-28 pt-16 mb-4 text-center w-full">
                         <h2 className="text-3xl font-semibold">
                             Search Results for: "{searchQuery}"
@@ -47,7 +50,7 @@ const SearchPage = () => {
                         {searchResults && searchResults.length === 0 ? (
                             <p>No search results found.</p>
                         ) : (
-                            <div className="w-11/12 flex flex-col mx-auto">
+                            <div className="w-11/12 min-h-screen pb-[0vh] flex flex-col mx-auto">
                                 <div className="w-full grid xs:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                                     {searchResults.map((product, index) => (
                                         <ProductCard
@@ -62,7 +65,10 @@ const SearchPage = () => {
                             </div>
                         )}
                     </div>
-                </>
+                    <div className="mt-[300px] sm:mt-[300px] bg-bgLight">
+                        <Footer />
+                    </div>
+                </div>
             )}
         </div>
     );

@@ -6,6 +6,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
+import Footer from "../components/Footer";
 
 const Newspost = () => {
     const { language, itemId } = useParams();
@@ -26,12 +27,17 @@ const Newspost = () => {
         fetchDetails();
     }, [decodedTitle]);
 
-    useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }, [location.pathname]);
+    // useEffect(() => {
+    //     window.scrollTo({ top: 0, behavior: "smooth" });
+    // }, [location.pathname]);
 
+    useEffect(() => {
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "instant" });
+        }, 0);
+    }, [location.pathname]);
     return (
-        <div className="min-h-screen w-full bg-slate-100 flex flex-col pb-[60vh] pt-16  ">
+        <div className="min-h-screen w-full bg-slate-100 flex flex-col pb-[20vh] pt-16  ">
             {newsItem ? (
                 <div>
                     <div className="flex-grow flex mt-8 mx-auto justify-center items-center   ">
@@ -72,6 +78,9 @@ const Newspost = () => {
                                 {newsItem.newsText}
                             </ReactMarkdown>
                         </div>
+                    </div>
+                    <div className="mt-[300px] sm:mt-[300px] bg-bgLight">
+                        <Footer />
                     </div>
                 </div>
             ) : (

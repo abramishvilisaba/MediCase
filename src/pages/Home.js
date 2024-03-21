@@ -17,6 +17,7 @@ import ProductCard from "../components/ProductCard";
 import BrandCard from "../components/BrandCard";
 import NewsCard from "../components/NewsCard";
 import CustomCarousel from "../components/CustomCarousel";
+import Footer from "../components/Footer";
 
 const Home = () => {
     const [newsData, setNewsData] = useState([]);
@@ -25,8 +26,13 @@ const Home = () => {
 
     const location = useLocation();
 
+    // useEffect(() => {
+    //     window.scrollTo({ top: 0, behavior: "smooth" });
+    // }, [location.pathname]);
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "instant" });
+        }, 0);
     }, [location.pathname]);
 
     let { language } = useParams();
@@ -46,7 +52,7 @@ const Home = () => {
         <IntlProvider locale={language} messages={messages[language]}>
             <div
                 id="top-element"
-                className="flex flex-col box-border bg-bgLight pb-[12vh]  lg:pb-[10vh]"
+                className="flex flex-col box-border bg-bgLight pb-[15vh]  md:pb-[10vh]"
             >
                 <Helmet>
                     {/* General */}
@@ -235,6 +241,9 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="mt-[300px] sm:mt-[300px] bg-bgLight">
+                <Footer />
             </div>
         </IntlProvider>
     );

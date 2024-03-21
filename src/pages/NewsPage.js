@@ -6,6 +6,7 @@ import { Card, CardContent, Typography, CardMedia, CardActionArea, Button } from
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import NewsCard from "../components/NewsCard";
+import Footer from "../components/Footer";
 
 const NewsPage = () => {
     const navigate = useNavigate();
@@ -16,7 +17,9 @@ const NewsPage = () => {
     const location = useLocation();
 
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "instant" });
+        }, 0);
     }, [location.pathname]);
 
     useEffect(() => {
@@ -83,6 +86,9 @@ const NewsPage = () => {
                         ))}
                     </div>
                 )}
+            </div>
+            <div className="mt-[300px] sm:mt-[300px] bg-bgLight">
+                <Footer />
             </div>
         </div>
     );

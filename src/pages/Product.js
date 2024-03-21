@@ -9,6 +9,7 @@ import { IntlProvider, FormattedMessage } from "react-intl";
 import messages from "../locales/messages";
 // import backgroundImage from "../media/cover.jpg";
 import backgroundImage from "../media/cover.jpg";
+import Footer from "../components/Footer";
 
 const ProductPage = () => {
     const location = useLocation();
@@ -37,8 +38,14 @@ const ProductPage = () => {
         }
     }, [type, category]);
 
+    // useEffect(() => {
+    //     window.scrollTo({ top: 0, behavior: "smooth" });
+    // }, [location.pathname]);
+
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "instant" });
+        }, 0);
     }, [location.pathname]);
 
     const itemsPerPage = 12;
@@ -131,6 +138,10 @@ const ProductPage = () => {
                         </div>
                     </div>
                 )}
+            </div>
+
+            <div className="mt-[300px] sm:mt-[300px] bg-bgLight">
+                <Footer />
             </div>
         </IntlProvider>
     );

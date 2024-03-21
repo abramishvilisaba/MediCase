@@ -115,6 +115,24 @@ const MobileNavBar = ({ isDrawerOpen, setIsDrawerOpen, scrolling }) => {
                                 </Link>
                             </div>
                         </Button>
+                        <Button
+                            variant="text"
+                            style={{
+                                width: "100%",
+                                height: "fit",
+                                fontSize: "16px",
+                                color: "white",
+                                padding: "0px",
+                                margin: "12px 0px",
+                                // padding: "2px 8px",
+                            }}
+                        >
+                            <div className="w-full flex flex-row justify-between">
+                                <Link to={`${language}/contactus`}>
+                                    <FormattedMessage id="contactUs" />
+                                </Link>
+                            </div>
+                        </Button>
                     </div>
                 </Toolbar>
             </Drawer>

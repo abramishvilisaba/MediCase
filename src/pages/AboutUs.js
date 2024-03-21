@@ -3,6 +3,7 @@ import aboutUsImage from "../media/cover.jpg";
 import { useNavigate, useParams, Link, useLocation } from "react-router-dom";
 import { IntlProvider, FormattedMessage } from "react-intl";
 import messages from "../locales/messages";
+import Footer from "../components/Footer";
 
 const AboutUs = () => {
     const navigate = useNavigate();
@@ -14,8 +15,11 @@ const AboutUs = () => {
     const location = useLocation();
 
     useEffect(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "instant" });
+        }, 0);
     }, [location.pathname]);
+
     return (
         // <div className="flex flex-col items-center mx-auto pb-[30vh] tall:pb-0 lg:pb-[30vh] w-full h-fit min-h-[200vh]  sm:min-h-[220vh] md:min-h-[220vh] lg:min-h-[100vh] ">
         <IntlProvider locale={language} messages={messages[language]}>
@@ -73,6 +77,9 @@ const AboutUs = () => {
             />
           </div>
         </div> */}
+            </div>
+            <div className="mt-[300px] sm:mt-[300px] bg-bgLight">
+                <Footer />
             </div>
         </IntlProvider>
     );

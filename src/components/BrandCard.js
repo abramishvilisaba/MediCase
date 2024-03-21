@@ -4,7 +4,6 @@ import CardActionArea from "@mui/material/CardActionArea";
 import CardMedia from "@mui/material/CardMedia";
 
 const BrandCard = ({ language, brand }) => {
-    console.log(brand);
     return (
         <Link to={`/${language}/brands/${brand.title}`}>
             <div className=" w-fit h-fit aspect-square  bg-[#EEEEEE] brand-card flex  justify-center rounded-full  ">
