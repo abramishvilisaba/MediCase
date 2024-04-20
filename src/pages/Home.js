@@ -43,10 +43,11 @@ const Home = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            setNewsData(await fetchNewsData());
-            setProducts(await fetchProducts());
-            setBrands(await fetchBrands());
+            fetchNewsData().then((data) => setNewsData(data));
+            fetchProducts().then((data) => setProducts(data));
+            fetchBrands().then((data) => setBrands(data));
         };
+
         fetchData();
     }, []);
 
@@ -226,7 +227,7 @@ const Home = () => {
                             </Link> */}
                         </div>
                     </div>
-                    <div className="bg-bgLight  pt-6 pb-2">
+                    <div className="bg-bgLight  pt-6 pb-4 sm:pb-28">
                         {newsData.length > 0 && (
                             <div className="w-full xl:11/12 2xl:w-4/5 h-fit mx-auto   ">
                                 <div className="flex flex-row justify-between my-8 ">
