@@ -18,6 +18,7 @@ import BrandCard from "../components/BrandCard";
 import NewsCard from "../components/NewsCard";
 import CustomCarousel from "../components/CustomCarousel";
 import Footer from "../components/Footer";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const Home = () => {
     const [newsData, setNewsData] = useState([]);
@@ -29,11 +30,12 @@ const Home = () => {
     // useEffect(() => {
     //     window.scrollTo({ top: 0, behavior: "smooth" });
     // }, [location.pathname]);
-    useEffect(() => {
-        setTimeout(() => {
-            window.scrollTo({ top: 0, behavior: "instant" });
-        }, 0);
-    }, [location.pathname]);
+
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         window.scrollTo({ top: 0, behavior: "instant" });
+    //     }, 0);
+    // }, [location.pathname]);
 
     let { language } = useParams();
 
@@ -113,10 +115,10 @@ const Home = () => {
                             <div className="">
                                 <div className="flex flex-row mb-2">
                                     <h2 className="text-2xl xs:text-3xl sm:text-3xl md:text-3xl xl:text-[40px]  w-fit text-mainText text-left">
-                                        Explore our
+                                        Browse our
                                     </h2>
                                     <h2 className="text-2xl xs:text-3xl sm:text-3xl md:text-3xl  xl:text-[40px]  w-fit text-mainText font-semibold text-left font-montserrat">
-                                        &nbsp;services
+                                        &nbsp;products
                                     </h2>
                                     <h2 className="text-2xl xs:text-3xl sm:text-3xl md:text-3xl  xl:text-[40px]  w-fit text-mainText  text-left font-montserrat">
                                         &nbsp;and
@@ -127,10 +129,10 @@ const Home = () => {
                                         Discover
                                     </h2>
                                     <h2 className="text-2xl xs:text-3xl sm:text-3xl md:text-3xl  xl:text-[40px]  w-fit text-mainText  text-left font-montserrat">
-                                        &nbsp;amazing
+                                        &nbsp;top
                                     </h2>
                                     <h2 className="text-2xl xs:text-3xl sm:text-3xl md:text-3xl  xl:text-[40px]  w-fit text-mainText font-semibold text-left font-montserrat">
-                                        &nbsp;features
+                                        &nbsp;treatments
                                     </h2>
                                 </div>
                             </div>
@@ -153,8 +155,8 @@ const Home = () => {
                 <div className="bg-bgLight flex flex-col justify-start ">
                     <div className="bg-bgLight pt-6 pb-2 ">
                         {brands.brandImages && (
-                            <div className="w-4/5 xl:w-4/5 h-fit mx-auto   ">
-                                <h2 className="text-3xl text-mainText font-bold my-8 text-center">
+                            <div className="w-full xl:11/12 2xl:w-4/5 h-fit mx-auto   ">
+                                <h2 className="text-3xl text-mainText font-bold my-8 ml-4 xl:ml-2 text-left">
                                     Brands
                                 </h2>
                                 <CustomCarousel maxItems={5}>
@@ -184,10 +186,25 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="bg-bgMain pt-6 pb-2">
-                        <div className="w-4/5 xl:w-4/5 h-fit mx-auto  ">
-                            <h2 className="text-3xl text-mainText font-bold my-8 text-center">
-                                Products
-                            </h2>
+                        <div className="w-full xl:11/12 2xl:w-4/5 h-fit mx-auto  ">
+                            <div className="flex flex-row justify-between my-8 ">
+                                <h2 className="text-3xl text-mainText font-bold ml-4 xl:ml-2 text-left">
+                                    Products
+                                </h2>
+                                <div>
+                                    <div className="flex items-center">
+                                        <Link to={`/${language}/products/all`}>
+                                            <Button
+                                                size="large"
+                                                className="flex items-center bg-primary text-secondaryText py-2 px-4 rounded-md transition duration-300 hover:bg-primary-dark"
+                                            >
+                                                <span>Show all</span>
+                                                <FaArrowRightLong className="ml-2 w-[14px] h-[14px] text-secondaryText" />
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
                             <CustomCarousel>
                                 {products.map((product) => (
                                     <div className="py-1 px-2">
@@ -202,19 +219,34 @@ const Home = () => {
                             </CustomCarousel>
                         </div>
                         <div className="w-4/5 mx-auto flex justify-end my-4   ">
-                            <Link to={`/${language}/products/all`}>
+                            {/* <Link to={`/${language}/products/all`}>
                                 <Button size="large" color="primary">
                                     Show All
                                 </Button>
-                            </Link>
+                            </Link> */}
                         </div>
                     </div>
                     <div className="bg-bgLight  pt-6 pb-2">
                         {newsData.length > 0 && (
-                            <div className="w-4/5 xl:w-4/5 h-fit mx-auto   ">
-                                <h2 className="text-3xl text-mainText font-bold my-8 text-center">
-                                    News
-                                </h2>
+                            <div className="w-full xl:11/12 2xl:w-4/5 h-fit mx-auto   ">
+                                <div className="flex flex-row justify-between my-8 ">
+                                    <h2 className="text-3xl text-mainText font-bold  ml-4 xl:ml-2 text-left">
+                                        News
+                                    </h2>
+                                    <div>
+                                        <div className="flex items-center">
+                                            <Link to={`/${language}/news`}>
+                                                <Button
+                                                    size="large"
+                                                    className="flex items-center bg-primary text-secondaryText py-2 px-4 rounded-md transition duration-300 hover:bg-primary-dark"
+                                                >
+                                                    <span>Show all</span>
+                                                    <FaArrowRightLong className="ml-2 w-[14px] h-[14px] text-secondaryText" />
+                                                </Button>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
                                 <CustomCarousel>
                                     {newsData.map((news) => (
                                         <div className="py-1 px-[1px]">
@@ -232,13 +264,13 @@ const Home = () => {
                                 </CustomCarousel>
                             </div>
                         )}
-                        <div className="w-4/5 mx-auto flex justify-end my-4   ">
+                        {/* <div className="w-4/5 mx-auto flex justify-end my-4   ">
                             <Link to={`/${language}/news`}>
                                 <Button size="large" color="primary">
                                     Show All
                                 </Button>
                             </Link>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

@@ -140,7 +140,7 @@ const ProductPage = () => {
                 )}
             </div>
 
-            <div className="mt-[300px] sm:mt-[300px] bg-bgLight">
+            <div className="mt-[340px] sm:mt-[340px] bg-bgLight">
                 <Footer />
             </div>
         </IntlProvider>

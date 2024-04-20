@@ -13,6 +13,7 @@ import gfm from "remark-gfm";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Helmet } from "react-helmet";
 import Footer from "../components/Footer";
+import CustomCarousel from "../components/CustomCarousel";
 
 const ProductPage = () => {
     const location = useLocation();
@@ -178,51 +179,7 @@ const ProductPage = () => {
                     <h2 className="text-xl font-bold mb-4">
                         <FormattedMessage id="similar" />
                     </h2>
-                    <MultiCarousel
-                        additionalTransfrom={0}
-                        arrows
-                        autoPlay
-                        autoPlaySpeed={3000}
-                        centerMode={false}
-                        className=""
-                        containerClass="container"
-                        dotListClass=""
-                        draggable
-                        focusOnSelect={false}
-                        infinite
-                        itemClass=""
-                        keyBoardControl
-                        minimumTouchDrag={80}
-                        renderButtonGroupOutside={false}
-                        renderDotsOutside={false}
-                        responsive={{
-                            desktop: {
-                                breakpoint: {
-                                    max: 3000,
-                                    min: 1024,
-                                },
-                                items: 4,
-                            },
-                            mobile: {
-                                breakpoint: {
-                                    max: 464,
-                                    min: 0,
-                                },
-                                items: 1,
-                            },
-                            tablet: {
-                                breakpoint: {
-                                    max: 1024,
-                                    min: 464,
-                                },
-                                items: 2,
-                            },
-                        }}
-                        showDots={false}
-                        sliderClass=""
-                        slidesToSlide={1}
-                        swipeable
-                    >
+                    <CustomCarousel maxItems={4}>
                         {similarProducts.map((similarProduct) => (
                             <div className="py-1 px-2">
                                 <ProductCard
@@ -234,9 +191,9 @@ const ProductPage = () => {
                                 />
                             </div>
                         ))}
-                    </MultiCarousel>
+                    </CustomCarousel>
                 </div>
-                <div className="mt-[300px] sm:mt-[300px] bg-bgLight">
+                <div className="mt-[340px] sm:mt-[340px] bg-bgLight">
                     <Footer />
                 </div>
             </div>

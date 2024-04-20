@@ -45,7 +45,7 @@ const App = () => {
     }
 
     return (
-        <div>
+        <div className="box-border font-Montserrat">
             <ThemeProvider theme={theme}>
                 <Navbar />
                 <Routes>

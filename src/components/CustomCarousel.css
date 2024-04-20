@@ -5,6 +5,21 @@
 .react-multiple-carousel__arrow--left {
     left: calc(1% + 1px);
 }
+.react-multi-carousel-list {
+    width: 100%;
+}
+.container {
+    width: 100%;
+}
+
+.custom-right-arrow {
+    right: calc(1% + 1px);
+}
+
+.custom-left-arrow {
+    left: calc(1% + 1px);
+}
+
 @media (max-width: 600px) {
     .react-multiple-carousel__arrow--right {
         right: calc(2% + 2px);
